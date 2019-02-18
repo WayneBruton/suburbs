@@ -52,7 +52,7 @@
                                     <input type="text" class="form-control" name="email" placeholder="Area">
                                 </div>
                             </div>
-                            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" value="Sign Up">
                             
                         </form>
                         <br><br><br>
@@ -61,7 +61,23 @@
             </div>
         </div>
 
+        <form action="/upload" enctype="multipart/form-data" method="post">
+          <input type="file" name="file-to-upload" accept="image/x-png,image/gif,image/jpeg">
+          <input type="file" name="file-to-upload2" accept="image/x-png,image/gif,image/jpeg">
+          <input type="submit" value="Upload">
+        </form> 
+
+        <!-- <div><%= source %></div>
+        <div><%= source2 %></div> -->
+        <!-- let src = `http://localhost:3000/`+  <%= source %>; -->
+
+        
+          <!-- <img src="/uploads/a73ddd27a910848d07f8e8456ce3f3b9" alt="" srcset=""> -->
+          <img src="<%= source %>" alt="" srcset="">
+          <img src="<%= source2 %>" alt="" srcset="">
+
+          
 
 
-</body>
-</html>
+
+<% include partials/footer %>
