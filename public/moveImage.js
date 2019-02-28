@@ -1,84 +1,351 @@
+// import { get } from "http";
+
+// document.addEventListener('DOMContentLoaded',function(){
+//     var trigger = document.getElementById('westCoastArea')
+//     var instance = new Tooltip(trigger,{
+//       title: trigger.getAttribute('data-tooltip'),
+//       trigger: "hover",
+//     });
+//   });\\
+
+
+
 $(function () {
-    //Make the DIV element draggagle:
-    dragElement(document.getElementById("imageCrop"));
+    $('#imageCrop').draggable({
+        containment: "parent"
+    }).resizable({
+        containment: "parent",
+        minWidth: 85,
+        minHeight: 85,
+        aspectRatio: true
+    }).bind({
+        resizestop: function (event, ui) {
+            // console.log('Resize Stopped')
+            cropImageNow();
+        }
+    });
 
-function dragElement(elmnt) {
-    var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-    if (document.getElementById(elmnt.id + "header")) {
-        /* if present, the header is where you move the DIV from:*/
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-    } else {
-        /* otherwise, move the DIV from anywhere inside the DIV:*/
-        elmnt.onmousedown = dragMouseDown;
+
+// ======================================
+// tooltips
+
+
+    $('#WestCoast').on({
+        mouseenter: function () {
+            tooltip.show('West Coast', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#WestCoast').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+    $('#NorthernSuburbs').on({
+        mouseenter: function () {
+            tooltip.show('Northern Suburbs', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#NorthernSuburbs').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+    $('#HelderBurg').on({
+        mouseenter: function () {
+            tooltip.show('HelderBurg', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#HelderBurg').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+    $('#CapeFlats').on({
+        mouseenter: function () {
+            tooltip.show('Cape Flats', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#CapeFlats').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+    $('#SouthernSuburbs').on({
+        mouseenter: function () {
+            tooltip.show('Southern Suburbs', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#SouthernSuburbs').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+    $('#CityBowl').on({
+        mouseenter: function () {
+            tooltip.show('City Bowl', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#CityBowl').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+    $('#AtlanticSeaboard').on({
+        mouseenter: function () {
+            tooltip.show('Atlantic Seaboard', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#AtlanticSeaboard').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+    $('#SouthPeninsula').on({
+        mouseenter: function () {
+            tooltip.show('South Peninsula', 200)
+        },
+        mouseleave: function () {
+            tooltip.hide();
+        }
+    });
+
+    $('#SouthPeninsula').on('touchstart', function () {
+        $(this).off('mouseenter,mouseleave');
+    });
+
+
+
+
+// tooltips
+// ======================================
+
+
+
+    $('#amendedImage').draggable({
+        containment: "parent"
+    });
+
+    $('#check1').click(() => {
+        if ($("input[name='area1']").attr('checked')) {
+            $("input[name='area1']").attr('checked', false)
+        } else {
+            $("input[name='area1']").attr('checked', true)
+        }
+    })
+    $('#check2').click(() => {
+        if ($("input[name='area2']").attr('checked')) {
+            $("input[name='area2']").attr('checked', false)
+        } else {
+            $("input[name='area2']").attr('checked', true)
+        }
+    })
+    $('#check3').click(() => {
+        if ($("input[name='area3']").attr('checked')) {
+            $("input[name='area3']").attr('checked', false)
+        } else {
+            $("input[name='area3']").attr('checked', true)
+        }
+    })
+    $('#check4').click(() => {
+        if ($("input[name='area4']").attr('checked')) {
+            $("input[name='area4']").attr('checked', false)
+        } else {
+            $("input[name='area4']").attr('checked', true)
+        }
+    })
+    $('#check5').click(() => {
+        if ($("input[name='area5']").attr('checked')) {
+            $("input[name='area5']").attr('checked', false)
+        } else {
+            $("input[name='area5']").attr('checked', true)
+        }
+    })
+    $('#check6').click(() => {
+        if ($("input[name='area6']").attr('checked')) {
+            $("input[name='area6']").attr('checked', false)
+        } else {
+            $("input[name='area6']").attr('checked', true)
+        }
+    })
+    $('#check7').click(() => {
+        if ($("input[name='area7']").attr('checked')) {
+            $("input[name='area7']").attr('checked', false)
+        } else {
+            $("input[name='area7']").attr('checked', true)
+        }
+    })
+    $('#terms').click(() => {
+        if ($("input[name='terms']").attr('checked')) {
+            $("input[name='terms']").attr('checked', false)
+        } else {
+            $("input[name='terms']").attr('checked', true)
+        }
+    })
+
+
+
+
+    $('#imageCrop').mouseup(function () {
+        changePositionImageCropper();
+        cropImageNow();
+    });
+
+    function cropImageNow() {
+        var imageURL = $('#profileImage').attr('src');
+        imageURL = imageURL.split('/');
+        imageURL = imageURL[imageURL.length - 1];
+        let pos = $('#imageCrop').position();
+        console.log('This is the Pos', pos);
+        console.log(imageURL);
+        let x = pos.left;
+        let y = pos.top;
+        let w = $('#imageCrop').width();
+        let h = $('#imageCrop').height();
+        let pw = $('#profileImage').width();
+        let ph = $('#profileImage').height();
+        console.log('profileImage width now:', pw)
+        console.log('profileImage height now:', ph)
+        var url = '/crop/' + imageURL + '/' + x + '/' + y + '/' + w + '/' + h + '/' + pw + '/' + ph;
+        $.ajax({
+            url: url,
+            type: "get", //send it through get method
+            success: function (response) {
+                //Do Something
+                console.log('This is my response', response.data);
+                setTimeout(() => {
+                    let cropped_src = response.data + '?';
+                    console.log(cropped_src)
+                    $('#croppedImage').attr('src', cropped_src + Math.random());
+                }, 600);
+            },
+            error: function (xhr) {
+                //Do Something to handle error
+                console.log(error);
+            }
+        });
     }
 
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
+    $("#my_form").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        // console.log($(this).children());
+        $('#mainImageArea2').empty();
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false
+        }).done(function (response) { //
+            $('#mainImageArea2').empty();
+            let img = `<img id="profileImage" src="${response}" alt="">`
+            $(img).appendTo('#mainImageArea2');
+            setTimeout(function () {
+                $('#mainImageArea').css('display', 'block');
+                $('#imageCrop').css('display', 'block');
+                $('#croppedImageContainer').css('display', 'flex');
+                let p = $('#profileImage').position();
+                let w = $('#profileImage').width();
+                let h = $('#profileImage').height();
+                $('#mainImageArea').css('width', w).css('height', h);
+                if ($('#imageCrop').height() > $('#profileImage').height()) {
+                    let newHeight = $('#profileImage').height() * .9;
+                    $('#imageCrop').css('width', newHeight).css('height', newHeight);
+                }
+                if ($('#imageCrop').width() > $('#profileImage').width()) {
+                    let newHeight = $('#profileImage').width() * .9;
+                    $('#imageCrop').css('width', newHeight).css('height', newHeight);
+                }
+                changePositionImageCropper();
+                cropImageNow();
+            }, 500)
+        });
 
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    }
+    });
 
-    function closeDragElement() {
-        /* stop moving when mouse button is released:*/
-        document.onmouseup = null;
-        document.onmousemove = null;
-        // move cropImage back into main image
+    function changePositionImageCropper() {
         let a = $('#imageCrop').position();
+        let h = $('#imageCrop').height();
+        let w = $('#imageCrop').width();
+        let mh = $('#mainImageArea').height();
+        let mw = $('#mainImageArea').width();
         if (a.top < 0) {
             $('#imageCrop').css('top', 0);
-            console.log(a.top);
         }
         if (a.left < 0) {
             $('#imageCrop').css('left', 0);
-            console.log(a.left);
         }
+        if (a.left > mw - w) {
+            let newLeft = mw - w;
+            $('#imageCrop').css('left', newLeft);
+        }
+        if (a.top > mh - h) {
+            let newTop = mh - h;
+            $('#imageCrop').css('top', newTop);
+        }
+        // if (w > mw) {
+        //     $('#imageCrop').css('left', 0);
+        //     $('#imageCrop').css('width', mw);
+        // }
+        // if (h > mh) {
+        //     $('#imageCrop').css('top', 0);
+        //     $('#imageCrop').css('height', mh);
+        // }
+        // if (h > w) {
+        //     $('#imageCrop').css('width', w);
+        // }
+        // if (w > h) {
+        //     $('#imageCrop').css('width', h);
+        // }
     }
-}
 
-$('#params').click(function (e) {
-    e.preventDefault();
-    let a = $('#mainImageArea').position();
-    let b = $('#mainImageArea').width();
-    let c = $('#mainImageArea').height();
-    console.log('position:', a)
-    console.log('width:', b)
-    console.log('height:', c)
-    let d = $('#imageCrop').position();
-    let f = $('#imageCrop').width();
-    let g = $('#imageCrop').height();
-    console.log('ImageCrop position:', d)
-    console.log('ImageCrop width:', f)
-    console.log('ImageCrop height:', g)
-    let h = $('#profileImage').position();
-    let i = $('#profileImage').width();
-    let j = $('#profileImage').height();
-    console.log('profileImage position:', h)
-    console.log('profileImage width:', i)
-    console.log('profileImage height:', j)
+
+    // ============================================
+    // Business Area Description Wordcount
+
+    $('#businessDescription').keyup(function (e) { 
+        let characters = $(this).val().length;
+        let maxWords = $(this).attr('maxLength');
+        let remaining = maxWords - characters;
+        let message = `${remaining} characters left.`
+        $('#wordcount').html(message);
+    });
+
+    $('#businessDescription').on('paste', function () {
+        var element = this;
+        setTimeout(function () {
+          let characters = $(element).val();
+          let maxWords = $(element).attr('maxLength');
+            let remaining = maxWords - characters;
+            let message = `${remaining} characters left.`
+            $('#wordcount').html(message);
+          // do something with text
+        }, 100);
+      });
+
 
 });
-
-
-});
-

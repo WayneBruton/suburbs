@@ -1,5 +1,17 @@
 body {
     background-color: whitesmoke;
+    /* background-color: rgb(222, 232, 245); */
+
+
+}
+
+
+
+/* ==========================================
+Hide Map Outlines */
+
+img[usemap], map area {
+    outline: none;
 }
 
 /* ======================================
@@ -7,24 +19,49 @@ image crop section */
 
 #mainImageArea{
     border: 2px solid black;
-    width: 304px;
-    height: 304px;
+    width: 404px;
+    height: 404px;
     position: relative;
-    top: 150px;
-    left: 150px;
+    /* top: 150px; */
+    /* left: 150px; */
     z-index: 0;
+    display: none;
+    /* z-index: 2; */
+}
+
+
+#amendedImage{
+    border: 2px solid black;
+    width: 100%;
+    width: 204px;
+    height: 204px;
+    position: relative;
+    /* top: 150px; */
+    /* left: 150px; */
+    z-index: 0;
+    /* border-radius: 50%; */
     /* z-index: 2; */
 }
 
 #imageCrop {
-    border: 2px dashed lime;
-    width: 154px;
-    height: 154px;
+    border: 2px dashed black;
+    width: 204px;
+    height: 204px;
     position: absolute;
     top: 75px;
     left: 75px;
     z-index: 2;
+    display: none;
+    /* background-color: red; */
 }
+
+/* #imageCrop:hover, #imageCrop:active { */
+#imageCrop:hover {
+    background-color: red;
+    opacity: 0.2;
+}
+
+
 
 #profileImage {
     width: 100%;
@@ -32,15 +69,44 @@ image crop section */
     z-index: 0;
 }
 
+#imageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+}
+
+#holdingContainer {
+    display: flex;
+}
+#croppedImageContainer {
+    width: 100%;
+    display: none;
+    flex-direction: column; 
+}
+
+
+
+.cropSize:hover {
+    cursor: pointer;
+    color: black;
+    background-color: orange;
+}
+
 /* =================================== */
 /* footer */
 
 footer {
     background-color: darkslategrey;
+    clear: both;
     color: white;
     padding-top: 5px;
     width: 100%;
-    bottom: 0%;
+    bottom: 0;
+    position: relative;
+
+    
 }
 
 footer a {
@@ -54,14 +120,27 @@ footer a:hover {
 /* ====================================
 Packages Table Styling */
 
-table, tr, th, td {
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #eee;
+}
+
+
+/* table, tr, th, td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 3px;  
-}
+} */
 
-tr, th, td {
-    width: 50%;
+th, td {
+    padding: 60x;
+    border: 1px solid #ccc;
+    text-align: left;
+    /* border: 1px solid black; */
 }
 
 table {
@@ -70,7 +149,15 @@ table {
 
 th {
     background-color: lime;
+} 
+
+ul {
+    list-style: none;
+    list-style-position: inside;
+    padding-left: 0px;
 }
+
+
 
 /* ========================================
 contact form */
@@ -98,6 +185,147 @@ media screen sizes */
 
         width: 100%;
     }
+  
+    .navbar-dark .navbar-toggler-icon {
+        background-image: url('/images/suburbs2.png')
+    }
+
+
+ 
+    .navbar-toggler-icon {
+   
+        border: 1px solid white;
+        background-image: url('/images/suburbs2.jpg')
+    }
+    
+    #imageContainer {
+        flex-direction: column;
+    justify-content: space-between;
+
+        
+    }
+
+    #croppedImageContainer {
+        /* display: flex;
+        flex-direction: column; */
+        margin-top: 20px;
+        
+    }
+    #holdingContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        /* border: 1px solid #ccc; */
+        border: 1px solid grey;
+    }
+
+    td {
+        border: none;
+        /* border-bottom: 1px solid #eee; */
+        border-bottom: 1px solid lightgray;
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    
+    td:nth-of-type(1):before {
+        content: "Suburbs";
+    }
+    td:nth-of-type(2):before {
+        content: "Option";
+    }
+    td:nth-of-type(3):before {
+        content: "Description";
+    }
+    td:nth-of-type(4):before {
+        content: "per month";
+    }
+    td:nth-of-type(5):before {
+        content: "per year";
+    }
+    td:nth-of-type(6):before {
+        content: "once off";
+    }
+
+    .addDetail:nth-of-type(1):before {
+        content: "Item";
+    }
+    .addDetail:nth-of-type(2):before {
+        content: "Description";
+    }
+    .addDetail:nth-of-type(3):before {
+        content: "per month";
+    }
+    .addDetail:nth-of-type(4):before {
+        content: "per year";
+    }
+    
+    .addDetail:nth-of-type(5):before {
+        content: "once off";
+    }
+    
 }
 
-   
+/* ===================================
+Area Choice */
+
+.areaChoice:hover {
+    background-color: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 7px;
+}
+
+select {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+}
+
+/* ===============================
+Tooltips */
+
+#tt {
+    position:absolute;
+    display:block;
+    /* background:url(images/tt_left.gif) top left no-repeat; */
+    }
+    #tttop {
+    display:block;
+    height:5px;
+    margin-left:5px;
+    /* background:url(images/tt_top.gif) top right no-repeat; */
+    overflow:hidden;
+    }
+    #ttcont {
+    display:block;
+    padding:2px 12px 3px 7px;
+    margin-left:5px;
+    background:#666;
+    color:#fff;
+    }
+   #ttbot {
+   display:block;
+   height:5px; 
+   margin-left:5px;  
+   /* background:url(images/tt_bottom.gif) top right no-repeat;  */
+   overflow:hidden;
+   }

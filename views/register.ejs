@@ -1,82 +1,355 @@
- <% include partials/header %>
+<% include partials/header %>
 
+<div class="container col-lg-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
 
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-    <div class="container col-sm-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
-            
-            <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-    
-                <div class="panel panel-info">
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="post" action="/signup" onSubmit="return checkblank(this);">
-                            <h1>Register</h1>
-                            <div class="form-group">
-                                <label for="first_name" class="col-md-3 control-label">Business Name</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="first_name" placeholder="Name of Business">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="last_name" class="col-md-3 control-label">Owner Name</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="last_name" placeholder="Owner Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="mob_no" class="col-md-3 control-label">Mobile Number</label>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" name="mob_no" placeholder="Mobile Number">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">Website</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="email" placeholder="Website">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">Email Address</label>
-                                <div class="col-md-9">
-                                    <input type="email" class="form-control" name="email" placeholder="email address">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">Package Option</label>
-                                <div class="col-md-9">
-                                    <input type="tyext" class="form-control" name="email" placeholder="Package option">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">Area</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="email" placeholder="Area">
-                                </div>
-                            </div>
-                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" value="Sign Up">
-                            
-                        </form>
-                        <br><br><br>
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" method="" action="" onSubmit="return checkblank(this);">
+                    <h1 style="text-align: center">Join Us!</h1>
+                    <div class="form-group">
+                        <label for="Business_name" class="col-md-3 control-label">Business Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="first_name" placeholder="Name of Business">
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label for="first_name" class="col-md-3 control-label">First Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="first_name" placeholder="Owner First Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name" class="col-md-3 control-label">Owner Last Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="last_name" placeholder="Owner Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mob_no" class="col-md-3 control-label">Contact Number</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" name="mob_no" placeholder="Contact Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="website" class="col-md-3 control-label">Website</label>
+                        <div class="col-md-9">
+                            <input type="url" class="form-control" name="website" placeholder="Website">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook" class="col-md-3 control-label">Facebook Page</label>
+                        <div class="col-md-9">
+                            <input type="url" class="form-control" name="facebook" placeholder="Facebook Link">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram" class="col-md-3 control-label">Instagram Handle</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="instagram" placeholder="Instagram Handle">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin" class="col-md-3 control-label">LinkedIn Page</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="linkedin" placeholder="LinkedIn Page">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-md-3 control-label">Email Address</label>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" name="email" placeholder="email address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback" class="col-md-3 control-label">How did you hear about us?</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="feedback" placeholder="How did you hear about us?">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="area" class="col-md-3 control-label">Area applying for:</label>
+                        <div class="col-md-9">
+                            <div id="check1" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                        type="checkbox" name="area1" id=""><span></span><label for="area1">South
+                                        Peninsula</label></div>
+                            </div>
+                            <div id="check2" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                        type="checkbox" name="area2" id=""><span></span><label for="area2">Southern
+                                        Suburbs</label></div>
+                            </div>
+                            <div id="check3" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                        type="checkbox" name="area3" id=""><span></span><label for="area3">Northern
+                                        Suburbs</label></div>
+                            </div>
+                            <div id="check4" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                        type="checkbox" name="area4" id=""><span></span><label for="area4">City Bowl</label></div>
+                            </div>
+                            <div id="check5" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                        type="checkbox" name="area5" id=""><span></span><label for="area5">Helderberg</label></div>
+                            </div>
+                            <div id="check6" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                        type="checkbox" name="area6" id=""><span></span><label for="area6">West Coast</label></div>
+                            </div>
+                            <div id="check7" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                        type="checkbox" name="area7" id="" id="check7"><span></span><label for="area7">Atlantic
+                                        Seaboard</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <label for="options" class="col-md-3 control-label">Options</label>
+                            <!-- <button class="btn btn-outline-success my-2 my-sm-0 contactBtn">View Options</button> -->
+                            <a class="btn btn-outline-success my-2 my-sm-0 contactBtn" href="/packages" target="_blank">View
+                                Options</a>
+                        </div>
+                        <div class="col-md-9">
+                            <!-- <input type="text" class="form-control" name="feedback" placeholder="Choose your standard option"> -->
+                            <select name="" id="">
+                                <option value="0">Please choose an option</option>
+                                <option value="0">Database will figure these out (from number of areas chosen)</option>
+                                <option value="0">Option 1 - See Options</option>
+                                <option value="0">Option 2</option>
+                                <option value="0">Option 3 etc</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="aditional_options" class="col-md-3 control-label">Additional Options</label>
+                        <div class="col-md-9">
+                            <select name="" id="">
+                                <option value="0">None</option>
+                                <option value="0">Database will figure these out</option>
+                                <option value="0">Additional Option 1 - See Options</option>
+                                <option value="0">Option 2</option>
+                                <option value="0">Option 3 etc</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="categories" class="col-md-3 control-label">Categories</label>
+                        <div class="col-md-9">
+                            <select name="" id="">
+                                <option value="0">Kids (DataBase will actually do this)</option>
+                                <option value="0">Pets</option>
+                                <option value="0">Adult</option>
+                                <option value="0">Medical</option>
+                                <option value="0">Garden</option>
+                                <option value="0">House & Home</option>
+                                <option value="0">Events</option>
+                                <option value="0">Legal</option>
+                                <option value="0">Wellness & Beauty</option>
+                                <option value="0">Travel & Tourism</option>
+                                <option value="0">Automotive & Transport</option>
+                                <option value="0">Pregnancy & Babies</option>
+                                <option value="0">IT & Technology</option>
+                                <option value="0">Financial</option>
+                                <option value="0">Accomodation & Property</option>
+                                <option value="0">Arts & Crafts</option>
+                                <option value="0">None of the Above</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="categories" class="col-md-3 control-label">Product / Service</label>
+                        <div class="col-md-9">
+                            <select name="" id="">
+                                <option value="0">Product (DataBase will actually do this)</option>
+                                <option value="0">Service</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label for="profile_heading" class="col-md-3 control-label">Profile Heading</label>
+                    <div class="form-group"></label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="profile_heading" placeholder="Profile Heading">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-md-3 control-label">About your business (3000 characters
+                            max)</label>
+                        <div class="col-md-9">
+                            <textarea id="businessDescription" name="description" cols="30" rows="10" style="width: 100%;"
+                                maxlength='3000'></textarea>
+                            <p id="wordcount">3000 characters remaining.</p>
+                        </div>
+                    </div>
+                    <label for="area" class="col-md-3 control-label">Before you can proceed, you need to agree to the
+                        <a href="terms" target="_blank">Terms & Conditions</a>:</label>
+                    <div class="col-md-9">
+                        <div id="terms" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
+                            <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                                    type="checkbox" name="terms" id=""><span></span><label for="area1">I agree to the
+                                    Terms & Conditions</label></div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr><br>
+                    <div>
+                        <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" value="Continue to the final step">
+                        <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="reset" value="Reset">
+                    </div>
+
+                </form>
+                <br><br><br>
+                <!-- PROFILE IMAGE -->
+                <form class="form-horizontal" action="/upload" method="post" id="my_form">
+                    <div class="form-group">
+                        <label for="file-to-upload" class="col-md-3 control-label">Profile image</label>
+                        <div class="col-md-9">
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="file" name="file-to-upload"
+                                accept="image/*" />
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit"
+                                value="Use Image" />
+
+                        </div>
+                    </div>
+                    <!-- <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit" value="Use Image" /> -->
+                </form>
+                <div id="holdingContainer">
+                    <div id="imageContainer">
+                        <div id="mainImageArea">
+                            <div id="mainImageArea2"></div>
+                            <div id="imageCrop">
+                            </div>
+                        </div>
+                    </div>
+                    <form class="form-horizontal" action="" method="post" id="my_crop_form">
+                        <div id="croppedImageContainer">
+                            Profile image
+                            <div id="amendedImage">
+
+                                <img id="croppedImage" src="" alt="">
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                <br>
+                <!-- PRODUCT IMAGE 1 -->
+                <form class="form-horizontal" action="/upload" method="post" id="my_form">
+                    <div class="form-group">
+                        <label for="file-to-upload" class="col-md-3 control-label">Product image 1</label>
+                        <div class="col-md-9">
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="file" name="file-to-upload"
+                                accept="image/*" />
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit"
+                                value="Use Image" />
+
+                        </div>
+                    </div>
+                    <!-- <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit" value="Use Image" /> -->
+                </form>
+                <div id="holdingContainer">
+                    <div id="imageContainer">
+                        <div id="mainImageArea">
+                            <div id="mainImageArea2"></div>
+                            <div id="imageCrop">
+                            </div>
+                        </div>
+                    </div>
+                    <form class="form-horizontal" action="" method="post" id="my_crop_form">
+                        <div id="croppedImageContainer">
+                            Business image 1
+                            <div id="amendedImage">
+
+                                <img id="croppedImage" src="" alt="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <!-- PRODUCT IMAGE 2 -->
+
+                <form class="form-horizontal" action="/upload" method="post" id="my_form">
+                    <div class="form-group">
+                        <label for="file-to-upload" class="col-md-3 control-label">Product image 2</label>
+                        <div class="col-md-9">
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="file" name="file-to-upload"
+                                accept="image/*" />
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit"
+                                value="Use Image" />
+
+                        </div>
+                    </div>
+                    <!-- <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit" value="Use Image" /> -->
+                </form>
+                <div id="holdingContainer">
+                    <div id="imageContainer">
+                        <div id="mainImageArea">
+                            <div id="mainImageArea2"></div>
+                            <div id="imageCrop">
+                            </div>
+                        </div>
+                    </div>
+                    <form class="form-horizontal" action="" method="post" id="my_crop_form">
+                        <div id="croppedImageContainer">
+                            Business image 2
+                            <div id="amendedImage">
+
+                                <img id="croppedImage" src="" alt="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <!-- PRODUCT IMAGE 3 -->
+
+                <form class="form-horizontal" action="/upload" method="post" id="my_form">
+                    <div class="form-group">
+                        <label for="file-to-upload" class="col-md-3 control-label">Product image 3</label>
+                        <div class="col-md-9">
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="file" name="file-to-upload"
+                                accept="image/*" />
+                            <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit"
+                                value="Use Image" />
+
+                        </div>
+                    </div>
+                    <!-- <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" name="submit" value="Use Image" /> -->
+                </form>
+                <div id="holdingContainer">
+                    <div id="imageContainer">
+                        <div id="mainImageArea">
+                            <div id="mainImageArea2"></div>
+                            <div id="imageCrop">
+                            </div>
+                        </div>
+                    </div>
+                    <form class="form-horizontal" action="" method="post" id="my_crop_form">
+                        <div id="croppedImageContainer">
+                            Business image 3
+                            <div id="amendedImage">
+
+                                <img id="croppedImage" src="" alt="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+
             </div>
         </div>
+    </div>
+</div>
+</div>
+</div>
 
-        <form action="/upload" enctype="multipart/form-data" method="post">
-          <input type="file" name="file-to-upload" accept="image/x-png,image/gif,image/jpeg">
-          <input type="file" name="file-to-upload2" accept="image/x-png,image/gif,image/jpeg">
-          <input type="submit" value="Upload">
-        </form> 
 
-        <!-- <div><%= source %></div>
-        <div><%= source2 %></div> -->
-        <!-- let src = `http://localhost:3000/`+  <%= source %>; -->
 
-        
-          <!-- <img src="/uploads/a73ddd27a910848d07f8e8456ce3f3b9" alt="" srcset=""> -->
-          <img src="<%= source %>" alt="" srcset="">
-          <img src="<%= source2 %>" alt="" srcset="">
 
-          
+
 
 
 
