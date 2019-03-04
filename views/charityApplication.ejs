@@ -10,14 +10,14 @@
         <div class="panel panel-info">
             <div class="panel-body">
                 <form class="form-horizontal" role="form" method="" action="" onSubmit="return checkblank(this);">
-                    <h1 style="align-items: center">Apply for Your Charity</h1>
+                    <h1 style="align-items: center">Suggest a Charity</h1>
                     <div class="form-group">
                         <label for="charity_name" class="col-md-3 control-label">Organization Name</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="charity_name" placeholder="Organization Name">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="npo_num" class="col-md-3 control-label">NPO Number</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="npo_num" placeholder="NPO Number">
@@ -34,7 +34,7 @@
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="director" placeholder="Name of Director">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="contact_person" class="col-md-3 control-label">Contact Person</label>
                         <div class="col-md-9">
@@ -65,28 +65,28 @@
                             <input type="url" class="form-control" name="facebook" placeholder="Facebook Link">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="address" class="col-md-3 control-label">Address</label>
                         <div class="col-md-9">
                             <input type="url" class="form-control" name="address" placeholder="Address" style="margin-top: 5px">
                             <input type="url" class="form-control" name="address" placeholder="Address" style="margin-top: 5px">
                             <input type="url" class="form-control" name="address" placeholder="Address" style="margin-top: 5px">
                         </div>
-                    </div>
+                    </div> -->
                     <br>
                     <hr>
                     <br>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="whyFunding" class="col-md-3 control-label">What do you need funding for? / What is
                             your greatest need?</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="whyFunding" placeholder="What do you need funding for?">
                         </div>
-                    </div>
-                    <br>
+                    </div> -->
+                    <!-- <br>
                     <hr>
-                    <br>
-                    <div class="form-group">
+                    <br> -->
+                    <!-- <div class="form-group">
                         <h6 for="" class="col-md-3 control-label">Banking Details</h6><br>
                         <label for="account_name" class="col-md-3 control-label" style="margin-top: 5px">Account Holder</label>
                         <div class="col-md-9">
@@ -108,44 +108,42 @@
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="account_number" placeholder="Account Number">
                         </div>
-                    </div>
+                    </div> -->
                     <br>
-                    <hr><br>
+                    <!-- <hr><br> -->
 
                     <div class="form-group">
                         <label for="area" class="col-md-3 control-label">Area</label>
                         <div class="col-md-9">
-                            <!-- <div style="padding: 2px 55px; margin: 0 25px;">  -->
-                            <!-- <input type="text" class="form-control" name="area" placeholder="Package option"> -->
-                            <div id="check1" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
-                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                            <div id="check1" class="areaChoice" >
+                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
                                         type="checkbox" name="area1" id=""><span></span><label for="area1">South
                                         Peninsula</label></div>
                             </div>
-                            <div id="check2" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
-                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                            <div id="check2" class="areaChoice" >
+                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
                                         type="checkbox" name="area2" id=""><span></span><label for="area1">Southern
                                         Suburbs</label></div>
                             </div>
-                            <div id="check3" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
-                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                            <div id="check3" class="areaChoice" >
+                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
                                         type="checkbox" name="area3" id=""><span></span><label for="area1">Northern
                                         Suburbs</label></div>
                             </div>
-                            <div id="check4" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
-                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                            <div id="check4" class="areaChoice" >
+                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
                                         type="checkbox" name="area4" id=""><span></span><label for="area1">City Bowl</label></div>
                             </div>
-                            <div id="check5" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
-                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                            <div id="check5" class="areaChoice" >
+                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
                                         type="checkbox" name="area5" id=""><span></span><label for="area1">Helderberg</label></div>
                             </div>
-                            <div id="check6" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
-                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                            <div id="check6" class="areaChoice" >
+                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
                                         type="checkbox" name="area6" id=""><span></span><label for="area1">West Coast</label></div>
                             </div>
-                            <div id="check7" class="areaChoice" style="padding: 5px 55px; margin: 0 25px;">
-                                <div style="display: flex; justify-content: space-between"> <input class="check" style="margin-top: 7px;"
+                            <div id="check7" class="areaChoice" >
+                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
                                         type="checkbox" name="area7" id="" id="check7"><span></span><label for="area1">Atlantic
                                         Seaboard</label></div>
                             </div>
@@ -153,30 +151,30 @@
                         </div>
                     </div>
                     <br>
-                    <hr><br>
+                    <!-- <hr><br> -->
 
                     <div class="form-group">
-                        <label for="description" class="col-md-3 control-label">About your organisation (500 words max)</label>
+                        <label for="description" class="col-md-3 control-label">Your reason for selecting this charity (500 words max)</label>
                         <div class="col-md-9">
                             <textarea name="description" id="" cols="30" rows="10" style="width: 100%;" maxlength='350'></textarea>
                         </div>
                     </div>
                     <br>
-                    <hr><br>
+                    <!-- <hr><br>
                     <div id="terms" class="areaChoice" style="display:flex; justify-content: space-between">
                             <input type="checkbox" name="terms" id="" style="margin-right: 10px;">
-                            <!-- <p>I have read, understand and accept the term and conditions of the financial support I will be receiving from The Suburbs Directory.</p> -->
+                            <p>I have read, understand and accept the term and conditions of the financial support I will be receiving from The Suburbs Directory.</p>
                             <p>I have read, understand and accept the term and conditions below.</p>
                         </div> 
-                        <br><hr>
-                    <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" value="Apply">
+                        <br><hr>-->
+                    <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" value="Submit">
 
                 </form>
-                <br><br><br>
+                <br><br><br> 
             </div>
         </div>
 
-        <div>
+        <!-- <div>
                 <h1 class="text-center" style="align-self: auto; margin-top: 25px;">Terms and conditions </h1>
               </div>
               <div class="about-content">
@@ -212,7 +210,7 @@
                         Final decision made by TSD.</p>
                         
                               
-              </div>
+              </div> -->
             </div>
           </div>
         

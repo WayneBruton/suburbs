@@ -56,16 +56,16 @@ $(function () {
         $(this).off('mouseenter,mouseleave');
     });
 
-    $('#HelderBurg').on({
+    $('#HelderBerg').on({
         mouseenter: function () {
-            tooltip.show('HelderBurg', 200)
+            tooltip.show('HelderBerg', 200)
         },
         mouseleave: function () {
             tooltip.hide();
         }
     });
 
-    $('#HelderBurg').on('touchstart', function () {
+    $('#HelderBerg').on('touchstart', function () {
         $(this).off('mouseenter,mouseleave');
     });
 
@@ -142,9 +142,9 @@ $(function () {
 
 
 
-    $('#amendedImage').draggable({
-        containment: "parent"
-    });
+    // $('#amendedImage').draggable({
+    //     containment: "parent"
+    // });
 
     $('#check1').click(() => {
         if ($("input[name='area1']").attr('checked')) {
@@ -253,6 +253,7 @@ $(function () {
         var form_data = new FormData(this); //Creates new FormData object
         // console.log($(this).children());
         $('#mainImageArea2').empty();
+        $('footer').css('display', 'none');
         $.ajax({
             url: post_url,
             type: request_method,
@@ -262,6 +263,8 @@ $(function () {
             processData: false
         }).done(function (response) { //
             $('#mainImageArea2').empty();
+            // $('#mainImageArea2').height('250px');
+
             let img = `<img id="profileImage" src="${response}" alt="">`
             $(img).appendTo('#mainImageArea2');
             setTimeout(function () {
@@ -271,6 +274,8 @@ $(function () {
                 let p = $('#profileImage').position();
                 let w = $('#profileImage').width();
                 let h = $('#profileImage').height();
+                // let screenWidth = window.width();
+                // console.log('The screen Width is:', screenWidth)
                 $('#mainImageArea').css('width', w).css('height', h);
                 if ($('#imageCrop').height() > $('#profileImage').height()) {
                     let newHeight = $('#profileImage').height() * .9;
@@ -282,6 +287,7 @@ $(function () {
                 }
                 changePositionImageCropper();
                 cropImageNow();
+                $('footer').css('display', 'block');
             }, 500)
         });
 

@@ -1,6 +1,8 @@
 body {
     background-color: whitesmoke;
+    /* background-color: #FFF; */
     /* background-color: rgb(222, 232, 245); */
+    /* filter: invert(0) hue-rotate(210deg); */
 
 
 }
@@ -17,6 +19,10 @@ img[usemap], map area {
 /* ======================================
 image crop section */
 
+#profileImageDetails {
+    /* display: none; */
+}
+
 #mainImageArea{
     border: 2px solid black;
     width: 404px;
@@ -24,8 +30,8 @@ image crop section */
     position: relative;
     /* top: 150px; */
     /* left: 150px; */
-    z-index: 0;
-    display: none;
+    /* z-index: 0; */
+    /* display: none; */
     /* z-index: 2; */
 }
 
@@ -38,7 +44,7 @@ image crop section */
     position: relative;
     /* top: 150px; */
     /* left: 150px; */
-    z-index: 0;
+    /* z-index: 0; */
     /* border-radius: 50%; */
     /* z-index: 2; */
 }
@@ -71,19 +77,28 @@ image crop section */
 
 #imageContainer {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 20px;
     
 }
 
 #holdingContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 #croppedImageContainer {
     width: 100%;
     display: none;
-    flex-direction: column; 
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; 
 }
 
 
@@ -110,7 +125,7 @@ footer {
 }
 
 footer a {
-    color: red;
+    color: white;
 }
 
 footer a:hover {
@@ -163,8 +178,13 @@ ul {
 contact form */
 
 .contactBtns {
+   display: -webkit-box;
+   display: -ms-flexbox;
    display: flex;
-   flex-direction: column;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+       -ms-flex-direction: column;
+           flex-direction: column;
    width: 30%;
 }
 .contactBtn {
@@ -176,6 +196,24 @@ contact form */
 media screen sizes */
 
 @media screen and (max-width: 768px) {
+    #mainImageArea {
+        width: 95%;
+        margin-right: 5px;
+    }
+
+    #imageContainer {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;    
+    }
+
+
     .contactBtn {
         background-color: blue;
         color: white;
@@ -185,24 +223,37 @@ media screen sizes */
 
         width: 100%;
     }
+    nav.navbar{
+        max-height: 100vh;
+        overflow: auto;
+       -webkit-overflow-scrolling: touch;
+       }
   
     .navbar-dark .navbar-toggler-icon {
         background-image: url('/images/suburbs2.png')
     }
-
-
  
     .navbar-toggler-icon {
-   
         border: 1px solid white;
-        background-image: url('/images/suburbs2.jpg')
+        background-color: white;
+        /* border-radius: 7px; */
+        background-image: url('/images/recoloredSuburbs.png')
     }
-    
-    #imageContainer {
-        flex-direction: column;
-    justify-content: space-between;
 
-        
+    
+
+    #viewOptions {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+
+    #viewOptionsBtn {
+        width: 100%;
     }
 
     #croppedImageContainer {
@@ -212,8 +263,19 @@ media screen sizes */
         
     }
     #holdingContainer {
+        width: 100vw;
+        /* height: 100vh;; */
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        /* display: none; */
+
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -ms-flex-line-pack: justify;
+            align-content: space-between;
     }
     table, thead, tbody, th, td, tr {
         display: block;
@@ -282,16 +344,53 @@ media screen sizes */
     .addDetail:nth-of-type(5):before {
         content: "once off";
     }
+
+    .areaChoice {
+        /* width: 100vw; */
+        padding: 5px 5px; 
+        margin: 0 10px;
+        float: right;
+        /* justify-content: flex-start; */
+
+
+    }
+    .individualArea {
+        width: 50vw;
+        left: 0;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+    }
     
 }
 
 /* ===================================
 Area Choice */
 
+.areaChoice {
+    width: 100%;
+    padding: 5px 55px; 
+    margin: 0 25px; 
+    display: block;
+    /* display:flex;
+    justify-content: space-between; */
+
+}
+
 .areaChoice:hover {
     background-color: lightblue;
     border: 1px solid lightblue;
     border-radius: 7px;
+}
+
+.individualArea {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; 
+    -webkit-box-pack: justify; 
+        -ms-flex-pack: justify; 
+            justify-content: space-between;
+    /* flex-shrink: 1 1 0; */
 }
 
 select {
@@ -306,13 +405,11 @@ Tooltips */
 #tt {
     position:absolute;
     display:block;
-    /* background:url(images/tt_left.gif) top left no-repeat; */
     }
     #tttop {
     display:block;
     height:5px;
     margin-left:5px;
-    /* background:url(images/tt_top.gif) top right no-repeat; */
     overflow:hidden;
     }
     #ttcont {
@@ -326,6 +423,5 @@ Tooltips */
    display:block;
    height:5px; 
    margin-left:5px;  
-   /* background:url(images/tt_bottom.gif) top right no-repeat;  */
    overflow:hidden;
    }

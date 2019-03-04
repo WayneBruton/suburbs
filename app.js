@@ -65,14 +65,14 @@ app.get('/register', (req, res) => {
         backgroundColor: backgroundColor
     });
 })
-app.get('/CharityApplication', (req, res) => {
+app.get('/charityApplication', (req, res) => {
     var title = 'Suburbs Directory - Charity'
     // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
     // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    res.render('CharityApplication', {
+    res.render('charityApplication', {
         title: title,
         source: "",
         source2: "",

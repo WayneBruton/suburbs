@@ -16,6 +16,7 @@
   <script src="/jQuery/jquery-3.3.1.min.js"></script>
   <script src="/jQuery/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="/styles/jquery-ui.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
 
@@ -33,7 +34,7 @@
 <body>
   <nav class="navbar navbar-expand-lg <%= navBarType %> fixed-top" style="<%= backgroundColor %><%= color %>">
 
-    <a class="navbar-brand" href="/" style="<%= color %>">Suburbs Directory</a>
+    <a class="navbar-brand" href="/" style="<%= color %>">The Suburbs Directory</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <!-- <span class="navbar-toggler-icon">Menu</span> -->
@@ -42,6 +43,9 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/about" tabindex="-1" style="<%= color %>">About</a>
+            </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="false" aria-expanded="true" style="<%= color %>">
@@ -108,12 +112,12 @@
             <a class="dropdown-item" href="#" style="background-color: #41b62a; color: white">Southern Suburbs</a>
             <a class="dropdown-item" href="#" style="background-color: #f58695; ">West Coast</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/CharityApplication">Suggest a Charity</a>
+            <a class="dropdown-item" href="/charityApplication">Suggest a Charity</a>
           </div>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="/about" tabindex="-1" style="<%= color %>">About</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="/contact" style="<%= color %>">Contact</a>
         </li>
