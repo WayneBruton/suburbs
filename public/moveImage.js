@@ -1,15 +1,3 @@
-// import { get } from "http";
-
-// document.addEventListener('DOMContentLoaded',function(){
-//     var trigger = document.getElementById('westCoastArea')
-//     var instance = new Tooltip(trigger,{
-//       title: trigger.getAttribute('data-tooltip'),
-//       trigger: "hover",
-//     });
-//   });\\
-
-
-
 $(function () {
     $('#imageCrop').draggable({
         containment: "parent"
@@ -140,12 +128,6 @@ $(function () {
 // tooltips
 // ======================================
 
-
-
-    // $('#amendedImage').draggable({
-    //     containment: "parent"
-    // });
-
     $('#check1').click(() => {
         if ($("input[name='area1']").attr('checked')) {
             $("input[name='area1']").attr('checked', false)
@@ -202,9 +184,6 @@ $(function () {
             $("input[name='terms']").attr('checked', true)
         }
     })
-
-
-
 
     $('#imageCrop').mouseup(function () {
         changePositionImageCropper();
@@ -270,7 +249,7 @@ $(function () {
             setTimeout(function () {
                 $('#mainImageArea').css('display', 'block');
                 $('#imageCrop').css('display', 'block');
-                $('#croppedImageContainer').css('display', 'flex');
+                // $('#croppedImageContainer').css('display', 'flex');
                 let p = $('#profileImage').position();
                 let w = $('#profileImage').width();
                 let h = $('#profileImage').height();
@@ -285,13 +264,24 @@ $(function () {
                     let newHeight = $('#profileImage').width() * .9;
                     $('#imageCrop').css('width', newHeight).css('height', newHeight);
                 }
+
+                $('#acceptProfileBtn').css('width', w).css('display', 'block');
                 changePositionImageCropper();
                 cropImageNow();
-                $('footer').css('display', 'block');
+                // $('footer').css('display', 'block');
             }, 500)
-        });
+            
+        }).then(
+            setTimeout(function(){
+                console.log('This is a Test')
+                $('#croppedImageContainer').css('display', 'flex');
+                $('footer').css('display', 'block');
 
-    });
+
+            }, 750)
+
+        );
+        });
 
     function changePositionImageCropper() {
         let a = $('#imageCrop').position();
