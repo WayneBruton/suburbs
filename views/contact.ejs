@@ -1,4 +1,5 @@
 <% include partials/header %>
+<script src="../contact.js"></script>
 
 
 
@@ -8,13 +9,13 @@
 
         <div class="panel panel-info">
             <div class="panel-body">
-                <form class="form-horizontal" role="form" method="post" action="" onSubmit="return checkblank(this);">
+                <form class="form-horizontal" role="form" method="post" action="/send-email">
                     <h1>Contact Us</h1>
                     <div class="form-group">
                         <label for="name" class="col-md-3 control-label">Name</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="name" placeholder="Name">
-                        </div>
+                        </div> 
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-md-3 control-label">Email</label>
@@ -29,11 +30,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="content" class="col-md-3 control-label">Website</label>
+                        <label for="content" class="col-md-3 control-label">Message</label>
                         <div class="col-md-9">
                             <textarea name="content" id="" cols="57" rows="10" placeholder="Enter Message Here" style="width: 100%"></textarea>
                         </div>
                     </div><br>
+                    <div class="alert alert-success" role="alert">
+                        A simple success alert—check it out!
+                      </div>
+                      <div class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
+                      </div>
                     <div class="contactBtns">
                         <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" value="Send Form"><br><br>
                     </div>
@@ -42,16 +49,15 @@
                     
                     <p>Or email</p>
                     <a class="btn btn-outline-success my-2 my-sm-0 contactBtn" href="mailto: waynebruton@icloud.com"
-                        style="width: 100%">Send
+                        >Send
                         Email</a>
                         <br><br>
                         <p>Contact us on Social Media</p>
                     <a  href="https://www.facebook.com/suburbsdirectory/"
-                        style="width: 100%"><i class="fab fa-facebook-f">  suburbsdirectory</i></a>
+                        style="width: 100%" target="_blank"><i class="fab fa-facebook-f" >  suburbsdirectory</i></a>
                                 <br><br>
                     <a  href="https://www.instagram.com/thesuburbsdirectory/"
-                        style="width: 100%"><i class="fab fa-instagram"> @thesuburbsdirectory</i></a>
-                        
+                        style="width: 100%" target="_blank"><i class="fab fa-instagram" > @thesuburbsdirectory</i></a>    
                 </div>
 
             </div>
