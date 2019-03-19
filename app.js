@@ -1,6 +1,8 @@
 const express = require("express"),
     app = express();
+    var session = require('express-session');
     const bodyParser = require('body-parser');
+    
 
     
 
@@ -22,6 +24,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'Chester is awesome',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 3600000 } //1 hour
+  }))
+
+ 
 
 const   screenRoutes  =  require('./routes/screenRoutes'),
         suburbsRoutes = require('./routes/suburbsRoutes'),
@@ -32,7 +42,9 @@ const   screenRoutes  =  require('./routes/screenRoutes'),
         contactRoute = require('./routes/contact'),
         getAreasRoute = require('./routes/getAreas'),
         getCategoriesRoute = require('./routes/getCategories'),
-        previewProfileRoute = require('./routes/previewProfile')
+        previewProfileRoute = require('./routes/previewProfile'),
+        createUserRoute = require('./routes/users'),
+        userAdminRoute = require('./routes/usersAdmin')
 
 
 app.use(screenRoutes);
@@ -45,6 +57,8 @@ app.use(contactRoute);
 app.use(getAreasRoute);
 app.use(getCategoriesRoute);
 app.use(previewProfileRoute);
+app.use(createUserRoute);
+app.use(userAdminRoute);
 
 app.listen(port, () => {
     console.log(`App is running on Port: ${port}`);

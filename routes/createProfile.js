@@ -101,7 +101,7 @@ router.post('/createProfile', (req, res) => {
                     backgroundColor: backgroundColor,
                     businessName: businessName,
                     profileId: profileId
-                });
+                }); 
             // connection.release();   
         });
     })

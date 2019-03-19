@@ -103,14 +103,40 @@ router.get('/contact', (req, res) => {
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
     // var navBarType = '';
+    var message = '';
+    var alertType = 'success'
+    var display = 'none'
     var backgroundColor = 'background-color: #4267b4;"'
     res.render('contact', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        message: message,
+        display: display,
+        alertType: alertType
     });
     // res.send({data: 'test'});
 })
+
+// router.get('/editprofileImages', (req, res)=>{
+//     var title = 'Suburbs Directory - Load Profile'
+//     // var color = 'color: white;';
+//     var color = '';
+//     var navBarType = 'navbar-dark bg-dark';
+//     // var navBarType = '';
+//     var backgroundColor = 'background-color: #4267b4;"'
+//     let profileId = 215;
+//     let businessName = 'Bob the Builder'
+//     res.render('profileImages', {
+//         title: title,
+//         source: "",
+//         color: color,
+//         navBarType: navBarType,
+//         backgroundColor: backgroundColor,
+//         businessName: businessName,
+//         profileId: profileId
+//     });
+// }) 
 
 module.exports = router;

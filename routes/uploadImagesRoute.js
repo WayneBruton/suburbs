@@ -50,6 +50,7 @@ router.post('/uploadB', upload.fields([{
     maxCount: 1
 }]), (req, res) => {
     let data = req.files;
+    console.log(req.files)
     console.log('This is the data FORM @2 from the form', data);
     if (data['b_file-to-upload']) {
 

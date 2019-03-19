@@ -1,6 +1,6 @@
 // alert('This is a test!!!');
 
-// console.log(profileInfo)
+// console.log(profileInfo) 
 $(function () {
 
     let clientID = $('#clientID').val()
@@ -8,6 +8,9 @@ $(function () {
 
     let busName = $('#a_busName').text()
     console.log(busName)
+    let previewURL = '/previewProfile/' + clientID;
+    console.log(previewURL)
+    $('.lertAnchor').attr('href',previewURL )
 
     // let profileImageName;
 
@@ -22,10 +25,11 @@ $(function () {
             $('#a_profileImageform').css('display','none').fadeOut(750);
             setTimeout(()=>{
                 $('#b_profileImageform').css('display', 'flex').fadeIn(750);
+                
             }, 250)
         })
     })
-    
+      
 
     $('#a_imageCrop').draggable({
         containment: "parent"
@@ -134,6 +138,8 @@ $(function () {
     
     $('#a_uploadFile').click(function (e) {
         $('#a_useImage').css('display', 'block');
+        $('#a_holdingContainer').css('display', 'block');
+
     })
    
     function a_changePositionImageCropper() {
@@ -295,9 +301,11 @@ $(function () {
         })
     });
     
-    
+     
     $('#b_uploadFile').click(function (e) {
         $('#b_useImage').css('display', 'block');
+        $('#b_holdingContainer').css('display', 'block');
+
     })
     
     function b_changePositionImageCropper() {
@@ -462,6 +470,8 @@ $("#c_my_form").submit(function (event) {
 
 $('#c_uploadFile').click(function (e) {
     $('#c_useImage').css('display', 'block');
+    $('#c_holdingContainer').css('display', 'block');
+
 })
 
 function c_changePositionImageCropper() {
@@ -520,9 +530,7 @@ $('#d_saveProfileImg').click((e)=>{
         $('#d_profileImageform').css('display','none').fadeOut(750);
         setTimeout(()=>{
             let url = '/previewProfile/' + clientID;
-            $('#lertAnchor').attr('href', url)
-            console.log('this is the new HREF',$('#lertAncher').attr('href') )
-            $('#lert').css('display', 'flex');
+            
         },250)
         
     })
@@ -637,6 +645,8 @@ $("#d_my_form").submit(function (event) {
 
 $('#d_uploadFile').click(function (e) {
     $('#d_useImage').css('display', 'block');
+    $('#d_holdingContainer').css('display', 'block');
+
 })
 
 function d_changePositionImageCropper() {
@@ -675,8 +685,9 @@ function d_changePositionImageCropper() {
     }
 }
 
+    
 
-  
+
 
 });
 

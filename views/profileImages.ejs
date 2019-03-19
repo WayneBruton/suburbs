@@ -1,4 +1,5 @@
 <% include partials/header %>
+<!-- <script src="../profileImages.js"></script> -->
 <script src="../profileImages.js"></script>
 
 <div class="container col-lg-12" id="a_profileImageform">
@@ -6,6 +7,7 @@
     <!-- PROFILE IMAGE -->
     <br><br>
     <div class="ImageDetails">
+        <p>You must upload a profile image and three other images</p>
         <form class="form-horizontal" action="/upload" method="post" id="my_form">
             <div class="form-group">
                 <h1>Profile Image </h1>
@@ -23,7 +25,7 @@
                 </div>
             </div>
         </form>
-        <div id="a_holdingContainer">
+        <div id="a_holdingContainer" style="display: none">
             <div id="a_imageContainer">
                 <div id="a_mainImageArea">
                     <div id="a_mainImageArea2"></div>
@@ -38,10 +40,18 @@
         <br>
         <button id="a_saveProfileImg" class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 0px 10px; width: 50vh; display:none;"
             type="submit">Save</button>
-
-
+<!-- 
+            <a href="/previewProfile" class="lertAnchor">
+                <div class="lert" class="alert alert-dark col-md-9" role="alert" style=" margin-top: 65px;">
+                    Congratulations - Click me & <strong>check out</strong> your profile. Admin will get hold
+                    of you shortly!
+                </div>
+            </a> -->
     </div>
 
+</div>
+<div>
+    
 </div>
 
 <div class="container col-lg-12" id="b_profileImageform">
@@ -51,11 +61,11 @@
     <div class="ImageDetails">
         <form class="form-horizontal" action="/uploadB" method="post" id="b_my_form">
             <div class="form-group">
-                <h1>Business Image 1</h1>
+                <h3>Business Image 1</h3>
                 <input id="clientID" type="text" value="<%= profileId %>" hidden>
-                <h2 id="b_busName">
+                <!-- <h2 id="b_busName">
                     <%= businessName %>
-                </h2>
+                </h2> -->
                 <h5>expand and move the inner square to suit you</h5>
 
                 <div id="b_uploadProfileImagesBtns" class="col-md-9" style="display: flex;">
@@ -66,7 +76,7 @@
                 </div>
             </div>
         </form>
-        <div id="b_holdingContainer">
+        <div id="b_holdingContainer" style="display: none">
             <div id="b_imageContainer">
                 <div id="b_mainImageArea">
                     <div id="b_mainImageArea2"></div>
@@ -81,8 +91,19 @@
         <br>
         <button id="b_saveProfileImg" class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 0px 10px; width: 50vh;display:none;"
             type="submit">Save</button>
+
+            <!-- <div>
+                <a href="/previewProfile" class="lertAnchor">
+                    <div class="lert" class="alert alert-dark col-md-9" role="alert" style=" margin-top: 65px;">
+                        Congratulations - Click me & <strong>check out</strong> your profile. Admin will get hold
+                        of you shortly!
+                    </div>
+                </a>
+            </div> -->
     </div>
 </div>
+
+
 
 <div class="container col-lg-12" id="c_profileImageform">
 
@@ -91,11 +112,11 @@
     <div class="ImageDetails">
         <form class="form-horizontal" action="/uploadC" method="post" id="c_my_form">
             <div class="form-group">
-                <h1>Business Image 2</h1>
+                <h3>Business Image 2</h3>
                 <input id="clientID" type="text" value="<%= profileId %>" hidden>
-                <h2 id="c_busName">
+                <!-- <h2 id="c_busName">
                     <%= businessName %>
-                </h2>
+                </h2> -->
                 <h5>expand and move the inner square to suit you</h5>
 
                 <div id="c_uploadProfileImagesBtns" class="col-md-9" style="display: flex;">
@@ -106,7 +127,7 @@
                 </div>
             </div>
         </form>
-        <div id="c_holdingContainer">
+        <div id="c_holdingContainer" style="display: none">
             <div id="c_imageContainer">
                 <div id="c_mainImageArea">
                     <div id="c_mainImageArea2"></div>
@@ -121,8 +142,19 @@
         <br>
         <button id="c_saveProfileImg" class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 0px 10px; width: 50vh; display:none;"
             type="submit">Save</button>
+
+            <!-- <div>
+                <a href="/previewProfile" class="lertAnchor">
+                    <div class="lert" class="alert alert-dark col-md-9" role="alert" style=" margin-top: 65px;">
+                        Congratulations - Click me & <strong>check out</strong> your profile. Admin will get hold
+                        of you shortly!
+                    </div>
+                </a>
+            </div> -->
     </div>
 </div>
+
+
 
 <div class="container col-lg-12" id="d_profileImageform">
 
@@ -131,11 +163,11 @@
     <div class="ImageDetails">
         <form class="form-horizontal" action="/uploadD" method="post" id="d_my_form">
             <div class="form-group">
-                <h1>Business Image 3</h1>
+                <h3>Business Image 3</h3>
                 <input id="clientID" type="text" value="<%= profileId %>" hidden>
-                <h2 id="d_busName">
+                <!-- <h2 id="d_busName">
                     <%= businessName %>
-                </h2>
+                </h2> -->
                 <h5>expand and move the inner square to suit you</h5>
 
                 <div id="d_uploadProfileImagesBtns" class="col-md-9" style="display: flex;">
@@ -146,7 +178,7 @@
                 </div>
             </div>
         </form>
-        <div id="d_holdingContainer">
+        <div id="d_holdingContainer" style="display: none">
             <div id="d_imageContainer">
                 <div id="d_mainImageArea">
                     <div id="d_mainImageArea2"></div>
@@ -167,42 +199,34 @@
 
 </div>
 <div class="container col-lg-12" id="e_profileImageform">
-        
+
     <!-- BUSINNESS 2 IMAGE -->
     <br><br>
     <div class="ImageDetails">
-            
+
         <form class="form-horizontal">
-           
+
             <div class="form-group">
-    
-                <div>
-                        <a href="/previewProfile" id="lertAnchor"> <div id="lert" class="alert alert-dark col-md-9" role="alert" style="display:none; margin-top: 65px;">
-                             Congratulations - Click me & <strong>check out</strong>  your profile. Admin will get hold of you shortly!
-                         </div></a>
-                     </div>
-              
+
+                <div id="ifUser">
+                    <a href="/previewProfile" class="lertAnchor">
+                        <div class="lert" class="alert alert-dark col-md-9" role="alert" style=" margin-top: 65px;">
+                            Congratulations - Click me & <strong>check out</strong> your profile. Admin will get hold
+                            of you shortly!
+                        </div>
+                    </a>
+                    
+                </div>
+                <!-- <input id="goBack"class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="button" value="Go back!" onclick="history.back()" style="display: none"> -->
+
 
             </div>
         </form>
-    
+
 
     </div>
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <% include partials/footer %>

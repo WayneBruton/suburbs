@@ -6,21 +6,21 @@ const nodemailer = require('nodemailer');
 // app.use(bodyParser.json());
 
 // if (port === 3000) {
-	require('dotenv/config');
+require('dotenv/config');
 //   }
 
 
-router.post('/send-email', (req,res) => {
+router.post('/send-email', (req, res) => {
 
     let response = {
-        success : 'Subscribed!',
+        success: 'Your Email has been sent!',
         failure: 'There was a problem'
     }
-    let name = req.bodyname;
+    let name = req.body.name;
     let email = req.body.email;
     let subject = req.body.subject;
     let message = req.body.content;
-	const output = `
+    const output = `
 	<p>You have a new contact request</p>
 	<h3>Contact Details</h3>
 	<ul>
@@ -33,9 +33,9 @@ router.post('/send-email', (req,res) => {
 	<h3>Message</h3><br>
 	<p>${message}</p>
     `;
-    
+
     console.log(output);
-	let transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
 
         // host: "mail.eccentrictoad.com",
         host: process.env.MAILHOST,
@@ -48,30 +48,68 @@ router.post('/send-email', (req,res) => {
             pass: process.env.MAILPASSWORD
 
         },
-				tls: {
-					rejectUnauthorized:false
-				}
+        tls: {
+            rejectUnauthorized: false
+        }
     });
 
     let mailOptions = {
         // from: 'Suburbs Directory Contact Form" <waynebruton@icloud.com>', 
-        from: 'Suburbs Directory Contact Form <lisa@suburbsdirectory.co.za>', 
+        from: 'Suburbs Directory Contact Form <lisa@suburbsdirectory.co.za>',
         to: 'lisasallyberg@gmail.com, waynebruton@icloud.com',
         // subject: 'Suburbs Directory Contact Request',
         // subject: `Suburbs Directory Contact Request - ${subject}`,
-        subject: `Suburbs Directory Contact Request`,
-        text: 'Hello world?', 
-        html: output 
+        subject: `Suburbs Directory Contact Request - ${subject}`,
+        text: 'Hello world?',
+        html: output
     };
- 
+
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log('This is the ERROR',error)			
-            console.log('This is the Info',info)			
-        res.end(JSON.stringify(response.failure ));
+            console.log('This is the ERROR', error)
+            console.log('This is the Info', info)
+            res.end(JSON.stringify(response.failure));
+            var title = 'Suburbs Directory - Contact Us'
+            // var color = 'color: white;';
+            var color = '';
+            var navBarType = 'navbar-dark bg-dark';
+            // var navBarType = '';
+            var message = response.failure;
+            var alertType = 'danger'
+            var display = 'block'
+            var backgroundColor = 'background-color: #4267b4;"'
+            res.render('contact', {
+                title: title,
+                color: color,
+                navBarType: navBarType,
+                backgroundColor: backgroundColor,
+                message: message,
+                display: display,
+                alertType: alertType
+
+
+            });
         }
         console.log(info);
-        res.end(JSON.stringify(response.success));
+        var title = 'Suburbs Directory - Contact Us'
+        // var color = 'color: white;';
+        var color = '';
+        var navBarType = 'navbar-dark bg-dark';
+        // var navBarType = '';
+        var message = response.success;
+        var alertType = 'success'
+        var display = 'block'
+        var backgroundColor = 'background-color: #4267b4;"'
+        res.render('contact', {
+            title: title,
+            color: color,
+            navBarType: navBarType,
+            backgroundColor: backgroundColor,
+            message: message,
+            display: display,
+             alertType: alertType
+        });
+        // res.end(JSON.stringify(response.success));
     });
 });
 

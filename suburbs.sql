@@ -110,53 +110,18 @@ select * from categories;
 
     desc client_profiles;
 
-    INSERT INTO client_profiles (
-        businessName,
-  first_name,
-  last_name,
-  mob_no,
-  email,
-  website,
-  facebook,
-  instagram,
-  linkedin,
-  feedback,
-  areas,
-  selectedOption,
-  catarea,
-  product_service,
-  adminAssist,
-  profile_heading,
-  profile_description
-    ) values (
-        'Bob the Builder',
-  'Wayne',
-  'Bruton',
-  '466356',
-  'waynebruton@icloud.com',
-  '',
-  '',
-  '',
-  '',
-  '',
-  [ '1', '8' ],
-  4,
-  [ '17', '18' ],
-  'service',
-  '1',
-  'Bob the Builder',
-  'dhgsfgsf'
-    );
 
--- create table users (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     username VARCHAR(15) NOT NULL UNIQUE,
---     email VARCHAR(100) NOT NULL,
---     password VARCHAR(255) NOT NULL,
---     createdAt TIMESTAMP DEFAULT NOW(),
---     resettoken varchar(20),
---     resetexpiry TIMESTAMP DEFAULT NOW()
--- );
+create table users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    -- username VARCHAR(15) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    Upassword VARCHAR(255) NOT NULL,
+    createdAt TIMESTAMP DEFAULT NOW(),
+    resettoken varchar(20),
+    resetexpiry TIMESTAMP DEFAULT NOW()
+);
+
+insert into users (email, Upassword) values ('waynebruton@icloud.com', 'password');
 
 -- CREATE TABLE region (
 --     id INT AUTO_INCREMENT PRIMARY KEY,

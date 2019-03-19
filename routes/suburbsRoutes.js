@@ -30,6 +30,7 @@ router.get('/atlanticseaboard', (req, res) => {
 router.get('/capeflats', (req, res) => {
     var title = 'Cape Flats';
     var color = 'color: white;';
+    console.log('THIS IS THE USER SESSION::',req.session.userID)
     var navBarType = '';
     var backgroundColor = 'background-color: #afb1b4;"'
     res.render('capeflats', {
