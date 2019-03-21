@@ -100,7 +100,7 @@ router.post('/send-email', (req, res) => {
         var alertType = 'success'
         var display = 'block'
         var backgroundColor = 'background-color: #4267b4;"'
-        res.render('contact', {
+        res.render('../views/menuViews/contact', {
             title: title,
             color: color,
             navBarType: navBarType,

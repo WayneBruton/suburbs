@@ -6,12 +6,17 @@ router.get('/southpeninsula', (req, res) => {
     var color = 'color: white;';
     var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-
-    res.render('southpeninsula', {
+    var viewColors = '#4267b4'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 6
+    res.render('../views/suburbsViews/southpeninsula', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
     });
 })
 router.get('/atlanticseaboard', (req, res) => {
@@ -19,12 +24,20 @@ router.get('/atlanticseaboard', (req, res) => {
     var color = 'color: white;';
     var navBarType = '';
     var backgroundColor = 'background-color: #f5c23d;"'
+    var viewColors = '#f5c23d'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 1
 
-    res.render('atlanticseaboard', {
+    // res.render('atlanticseaboard', {
+    res.render('../views/suburbsViews/atlanticseaboard.ejs', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
+
     });
 })
 router.get('/capeflats', (req, res) => {
@@ -33,11 +46,17 @@ router.get('/capeflats', (req, res) => {
     console.log('THIS IS THE USER SESSION::',req.session.userID)
     var navBarType = '';
     var backgroundColor = 'background-color: #afb1b4;"'
-    res.render('capeflats', {
+    var viewColors = '#afb1b4'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 2
+    res.render('../views/suburbsViews/capeflats', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
     });
 })
 router.get('/citybowl', (req, res) => {
@@ -45,11 +64,17 @@ router.get('/citybowl', (req, res) => {
     var color = 'color: white;';
     var navBarType = '';
     var backgroundColor = 'background-color: #f7913e;"'
-    res.render('citybowl', {
+    var viewColors = '#f7913e'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 3
+    res.render('../views/suburbsViews/citybowl', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
     });
 })
 router.get('/helderberg', (req, res) => {
@@ -57,11 +82,17 @@ router.get('/helderberg', (req, res) => {
     var color = 'color: white;';
     var navBarType = '';
     var backgroundColor = 'background-color: #fb3c3f;"'
-    res.render('helderberg', {
+    var viewColors = '#fb3c3f'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 4
+    res.render('../views/suburbsViews/helderberg', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
     });
 })
 router.get('/northernsuburbs', (req, res) => {
@@ -69,23 +100,35 @@ router.get('/northernsuburbs', (req, res) => {
     var color = 'color: white;';
     var navBarType = '';
     var backgroundColor = 'background-color: #ae9bd9;"'
-    res.render('northernsuburbs', {
+    var viewColors = '#ae9bd9'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 5
+    res.render('../views/suburbsViews/northernsuburbs', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
     });
 })
 router.get('/southernsuburbs', (req, res) => {
     var title = 'Southern Suburbs';
     var color = 'color: white;';
     var navBarType = '';
-    var backgroundColor = 'background-color: #41b62a;"'
-    res.render('southernsuburbs', {
+    var backgroundColor = 'background-color: #41b62a;"' 
+    var viewColors = '#41b62a'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 7
+    res.render('../views/suburbsViews/southernsuburbs', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
     });
 })
 router.get('/westcoast', (req, res) => {
@@ -93,11 +136,17 @@ router.get('/westcoast', (req, res) => {
     var color = 'color: white;';
     var navBarType = '';
     var backgroundColor = 'background-color: #f58695;"'
-    res.render('westcoast', {
+    var viewColors = '#f58695'
+    var borderColor = `border: 3px solid ${viewColors}`
+    var areaCode = 8
+    res.render('../views/suburbsViews/westcoast', {
         title: title,
         color: color,
         navBarType: navBarType,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        areaCode: areaCode,
+        viewColors: viewColors,
+        borderColor: borderColor
     });
 })
 

@@ -44,7 +44,9 @@ const   screenRoutes  =  require('./routes/screenRoutes'),
         getCategoriesRoute = require('./routes/getCategories'),
         previewProfileRoute = require('./routes/previewProfile'),
         createUserRoute = require('./routes/users'),
-        userAdminRoute = require('./routes/usersAdmin')
+        userAdminRoute = require('./routes/usersAdmin'),
+        userAdminEditViewProfileRoute = require('./routes/adminEditViewProfile'),
+        activeRoutes = require('./routes/individualSuburbRoutes/activeRoutes') 
 
 
 app.use(screenRoutes);
@@ -59,6 +61,8 @@ app.use(getCategoriesRoute);
 app.use(previewProfileRoute);
 app.use(createUserRoute);
 app.use(userAdminRoute);
+app.use(userAdminEditViewProfileRoute);
+app.use(activeRoutes);
 
 app.listen(port, () => {
     console.log(`App is running on Port: ${port}`);

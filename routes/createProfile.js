@@ -49,7 +49,7 @@ router.post('/createProfile', (req, res) => {
 
     let parseIntAreas = areas.map(function(area){
         return parseInt(area);
-    })
+    }) 
 
     let parseIntCategories = catarea.map((category)=>{
         return parseInt(category);

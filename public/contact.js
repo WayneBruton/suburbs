@@ -2,6 +2,8 @@
 
 $(function(){
 
+
+
     $('#contactBtn').click(function (e) {
         e.preventDefault();
         let subscribeInfo = {

@@ -24,7 +24,7 @@ router.get('/about', function (req, res) {
     var navBarType = 'navbar-dark bg-dark';
     // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    res.render('about', {
+    res.render('../views/menuViews/about', {
         title: title,
         color: color,
         navBarType: navBarType,
@@ -39,7 +39,7 @@ router.get('/register', (req, res) => {
     var navBarType = 'navbar-dark bg-dark';
     // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    res.render('register', {
+    res.render('../views/menuViews/register', {
         title: title,
         source: "",
         source2: "",
@@ -56,7 +56,7 @@ router.get('/charityApplication', (req, res) => {
     var navBarType = 'navbar-dark bg-dark';
     // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    res.render('charityApplication', {
+    res.render('../views/menuViews/charityApplication', {
         title: title,
         source: "",
         source2: "",
@@ -73,7 +73,7 @@ router.get('/terms', (req, res) => {
     var navBarType = 'navbar-dark bg-dark';
     // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    res.render('terms', {
+    res.render('../views/menuViews/terms', {
         title: title, source: "",
         color: color,
         navBarType: navBarType,
@@ -89,7 +89,7 @@ router.get('/packages', (req, res) => {
     var navBarType = 'navbar-dark bg-dark';
     // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    res.render('packages', {
+    res.render('../views/menuViews/packages', {
         title: title,
         color: color,
         navBarType: navBarType,
@@ -107,7 +107,7 @@ router.get('/contact', (req, res) => {
     var alertType = 'success'
     var display = 'none'
     var backgroundColor = 'background-color: #4267b4;"'
-    res.render('contact', {
+    res.render('../views/menuViews/contact', {
         title: title,
         color: color,
         navBarType: navBarType,

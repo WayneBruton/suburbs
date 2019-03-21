@@ -688,6 +688,18 @@ Tooltips */
     .media-body-info-detail {
         width: 100%;
     }
+    #thisProfile {
+        flex-direction: column;
+        width: 100%;
+    }
+    /* #p_display {
+        width: 100%;
+    } */
+    
+    #showProfiles {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
 
   }
 
