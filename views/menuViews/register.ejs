@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<script src="../signup.js"></script>
+<script src="../js/signup.js"></script>
 
 <div class="container col-lg-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
 
@@ -162,7 +162,7 @@
                                 max)</label>
                             <div class="col-md-9">
                                 <textarea id="businessDescription" name="description" cols="30" rows="10" style="width: 100%;"
-                                    maxlength='3000' required></textarea>
+                                    minlength="160" maxlength='3000' required></textarea>
                                 <p id="wordcount">3000 characters remaining.</p>
                             </div>
                         </div>

@@ -33,20 +33,25 @@ app.use(session({
 
  
 
-const   screenRoutes  =  require('./routes/screenRoutes'),
-        suburbsRoutes = require('./routes/suburbsRoutes'),
-        createProfileRoutes = require('./routes/createProfile'),
-        uploadImagesRoute = require('./routes/uploadImagesRoute'),
-        cropImagaesRoute = require('./routes/cropImagesRoute'),
-        getPackages = require('./routes/getPackages'),
-        contactRoute = require('./routes/contact'),
-        getAreasRoute = require('./routes/getAreas'),
-        getCategoriesRoute = require('./routes/getCategories'),
-        previewProfileRoute = require('./routes/previewProfile'),
-        createUserRoute = require('./routes/users'),
-        userAdminRoute = require('./routes/usersAdmin'),
-        userAdminEditViewProfileRoute = require('./routes/adminEditViewProfile'),
-        activeRoutes = require('./routes/individualSuburbRoutes/activeRoutes') 
+
+// const   screenRoutes  =  require('../suburbs/public/routes/screenRoutes'),
+const   screenRoutes  =  require('./public/routes/screenRoutes'),
+        suburbsRoutes = require('./public/routes/individualSuburbRoutes/suburbsRoutes'),
+        createProfileRoutes = require('./public/routes/registerRoutes/createProfile'),
+        uploadImagesRoute = require('./public/routes/registerRoutes/uploadImagesRoute'),
+        cropImagaesRoute = require('./public/routes/registerRoutes/cropImagesRoute'),
+        getPackages = require('./public/routes/registerRoutes/getPackages'),
+        contactRoute = require('./public/routes/contact'),
+        getAreasRoute = require('./public/routes/registerRoutes/getAreas'),
+        getCategoriesRoute = require('./public/routes/registerRoutes/getCategories'),
+        previewProfileRoute = require('./public/routes/adminRoutes/previewProfile'),
+        createUserRoute = require('./public/routes/adminRoutes/users'),
+        userAdminRoute = require('./public/routes/adminRoutes/usersAdmin'),
+        userAdminEditViewProfileRoute = require('./public/routes/adminRoutes/adminEditViewProfile'),
+        activeRoutes = require('./public/routes/individualSuburbRoutes/activeRoutes'), 
+        activeCharityRoute = require('./public/routes/adminRoutes/adminAddCharity'),
+        charityRoutes = require('./public/routes/individualCharityRoutes/charityRoutes')
+
 
 
 app.use(screenRoutes);
@@ -63,6 +68,8 @@ app.use(createUserRoute);
 app.use(userAdminRoute);
 app.use(userAdminEditViewProfileRoute);
 app.use(activeRoutes);
+app.use(activeCharityRoute);
+app.use(charityRoutes);
 
 app.listen(port, () => {
     console.log(`App is running on Port: ${port}`);

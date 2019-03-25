@@ -1,0 +1,67 @@
+<% include ../partials/header %> 
+<script src="../js/areaFiles/selectedProfile.js"></script>
+<div class="container col-sm-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px; min-height: 100vh">
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <input id="profileID" type="text" value="<%= profileID %>" hidden></input>
+            <div>
+                <h1 class="text-center" style="align-self: auto; margin-top: 25px;" id="profileDelails"><strong>
+                        Profile View
+                    </strong></h1> 
+            </div>
+            <div class="media-object">
+                <!-- <img id="profileImage" class="figure" src="" alt="Profile Image"> -->
+                <div class="media-body">
+                    <div class="media-body-info">
+                        <label for="businessName" id="">Business Name:</label>
+                        <input type="text" id="businessName" class="media-body-info-detail">
+                    </div>
+                    <div class="media-body-info">
+                        <label for=" mob_no" id="">Contact:</label>
+                        <input type="number" id="mob_no" class="media-body-info-detail">
+                    </div>
+                    <div class="media-body-info">
+                        <label for=" email" id="">Email:</label>
+                        <a href="mailTo:www.com" id="email" class="media-body-info-detail">email</a>
+                    </div>
+                    <div class="media-body-info">
+                        <label for=" website" id="">website:</label>
+                        <a href="#" type="text" id="website" class="media-body-info-detail">Website</a>
+                    </div>
+                    <div class="media-body-info">
+                        <label for=" facebook" id="">facebook:</label>
+                        <a href="#" id="facebook" class="media-body-info-detail">facebook</a>
+                    </div>
+                    <div class="media-body-info">
+                        <label for=" instagram" id="">instagram:</label>
+                        <a href="#" id="instagram" class="media-body-info-detail">Instagram</a>
+                    </div>
+                    <div class="media-body-info">
+                        <label for=" linkedin" id="">linkedin:</label>
+                        <a href="#" id="linkedin" class="media-body-info-detail">linkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <br>
+            <div class="text-infoProfile">
+                <label for="profile_description" id=""><strong>Profile Description:</strong></label>
+                <textarea name="" id="profile_description" cols="30" rows="35"></textarea>
+            </div>
+            <hr>
+            <div class="media-object-business">
+                <img id="business_image1" src="" alt="Business Image 1" class="figure-business">
+                <img id="business_image2" src="" alt="Business Image 2" class="figure-business">
+                <img id="business_image3" src="" alt="Business Image 3" class="figure-business">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<% include ../partials/footer %>
