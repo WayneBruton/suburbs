@@ -1,4 +1,4 @@
-$(function () {
+$(function () { 
 
 
     //   search profiles by name===================================
@@ -252,14 +252,101 @@ $(function () {
                             answer[i].businessName
                           } - ${answer[i].email}<a></li>`;
                         $(l_item).appendTo("#retrievedCharityProfiles");
-                    }
-               
-                       
-                   
-                // }
-                
+                 }
             })
-            // getProfiles();
-        // }, 20);
     });
+
+
+
+  // =============Show Notices Form ======================
+
+
+  $('#findNoticesButton').click((e) => {
+    $("#dashboardButtons").css("display", "none");
+    $("#newNotice").prop("checked", false);
+    $("#editNotice").prop("checked", false);
+    $("#newNoticeContainer").css("background-color", "");
+    $("#editNoticeContainer").css("background-color", "");
+    $('#noticeDetails').css('display', 'block')
+
+})
+
+$("#closeNoticeDetails").click(e => {
+    e.preventDefault();
+    $("#retrievedNoticeProfiles").empty();
+
+    $("#newNotice").prop("checked", false);
+    $("#editNotice").prop("checked", false);
+    $("#approved").prop("checked", false);
+
+    $("#newNoticeContainer").css("background-color", "");
+    $("#editNoticeContainer").css("background-color", "");
+
+    $("#dashboardButtons").css("display", "flex");
+    $("#noticeDetails").css("display", "none");
+
+});
+
+$("#newNoticeContainer, #newNotice").click(() => {
+    $("#newNoticeContainer").css("background-color", "lightgrey");
+    $("#editNoticeContainer").css("background-color", "");
+    // $("#approvedContainer").css("background-color", "");
+
+
+    setTimeout(() => {
+        $("#newNotice").prop("checked", true);
+        $("#editNotice").prop("checked", false);
+        // $("#approved").prop("checked", false);
+        // getProfiles();
+    }, 20);
+});
+
+
+
+
+    // =============== Radio Group Notices =============================
+
+
+    $("#newNoticeContainer, #newNotice").click(() => {
+        $("#editNoticeContainer").css("background-color", "");
+        $("#newNoticeContainer").css("background-color", "lightgrey");
+
+        setTimeout(() => {
+            $("#editNotice").prop("checked", false);
+            $("#newNotice").prop("checked", true);
+            $('#retrievedNoticeProfiles').empty()
+            $('#retrievedNoticeHeading').text('Add a new Notice')
+            let data = `<li><a href="/addNotice">Create New Notice</a></li>`
+            $(data).appendTo('#retrievedNoticeProfiles');
+        }, 20);
+    });
+
+    $("#editNoticeContainer, #editNotice").click((e) => {
+        e.preventDefault()
+        $("#editNoticeContainer").css("background-color", "lightgrey");
+        $("#newNoticeContainer").css("background-color", "");
+
+        // setTimeout(() => {
+            $("#editNotice").prop("checked", true);
+            $("#newNotice").prop("checked", false);
+            $('#retrievedNoticeProfiles').empty()
+            $('#retrievedNoticeHeading').text('Edit a Notice')
+            let url = 'getLatestNotices'
+            $.get(url)
+            .done((answer)=>{
+                console.log(answer)
+                if (answer.length) {
+                    for (i = 0; i < answer.length; i++) {
+                        let createdAt = new Date(answer[i].created_at)
+                        let l_item = `<li id="${answer[i].id}" style="width: 100%; margin: 10px; border: 1px solid lightgrey; padding:5px;"><a href="/adminEditNotice/${answer[i].id}">
+                        ${answer[i].heading} - ${createdAt}<a></li>`;
+                        $(l_item).appendTo("#retrievedNoticeProfiles");
+                 }
+                }
+            })
+    });
+
+
+
+
 });

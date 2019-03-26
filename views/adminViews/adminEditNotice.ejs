@@ -1,0 +1,90 @@
+<% include ../partials/header %>
+<script src="../js/adminEditNotice.js"></script>
+
+<div class="container col-lg-12" id="mainform"
+    style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
+    
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div id="panel">
+                        <input id="noticeID" type="text" value="<%= id %>" hidden>
+                    <h1 style="text-align: center">Edit Notice</h1>
+                    <!-- <div class="form-group" name="areacheckboxes">
+                                <label for="area" class="col-md-3 control-label">profile Image</label>
+                                <form id="loadCharityImg"action="/upload" method="POST">
+                                <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                                    <input id="loadCharityImage" class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="file" name="file-to-upload" id="" accept="image/*">
+                                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn" id="chooseImage" style="width: 25%">Use</button>
+                                </div>
+                                <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                                    <img id="charityImage" src="" alt="Charity Image" srcset="" style="width: 40%; height: 40%; display: none; margin: 10px">
+                                </div>
+                            </form>
+                            </div> -->
+                    <form class="form-horizontal" role="form" method="" action="">
+                        <div class="form-group">
+
+                            <label for="Business_name" class="col-md-3 control-label">Notice Title</label>
+                            <div class="col-md-9">
+                                <input type="text" id="heading" class="form-control" name="heading"
+                                    placeholder="Notice Title" required>
+                            </div>
+                        </div>
+                        <div class="form-group" name="areaNoticeSelect">
+                            <label for="area" class="col-md-3 control-label">Notice Area:</label>
+                            <div class="col-md-9" id="areas">
+                                <div style="display: flex; flex-direction: column">
+                                    <div style="display: flex; justify-content: space-between">
+                                        <input type="checkbox" name="" id="">
+                                        <label for=""></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="description" class="col-md-3 control-label">Notice:
+                                </label>
+                                <div class="col-md-9">
+                                    <textarea id="noticeDescription" name="description" cols="30" rows="10"
+                                        style="width: 100%;" maxlength='3000'
+                                        placeholder="min 160 characters"></textarea>
+                                    <p id="wordcount">3000 characters remaining.</p>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <label for="isActive" class="col-md-3 control-label">Activate</label>
+                                <div class="col-md-9">
+                                    <div style="display:flex; justify-content: space-between">
+                                    <input id="isActive" type="checkbox" class="form-control" name="isActive">
+                                    <label for="isActive" class="col-md-3 control-label">Activate</label>
+
+                                </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div>
+                                <input id="saveNoticeBtn" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    type="submit" value="Save Notice">
+                                <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type=""
+                                    value="Delete Notice" id="deleteBtn" disabled>
+                            </div>
+                    </form>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<% include ../partials/footer %>
+
+<!-- <div class="alert alert-success" role="alert">
+    A simple success alert—check it out!
+  </div>
+  <div class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+  </div> -->

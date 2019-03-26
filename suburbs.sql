@@ -145,5 +145,16 @@ CREATE TABLE charities (
 );
 
 
+CREATE TABLE notices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    heading VARCHAR(60) NOT NULL UNIQUE,
+    areas JSON NOT NULL,
+    notice_text text not null,
+    notice_image VARCHAR(60),
+    created_at timestamp default now(),
+    isActive boolean not null default false
+);
+
+
 
 

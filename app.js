@@ -50,7 +50,9 @@ const   screenRoutes  =  require('./public/routes/screenRoutes'),
         userAdminEditViewProfileRoute = require('./public/routes/adminRoutes/adminEditViewProfile'),
         activeRoutes = require('./public/routes/individualSuburbRoutes/activeRoutes'), 
         activeCharityRoute = require('./public/routes/adminRoutes/adminAddCharity'),
-        charityRoutes = require('./public/routes/individualCharityRoutes/charityRoutes')
+        charityRoutes = require('./public/routes/individualCharityRoutes/charityRoutes'),
+        noticeRoutes = require('./public/routes/individualCommunityNoticesRoutes/communityNoticesRoutes'),
+        addNoticeRoutes = require('./public/routes/adminRoutes/adminAddNotices')
 
 
 
@@ -70,6 +72,8 @@ app.use(userAdminEditViewProfileRoute);
 app.use(activeRoutes);
 app.use(activeCharityRoute);
 app.use(charityRoutes);
+app.use(noticeRoutes);
+app.use(addNoticeRoutes);
 
 app.listen(port, () => {
     console.log(`App is running on Port: ${port}`);

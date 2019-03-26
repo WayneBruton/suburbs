@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<script src="../js/usersAdmin.js"></script>
+<script src="../js/usersAdmin.js"></script> 
 
 
 <div class="container col-sm-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
@@ -16,7 +16,7 @@
                     <!-- <button class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 10px;">Areas</button> -->
                     <button id="findProfilesButton" class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 10px;">Profiles</button>
                     <button id="findCharitiesButton" class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 10px;">Charities</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 10px;">Community
+                    <button id="findNoticesButton" class="btn btn-outline-success my-2 my-sm-0 contactBtn" style="margin: 10px;">Community
                         Notices</button>
                     <a class="btn btn-outline-success my-2 my-sm-0 contactBtn" href="/createUser" style="margin: 10px;">Add
                         new User</a>
@@ -61,10 +61,6 @@
                     </div>
                     <h2>Charities</h2>
                     <div id="searchCharityBy">
-                        <!-- <div id="byCharityName" style="display: flex; justify-content: space-between;">
-                            <label for="charityName">Charity Name</label>
-                            <input type="text" id="charityName" value="" style="width: 60%">
-                        </div> -->
                         <br>
                         <div id="addCharity" style="display: flex; justify-content: space-between; border: 1px solid lightgrey; padding: 5px 5px;">
                             <div id="newCharityContainer" style="display: flex; width: 30%; justify-content: space-between; padding: 0 5px; border: 1px solid lightgrey;border-radius: 7px; padding: 5px 5px;">
@@ -81,6 +77,33 @@
                         <br>
                         <h2 id="retrievedCharityHeading"></h2>
                         <ol id="retrievedCharityProfiles">  
+                        </ol>
+                    </div>
+                </div>
+
+
+                <div id="noticeDetails" style="display: none; position: relative">
+                    <div style="display: flex; justify-content: flex-end">
+                        <button id="closeNoticeDetails" class="btn btn-outline-success my-2 my-sm-0 contactBtn">Close</button>
+                    </div>
+                    <h2>Notices</h2>
+                    <div id="searchNoticeBy">
+                        <br>
+                        <div id="addNotice" style="display: flex; justify-content: space-between; border: 1px solid lightgrey; padding: 5px 5px;">
+                            <div id="newNoticeContainer" style="display: flex; width: 30%; justify-content: space-between; padding: 0 5px; border: 1px solid lightgrey;border-radius: 7px; padding: 5px 5px;">
+                                <input type="radio" name="noticeSearch" id="newNotice" style="align-self: center">
+                                <label for="newNotice" style="align-self: center;  width: 80%">New</label>
+                            </div>
+                            <div id="editNoticeContainer" style="display: flex; width: 30%; justify-content: space-between; padding: 0 5px; border: 1px solid lightgrey;;border-radius: 7px; padding: 5px 5px;">
+                                <input type="radio" name="noticeSearch" id="editNotice" style="align-self: center">
+                                <label for="editNotice" style="align-self: center;  width: 80%">Edit Notices</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <br>
+                        <h2 id="retrievedNoticeHeading"></h2>
+                        <ol id="retrievedNoticeProfiles">  
                         </ol>
                     </div>
                 </div>
