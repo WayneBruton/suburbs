@@ -28,7 +28,6 @@ router.get('/atlanticseaboard', (req, res) => {
     var borderColor = `border: 3px solid ${viewColors}`
     var areaCode = 1
 
-    // res.render('atlanticseaboard', {
     res.render('../views/suburbsViews/atlanticseaboard.ejs', {
         title: title,
         color: color,
@@ -43,7 +42,6 @@ router.get('/atlanticseaboard', (req, res) => {
 router.get('/capeflats', (req, res) => {
     var title = 'Cape Flats';
     var color = 'color: white;';
-    console.log('THIS IS THE USER SESSION::',req.session.userID)
     var navBarType = '';
     var backgroundColor = 'background-color: #afb1b4;"'
     var viewColors = '#afb1b4'

@@ -10,15 +10,10 @@ var pool = require('../connection');
 
 router.get('/login', (req, res) => {
     var title = 'Login'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    // console.log(req.session.userID)
     let message = '';
-    // if (req.session.userID != undefined) {
-    // res.render('login', {
     res.render('../views/adminViews/login', {
         title: title,
         source: "",
@@ -32,14 +27,10 @@ router.get('/login', (req, res) => {
 
 router.get('/reset', (req, res) => {
     var title = 'Reset Password'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    // console.log(req.session.userID)
     let message = '';
-    // if (req.session.userID != undefined) {
     res.render('../views/adminViews/resetPassword', {
         title: title,
         source: "",
@@ -52,22 +43,14 @@ router.get('/reset', (req, res) => {
 })
 router.get('/dashboard', (req, res) => {
     var title = 'Dashboard'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    console.log(req.session.userID)
-
-    console.log(req.session.userID)
     if (req.session.userID == undefined) {
         var title = 'New User'
-        // var color = 'color: white;';
         var color = '';
         var navBarType = 'navbar-dark bg-dark';
-        // var navBarType = '';
         var backgroundColor = 'background-color: #4267b4;"'
-        // console.log(req.session.userID)
         let message = '';
         res.render('../views/adminViews/login', {
             title: title,
@@ -93,12 +76,9 @@ router.get('/dashboard', (req, res) => {
 
 router.get('/createUser', (req, res) => {
     var title = 'New User'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
-    console.log(req.session.userID)
     let message = '';
     if (req.session.userID != undefined) {
         res.render('../views/adminViews/newUser', {
@@ -126,29 +106,32 @@ router.get('/createUser', (req, res) => {
 router.post('/createUser', (req, res) => {
     let user = req.body.email;
     let user_password = req.body.Upassword;
-
-    // console.log(user)
-    console.log(user_password)
     bcrypt.hash(user_password, saltRounds, function (err, hash) {
-        console.log(hash)
         let sql = `insert into users (email, Upassword) values ('${user}', '${hash}')`
         pool.getConnection(function (err, connection) {
             if (err) {
                 connection.release();
-                // resizeBy.send('Error with connection');
             }
             connection.query(sql, function (error, result) {
-                if (error) throw error;
+                if (error) {
+                    router.get('/', function (req, res) {
+                        var title = 'Suburbs Directory - Home'
+                        var color = '';
+                        var navBarType = 'navbar-dark bg-dark';
+                        var backgroundColor = 'background-color: #4267b4;"'
+                        res.render('../views/index', {
+                            title: title,
+                            color: color,
+                            navBarType: navBarType,
+                            backgroundColor: backgroundColor
+                        });
+                    }); 
+                };
                 var title = 'New User'
-                // var color = 'color: white;';
                 var color = '';
                 var navBarType = 'navbar-dark bg-dark';
-                // var navBarType = '';
                 var backgroundColor = 'background-color: #4267b4;"'
-                console.log(req.session.userID)
                 let message = `New User - ${user} Successfully Added`;
-                // console.log(result)
-                // res.render('newUser')
                 res.render('../views/adminViews/newUser', {
                     title: title,
                     source: "",
@@ -167,11 +150,9 @@ router.post('/createUser', (req, res) => {
 router.get('/checkUserExists/:userEmail', (req, res) => {
     let userEmail = req.params.userEmail;
     let sql = `select email from users where email = '${userEmail}'`
-    // console.log(userEmail);
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();
-            // resizeBy.send('Error with connection');
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
@@ -185,25 +166,21 @@ router.get('/checkUserExists/:userEmail', (req, res) => {
 router.post('/loginUser', (req, res) => {
     let userEmail = req.body.email;
     let upassword = req.body.Upassword;
-    console.log(upassword);
     let sql = `select email, upassword from users where email = '${userEmail}'`
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();
-            // resizeBy.send('Error with connection');
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
             const hash = result[0].upassword.toString();
             bcrypt.compare(upassword, hash, function (err, response) {
                 if (response) {
-                    console.log('Passwords Agree')
                     req.session.userID = userEmail;
                     var title = 'Dashboard'
                     var color = '';
                     var navBarType = 'navbar-dark bg-dark';
                     var backgroundColor = 'background-color: #4267b4;"'
-                    // let message = '';
                     res.render('../views/adminViews/dashboard', {
                         title: title,
                         source: "",
@@ -214,7 +191,6 @@ router.post('/loginUser', (req, res) => {
                     });
 
                 } else {
-                    console.log('PasswordsDo not Agree');
                     var title = 'Login'
                     var color = '';
                     var navBarType = 'navbar-dark bg-dark';
@@ -238,23 +214,17 @@ router.post('/loginUser', (req, res) => {
 
 router.get('/resetUser/:email', (req, res) => {
     let email = req.params.email;
-    console.log(email)
     let token = Math.round(Math.random() * 10000000000);
-    console.log('Token', token)
     let sql = `update users set resettoken = '${token}' where email = '${email}'`
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();
-            // resizeBy.send('Error with connection');
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
             let sql = `select * from users where email = '${email}'`
             connection.query(sql, function (error, result) {
                 if (error) throw error;
-                //send email here
-
-
                 email = email;
                 const output = `
                 <p>Reset your password</p>
@@ -271,10 +241,7 @@ router.get('/resetUser/:email', (req, res) => {
                 <p>Copy and paste this token into the space provided</p>
                 `;
 
-                console.log(output);
                 let transporter = nodemailer.createTransport({
-
-                    // host: "mail.eccentrictoad.com",
                     host: process.env.MAILHOST,
                     port: 465, //587
 
@@ -291,11 +258,8 @@ router.get('/resetUser/:email', (req, res) => {
                 });
 
                 let mailOptions = {
-                    // from: 'Suburbs Directory Contact Form" <waynebruton@icloud.com>', 
                     from: 'Suburbs Directory Contact Form <lisa@suburbsdirectory.co.za>',
                     to: `${email}, waynebruton@icloud.com`,
-                    // subject: 'Suburbs Directory Contact Request',
-                    // subject: `Suburbs Directory Contact Request - ${subject}`,
                     subject: `PASSWORD RESET`,
                     text: 'Hello world?',
                     html: output
@@ -303,16 +267,10 @@ router.get('/resetUser/:email', (req, res) => {
 
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
-                        console.log('This is the ERROR', error)
-                        console.log('This is the Info', info)
                         res.end(JSON.stringify(response.failure));
                     }
-                    console.log(info);
-
-                    // res.end(JSON.stringify(response.success));
                 });
                 res.send(result);
-                console.log(result)
             });
         });
         connection.release();
@@ -323,28 +281,19 @@ router.post('/changePassword', (req, res) => {
     let user = req.body.email;
     let user_password = req.body.Upassword;
 
-    // console.log(user)
-    console.log(user_password)
     bcrypt.hash(user_password, saltRounds, function (err, hash) {
-        console.log(hash)
         let sql = `update users set Upassword = '${hash}', resettoken = '' where email = '${user}'`
         pool.getConnection(function (err, connection) {
             if (err) {
                 connection.release();
-                // resizeBy.send('Error with connection');
             }
             connection.query(sql, function (error, result) {
                 if (error) throw error;
                 var title = 'New User'
-                // var color = 'color: white;';
                 var color = '';
                 var navBarType = 'navbar-dark bg-dark';
-                // var navBarType = '';
                 var backgroundColor = 'background-color: #4267b4;"'
-                console.log(req.session.userID)
                 let message = `${user} Password Successfully Changed`;
-                // console.log(result)
-                // res.render('newUser')
                 res.render('../views/adminViews/login', {
                     title: title,
                     source: "",
@@ -359,9 +308,5 @@ router.post('/changePassword', (req, res) => {
         });
     })
 })
-
-
-
-
 
 module.exports = router;

@@ -14,12 +14,11 @@ $(function () {
     $('#businessName').keyup(function (e) {
         e.preventDefault();
         if ($(this).val().trim() != '') {
-            // console.log($(this).val().trim())
+      
             let option = $(this).val().trim()
-            // console.log(option)
+
             let url = `/getprofilesByName/${option}`
             $.get(url).done((response) => {
-                console.log(response)
                 $("#retrievedProfiles").empty();
                 if (response.length) {
                     $("#retrievedHeading").text("Profile By Name");
@@ -131,7 +130,6 @@ $(function () {
         // /getprofiles/:option
         $.get(url).done(response => {
             $("#retrievedProfiles").empty();
-            console.log(response);
             if (response.length && option == 1) {
                 $("#retrievedHeading").text("New Profiles");
                 for (i = 0; i < response.length; i++) {
@@ -235,7 +233,7 @@ $(function () {
         $("#editCharityContainer").css("background-color", "lightgrey");
         $("#newCharityContainer").css("background-color", "");
 
-        // setTimeout(() => {
+ 
             $("#editCharity").prop("checked", true);
             $("#newCharity").prop("checked", false);
             $('#retrievedCharityProfiles').empty()
@@ -243,8 +241,8 @@ $(function () {
             let url = 'getLatestCharities'
             $.get(url)
             .done((answer)=>{
-                console.log(answer)
-                // if (response.length) {
+
+
                     for (i = 0; i < answer.length; i++) {
                         let l_item = `<li id="${
                             answer[i].id
@@ -326,7 +324,7 @@ $("#newNoticeContainer, #newNotice").click(() => {
         $("#editNoticeContainer").css("background-color", "lightgrey");
         $("#newNoticeContainer").css("background-color", "");
 
-        // setTimeout(() => {
+ 
             $("#editNotice").prop("checked", true);
             $("#newNotice").prop("checked", false);
             $('#retrievedNoticeProfiles').empty()
@@ -334,7 +332,7 @@ $("#newNoticeContainer, #newNotice").click(() => {
             let url = 'getLatestNotices'
             $.get(url)
             .done((answer)=>{
-                console.log(answer)
+  
                 if (answer.length) {
                     for (i = 0; i < answer.length; i++) {
                         let createdAt = new Date(answer[i].created_at)

@@ -4,7 +4,6 @@ var pool = require('../connection');
 
 router.get('/getActiveProfilesCategories/:areaCode', function (req, res) {
     let areaCode = req.params.areaCode;
-    console.log(areaCode)
     let sql = `SELECT
     c.id, c.category_description,
     COUNT(p.id) as count
@@ -24,7 +23,6 @@ router.get('/getActiveProfilesCategories/:areaCode', function (req, res) {
             if (error) {
                 res.send('The Error is', error)
             } else {
-                // console.log(result)
                 res.send(result);
             }
         });
@@ -36,8 +34,6 @@ router.get('/getActiveProfilesCategories/:areaCode', function (req, res) {
 router.get('/getActiveProfiles/:areaCode/:categoryId', function (req, res) {
     let areaCode = req.params.areaCode;
     let categoryId = req.params.categoryId;
-    console.log(areaCode)
-    console.log(categoryId)
     let sql = `select id, businessName, profile_description, profile_image
         from client_profiles
         where JSON_CONTAINS(areas, '${areaCode}',"$") and JSON_CONTAINS(catarea, '${categoryId}',"$") and profile_approved = true and paid_to_date = true order by businessName`
@@ -50,7 +46,6 @@ router.get('/getActiveProfiles/:areaCode/:categoryId', function (req, res) {
             if (error) {
                 res.send('The Error is', error)
             } else {
-                // console.log(result)
                 res.send(result);
             }
         });
@@ -59,7 +54,6 @@ router.get('/getActiveProfiles/:areaCode/:categoryId', function (req, res) {
 });
 router.get('/showProfile/:profileID', function (req, res) {
     let profileID = req.params.profileID;
-    console.log(profileID)
     var title = 'Profile';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
@@ -81,7 +75,6 @@ router.get('/showProfile/:profileID', function (req, res) {
  
 router.get('/getProfileInfo/:profileID', function (req, res) {
     let profileID = req.params.profileID;
-    // console.log(profileID)
     let sql = `select id, businessName, profile_description, profile_image, mob_no, email, 
                 website, facebook, instagram, linkedin, business_image1, business_image2, business_image3
                 from client_profiles where id = ${profileID}`
@@ -94,14 +87,11 @@ router.get('/getProfileInfo/:profileID', function (req, res) {
             if (error) {
                 res.send('The Error is', error)
             } else {
-                // console.log(result)
                 res.send(result);
             }
         });
         connection.release();
     });
 });
-
-
 
 module.exports = router;

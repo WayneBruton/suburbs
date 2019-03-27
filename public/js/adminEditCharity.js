@@ -3,7 +3,6 @@ $(function () {
     let charityImage;
 
     $.get('/getAreas').done((response) => {
-        console.log(response)
         $('#areas').empty();
         response.forEach(el => {
             let option = `<option value="${el.id}">${el.area_description}</option>`
@@ -11,11 +10,8 @@ $(function () {
         });
     })
     let charityID = $('#charityID').val()
-    console.log(charityID)
     let url = `/retrieveCharity/${charityID}`
     $.get(url).done((response) => {
-        console.log(response)
-        //  console.log(response[0].charity_image)
         charityImage = `${response[0].charity_image}`
         $('#charityImage').prop('src', charityImage)
         $('#businessName').val(response[0].businessName)
@@ -53,9 +49,7 @@ $(function () {
             cache: false,
             processData: false
         }).done(function (response) {
-            console.log('Image File::::', response)
             charityUploadedImage = `/${response}`;
-
             $('#charityImage').prop('src', charityUploadedImage).css('display', 'block')
         })
     });
@@ -63,8 +57,6 @@ $(function () {
 
     $('#charityImage').change(function (e) {
         e.preventDefault();
-        console.log('Image has changed')
-
     });
 
     $('#editCharityBtn').click((e) => {
@@ -113,22 +105,17 @@ $(function () {
             branchCode: branchCode,
             isActive: isActive
         }
-        console.log(isActive)
 
-        console.log(data)
         $.ajax({
             url: url,
             type: 'POST',
             data: JSON.stringify(data),
             success: (data) => {
-                console.log('success')
             },
             contentType: 'application/json',
             dataType: 'json'
-            // cache: false,
-            // processData: false
+
         }).done(function (response) {
-            console.log(response)
         })
     })
 

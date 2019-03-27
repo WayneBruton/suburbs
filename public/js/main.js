@@ -16,7 +16,6 @@ $(function () {
             if ($(this).attr('checked')) {
                 $('#psb').val('service');
             }
-            console.log($('#psb').val());
         }, 250)
     })
     $('#product').click(() => {
@@ -27,7 +26,6 @@ $(function () {
             if ($(this).attr('checked')) {
                 $('#psb').val('product');
             }
-            console.log($('#psb').val());
         }, 250)
     })
     $('#both').click(() => {
@@ -38,7 +36,6 @@ $(function () {
             if ($(this).attr('checked')) {
                 $('#psb').val('both');
             }
-            console.log($('#psb').val());
         }, 250)
     })
 
@@ -46,8 +43,6 @@ $(function () {
     // ====================
 
     function calcAreas() {
-        console.log('2nd Check<><><><><><',areasArray);
-
         areasArray = [];
         if ($('#area1').attr('checked')) {
             areasArray.push(parseInt($('#area1').val()));
@@ -74,13 +69,8 @@ $(function () {
             areasArray.push(parseInt($('#area8').val()));
         }
 
-        console.log('Option Chosen is :::', optionChosen);
         if (optionChosen != 0) {
             var obj = packagesArray.find(obj => obj.id == optionChosen);
-            console.log('Option Selected is:', obj);
-            console.log(obj.per_month)
-            console.log(obj.per_year)
-            console.log(obj.once_off)
 
             $('#areasTBL').empty()
             let areaCosts = `<td class="addCostDetail">Areas</td>
@@ -89,22 +79,13 @@ $(function () {
                     <td class="addCostDetail" id="areaOnceOff">R${obj.once_off}</td>`
             $(areaCosts).appendTo('#areasTBL')
         }
-        // calcAdminAss()
-        console.log('102nd Check<><><><><><',areasArray);
-
         calcTotalCosts();
-
     }
 
 
     $('#optionSelect').on('change', function () {
         var optionText = $("#optionSelect option:selected").val();
         var optionID = $("#optionSelect option:selected").attr('id');
-        console.log('This is the option ID', optionID)
-        console.log('Value is:::::', optionText)
-        console.log(packagesArray)
-        // let obj = packagesArray.find(o => o.id == optionText);
-        // console.log(obj);
         optionChosen = optionText;
         setTimeout(function () {
             calcAreas();
@@ -115,9 +96,9 @@ $(function () {
     // =========== AREAS =================
     $('#areaCheckBoxes').on('click', "#area1, #area2,#area3, #area4, #area5, #area6, #area7, #area8, #area9, #area10", function () {
         let newVal = $(this).attr('id').split('area');
-        console.log('This is the NewVal:', newVal);
+
         newVal = newVal[newVal.length - 1]
-        console.log(newVal)
+
         if ($(this).attr('checked')) {
             $(this).attr('checked', false)
             $(this).val(0)
@@ -154,10 +135,9 @@ $(function () {
             areasArray.push(parseInt($('#area8').val()));
         }
         let numberOfAreas = areasArray.length;
-        console.log('AREAS ARRAY', areasArray)
-        console.log('number of areas:', numberOfAreas)
+
         let url = `/getPackages/${numberOfAreas}`
-        console.log(url)
+
         packagesArray = [];
         if (numberOfAreas > 0) {
             $.get(url)
@@ -169,7 +149,7 @@ $(function () {
                         let select = `<option id="option${response[i].id}" value="${response[i].id}">${response[i].option_name}-${response[i].option_description}</option>`
                         $(select).appendTo('#optionSelect')
                         packagesArray.push(response[i]);
-                        // console.log('This is the packagesArray:::::',packagesArray)
+    
                     }
                     let areaCosts = `<td class="addCostDetail">Areas</td>
                     <td class="addCostDetail" id="areaMonthly">R${response[0].per_month}</td>
@@ -178,13 +158,13 @@ $(function () {
                     $(areaCosts).appendTo('#areasTBL')
 
                 })
-            console.log('This is the packagesArray:::::', packagesArray)
+
 
         } else {
             $('#optionSelect').empty();
             $('#areasTBL').empty();
             optionChosen = 0;
-            // let select = `<option id="option${response[i].id}" value="0">You must choose an area</option>`
+        
             let select = `<option id="option" value="0">You must choose an area</option>`
             $(select).appendTo('#optionSelect')
             let areaCosts = `<td class="addCostDetail">Areas</td>
@@ -199,15 +179,15 @@ $(function () {
             calcAdminAss()
             calcAreas();
         }, 200)
-        console.log('first check',areasArray)
+
 
     });
 
     $('#categoryCheckBoxes').on('click', "#catarea1, #catarea2, #catarea3, #catarea4, #catarea5, #catarea6, #catarea7, #catarea8, #catarea9, #catarea10, #catarea11, #catarea12, #catarea13, #catarea14, #catarea15, #catarea16, #catarea17, #catarea18, #catarea19, #catarea20, #catarea21, #catarea22, #catarea23, #catarea24, #catarea25 ", function () {
         let newVal = $(this).attr('id').split('catarea');
-        // console.log('This is the NewVal:',newVal);
+
         newVal = newVal[newVal.length - 1]
-        console.log(newVal)
+
         if ($(this).attr('checked')) {
             $(this).attr('checked', false)
             $(this).val(0)
@@ -225,8 +205,7 @@ $(function () {
 
     $('#terms').click(() => {
         calcTotalCosts();
-        console.log(areasArray);
-        // console.log(categoriesArray);
+
         
         if ((areasArray.length == 0)||(categoriesArray == 0)){
             alert('Categories and Areas need to be chosen')
@@ -258,9 +237,7 @@ $(function () {
             let totalYearly = parseFloat($('#areaYearly').text().split('R')[1]) +
                 parseFloat($('#catYearly').text().split('R')[1]) +
                 parseFloat($('#adminYearly').text().split('R')[1]);
-            console.log('Monthly:', parseFloat($('#areaYearly').text().split('R')[1]))
-            console.log('Yearly:', parseFloat($('#catYearly').text().split('R')[1]))
-            console.log('#adminYearly:', parseFloat($('#adminYearly').text().split('R')[1]))
+      
 
             let totalOnceOff = parseFloat($('#areaOnceOff').text().split('R')[1]) +
                 parseFloat($('#catOnceOff').text().split('R')[1]) +
@@ -300,9 +277,7 @@ $(function () {
         <td class="addCostDetail" id="adminYearly">R${yearly_admin}</td>
         <td class="addCostDetail" id="adminOnceOff">R${once_offAdmin}</td>`
         $(adminCosts).appendTo('#adminTBL');
-        // console.log(categoriesArray.length);
-        // console.log(adminAssistance)
-        // calcAreas()
+
         calcTotalCosts();
     }
 
@@ -379,11 +354,11 @@ $(function () {
         if ($('#catarea18').attr('checked')) {
             categoriesArray.push(parseInt($('#catarea18').val()))
         }
-        // console.log(categoriesArray);
+
         let per_monthCat = ''
         let per_yearCat = ''
         let once_offCat = ''
-        // console.log('Categories:', categoriesArray);
+
         if (categoriesArray.length > 1) {
             per_monthCat = (categoriesArray.length - 1) * 10;
             per_yearCat = (categoriesArray.length - 1) * 70;
@@ -409,7 +384,6 @@ $(function () {
         e.preventDefault();
         if ($(this).val() != ''){
             let busName = $(this).val();
-        console.log(busName)
         let url = '/checkProfileNames/' + busName
         $.get(url).done((response)=>{
             if (response.length > 0) {

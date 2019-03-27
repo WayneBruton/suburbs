@@ -13,12 +13,9 @@ $(function () {
 
 
     let areaCode = $('#areaCode').val();
-    // console.log(areaCode)
     let url = `/getCharityProfile/${areaCode}`
-    console.log(url)
     $.get(url).done((response) => {
         if (response.length) {
-            console.log(response)
             $('#profileDelails').text(response[0].businessName)
             $('#businessName').val(response[0].businessName)
             $('#mob_no').val(response[0].mob_no)

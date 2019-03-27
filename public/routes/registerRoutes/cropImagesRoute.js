@@ -8,14 +8,13 @@ router.get('/crop/:image/:x/:y/:w/:h/:pw/:ph/:profileImageName', (req, res) => {
 
     var imageToCrop = 'public/uploads/' + req.params.image;
     let profileImageName = req.params.profileImageName;
-    console.log('Wayne::::::',imageToCrop);
     let x = parseInt(req.params.x);
     let y = parseInt(req.params.y);
     let w = parseInt(req.params.w);
     let h = parseInt(req.params.h);
     let pw = parseInt(req.params.pw);
     let ph = parseInt(req.params.ph);
-    // console.log(pw);
+
     Jimp.read(imageToCrop)
         .then(lenna => {
             return lenna
@@ -27,7 +26,7 @@ router.get('/crop/:image/:x/:y/:w/:h/:pw/:ph/:profileImageName', (req, res) => {
                 .write(`public/images/profiles/${profileImageName}.jpg`); // save
         })
         .catch(err => {
-            console.error(err);
+            res.send(err)
         });
         res.send({data: `/images/profiles/${profileImageName}.jpg`})
 });
@@ -36,14 +35,12 @@ router.get('/cropB/:image/:x/:y/:w/:h/:pw/:ph/:business1ImageName', (req, res) =
 
     var imageToCrop = 'public/uploads/' + req.params.image;
     let business1ImageName = req.params.business1ImageName;
-    console.log('Wayne::::::',imageToCrop);
     let x = parseInt(req.params.x);
     let y = parseInt(req.params.y);
     let w = parseInt(req.params.w);
     let h = parseInt(req.params.h);
     let pw = parseInt(req.params.pw);
     let ph = parseInt(req.params.ph);
-    // console.log(pw);
     Jimp.read(imageToCrop)
         .then(lenna => {
             return lenna
@@ -55,7 +52,7 @@ router.get('/cropB/:image/:x/:y/:w/:h/:pw/:ph/:business1ImageName', (req, res) =
                 .write(`public/images/profiles/${business1ImageName}.jpg`); // save
         })
         .catch(err => {
-            console.error(err);
+            res.send(err);
         });
         res.send({data: `/images/profiles/${business1ImageName}.jpg`})
 });
@@ -71,7 +68,7 @@ router.get('/cropC/:image/:x/:y/:w/:h/:pw/:ph/:business2ImageName', (req, res) =
     let h = parseInt(req.params.h);
     let pw = parseInt(req.params.pw);
     let ph = parseInt(req.params.ph);
-    // console.log(pw);
+
     Jimp.read(imageToCrop)
         .then(lenna => {
             return lenna
@@ -83,7 +80,7 @@ router.get('/cropC/:image/:x/:y/:w/:h/:pw/:ph/:business2ImageName', (req, res) =
                 .write(`public/images/profiles/${business2ImageName}.jpg`); // save
         })
         .catch(err => {
-            console.error(err);
+            res.send(err);
         });
         res.send({data: `/images/profiles/${business2ImageName}.jpg`})
 });
@@ -99,7 +96,7 @@ router.get('/cropD/:image/:x/:y/:w/:h/:pw/:ph/:business3ImageName', (req, res) =
     let h = parseInt(req.params.h);
     let pw = parseInt(req.params.pw);
     let ph = parseInt(req.params.ph);
-    // console.log(pw);
+ 
     Jimp.read(imageToCrop)
         .then(lenna => {
             return lenna
@@ -111,14 +108,9 @@ router.get('/cropD/:image/:x/:y/:w/:h/:pw/:ph/:business3ImageName', (req, res) =
                 .write(`public/images/profiles/${business3ImageName}.jpg`); // save
         })
         .catch(err => {
-            console.error(err);
+            res.send(err);
         });
         res.send({data: `/images/profiles/${business3ImageName}.jpg`})
 });
-
-
-
-
-
 
 module.exports = router;

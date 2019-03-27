@@ -4,7 +4,6 @@ $(function () {
     let noticeID = $('#noticeID').val()
     let url = `/getNoticeToEdit/${noticeID}`
     $.get(url).done((response) => {
-        console.log(response)
         areas = (response[0].areas).split('[')
         areas = areas[1].split(']')
         areas = areas[0].split(',')
@@ -12,7 +11,6 @@ $(function () {
             area = parseInt(area)
             return area
         })
-        console.log(areas)
         $('#heading').val(response[0].heading)
         $('#noticeDescription').val(response[0].notice_text)
         let isActive = response[0].isActive
@@ -22,10 +20,8 @@ $(function () {
 
     })
     $.get('/getAreas').done((response) => {
-        console.log(response)
         $('#areas').empty()
             response.forEach((el) => {
-                // console.log(el.checked)
                     let checkBoxes = `<div style="display: flex; flex-direction: column">
                                  <div style="display: flex; justify-content: space-between">
                                 <input type="checkbox" name="" id="${el.id}">
@@ -42,13 +38,11 @@ $(function () {
 
     $('#saveNoticeBtn').click((e)=>{
         e.preventDefault();
-        console.log('Lets save this puppy')
         let url = '/updateNotice'
         let id = noticeID
         let heading = $('#heading').val()
         addAreas()
         let areas = areaArray
-        console.log(areas)
         let notice_text = $('#noticeDescription').val()
         let isActive;
         if ($('#isActive').prop('checked')) {
@@ -64,20 +58,18 @@ $(function () {
             isActive
         }
 
-        console.log(data)
         $.ajax({
             url: url,
             type: 'POST',
             data: JSON.stringify(data),
             success: (data)=>{
-                console.log('success')
+
             },
             contentType: 'application/json',
             dataType:'json'
-            // cache: false,
-            // processData: false
+  
         }).done(function (response) { 
-            console.log(response)   
+
         })
     })
 
@@ -107,7 +99,7 @@ $(function () {
         if ($('#8').prop('checked')) {
             areaArray.push(parseInt($('#8').prop('id')))
         }
-        // console.log(areaArray)
+
 
     }
 
@@ -178,10 +170,3 @@ $(function () {
         }
     }
 })
-
-
-
-
-
-
-// console.log(noticeID)

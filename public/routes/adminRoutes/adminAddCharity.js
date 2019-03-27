@@ -14,7 +14,6 @@ router.get('/getLatestCharities', (req, res) => {
         }
         connection.query(mysql, function (error, result) {
             if (error) throw error;
-            console.log(result)
             res.send(result);
         });
         connection.release();
@@ -37,6 +36,7 @@ router.get('/addCharity', (req, res) => {
         backgroundColor: backgroundColor
     })
 })
+
 // ========== Opens EDIT Charity View =================
 router.get('/adminEditCharity/:id', (req, res) => {
     let id = req.params.id;
@@ -65,14 +65,10 @@ router.get('/retrieveCharity/:charityID', (req, res) => {
         }
         connection.query(mysql, function (error, result) {
             if (error) throw error;
-            console.log(result)
             res.send(result);
         });
         connection.release();
     });
-
-    console.log(charityID)
-
 })
 
 
@@ -95,20 +91,41 @@ router.post('/createCharity', (req, res) => {
     let branchCode = req.body.branchCode
     let isActive = req.body.isActive
 
-    console.log(req.body)
-
     if (image !== undefined) {
         fs.copyFile(`public/${image}`, `public/images/charities/${businessName}.jpg`, (err) => {
-            if (err) throw err;
-            console.log(image, 'copied to')
+            if (err) {
+                router.get('/', function (req, res) {
+                    var title = 'Suburbs Directory - Home'
+                    var color = '';
+                    var navBarType = 'navbar-dark bg-dark';
+                    var backgroundColor = 'background-color: #4267b4;"'
+                    res.render('../views/index', {
+                        title: title,
+                        color: color,
+                        navBarType: navBarType,
+                        backgroundColor: backgroundColor
+                    });
+                }); 
+            }
         })
         setTimeout(() => {
             fs.unlink(`public/${image}`, (err) => {
-                if (err) throw err;
-                console.log('Succesfully deleted')
+                if (err) {
+                    router.get('/', function (req, res) {
+                        var title = 'Suburbs Directory - Home'
+                        var color = '';
+                        var navBarType = 'navbar-dark bg-dark';
+                        var backgroundColor = 'background-color: #4267b4;"'
+                        res.render('../views/index', {
+                            title: title,
+                            color: color,
+                            navBarType: navBarType,
+                            backgroundColor: backgroundColor
+                        });
+                    }); 
+                };
             })
         }, 200)
-
     }
 
     let charity_image = `/images/charities/${businessName}.jpg`
@@ -125,7 +142,6 @@ router.post('/createCharity', (req, res) => {
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
-            console.log(result)
             res.send(result);
         });
         connection.release();
@@ -154,17 +170,14 @@ router.post('/editCharity', (req, res) => {
     let branchCode = req.body.branchCode
     let isActive = req.body.isActive
 
-    console.log('Profile Description', profile_description)
 
     if (image !== undefined) {
         fs.copyFile(`public/${image}`, `public/images/charities/${businessName}.jpg`, (err) => {
             if (err) throw err;
-            console.log(image, 'copied to')
         })
         setTimeout(() => {
             fs.unlink(`public/${image}`, (err) => {
                 if (err) throw err;
-                console.log('Succesfully deleted')
             })
         }, 200)
     }
@@ -184,14 +197,10 @@ router.post('/editCharity', (req, res) => {
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
-            console.log(result)
             res.send(result);
         });
         connection.release();
     });
 })
-
-
-
 
 module.exports = router;

@@ -1,7 +1,8 @@
 <% include ../partials/header %>
-<!-- <script src="/moveImage.js"></script> -->
+<script src="../js/charityEmail.js"></script>
 
-<div class="container col-sm-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
+<div class="container col-sm-12" id="mainform"
+    style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
 
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
@@ -12,37 +13,42 @@
                     <div class="form-group">
                         <label for="charity_name" class="col-md-3 control-label">Organization Name</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="charity_name" placeholder="Organization Name">
+                            <input type="text" class="form-control" name="charity_name" id="charity_name"
+                                placeholder="Organization Name">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="contact_person" class="col-md-3 control-label">Contact Person</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="contact_person" placeholder="Contact Person">
+                            <input type="text" class="form-control" name="contact_person" id="contact_person"
+                                placeholder="Contact Person">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="contact_number" class="col-md-3 control-label">Contact Number</label>
                         <div class="col-md-9">
-                            <input type="tel" class="form-control" name="contact_number" placeholder="Contact Person">
+                            <input type="number" class="form-control" name="contact_number" id="contact_number"
+                                placeholder="Contact Number">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-md-3 control-label">Email Address</label>
                         <div class="col-md-9">
-                            <input type="email" class="form-control" name="email" placeholder="email address">
+                            <input type="email" class="form-control" name="email" id="email"
+                                placeholder="email address">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="website" class="col-md-3 control-label">Website</label>
                         <div class="col-md-9">
-                            <input type="url" class="form-control" name="website" placeholder="Website">
+                            <input type="url" class="form-control" name="website" id="website" placeholder="Website">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="facebook" class="col-md-3 control-label">Facebook Link</label>
                         <div class="col-md-9">
-                            <input type="url" class="form-control" name="facebook" placeholder="Facebook Link">
+                            <input type="url" class="form-control" name="facebook" id="facebook"
+                                placeholder="Facebook Link">
                         </div>
                     </div>
                     <br>
@@ -51,120 +57,34 @@
                     <br>
                     <div class="form-group">
                         <label for="area" class="col-md-3 control-label">Area</label>
-                        <div class="col-md-9">
-                            <div id="check1" class="areaChoice" >
-                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
-                                        type="checkbox" name="area1" id=""><span></span><label for="area1">South
-                                        Peninsula</label></div>
-                            </div>
-                            <div id="check2" class="areaChoice" >
-                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
-                                        type="checkbox" name="area2" id=""><span></span><label for="area1">Southern
-                                        Suburbs</label></div>
-                            </div>
-                            <div id="check3" class="areaChoice" >
-                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
-                                        type="checkbox" name="area3" id=""><span></span><label for="area1">Northern
-                                        Suburbs</label></div>
-                            </div>
-                            <div id="check4" class="areaChoice" >
-                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
-                                        type="checkbox" name="area4" id=""><span></span><label for="area1">City Bowl</label></div>
-                            </div>
-                            <div id="check5" class="areaChoice" >
-                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
-                                        type="checkbox" name="area5" id=""><span></span><label for="area1">Helderberg</label></div>
-                            </div>
-                            <div id="check6" class="areaChoice" >
-                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
-                                        type="checkbox" name="area6" id=""><span></span><label for="area1">West Coast</label></div>
-                            </div>
-                            <div id="check7" class="areaChoice" >
-                                <div class="individualArea"> <input class="check" style="margin-top: 7px;"
-                                        type="checkbox" name="area7" id="" id="check7"><span></span><label for="area1">Atlantic
-                                        Seaboard</label></div>
-                            </div>
-
+                        <div class="col-md-9" id="areaChosen">
+                            <select name="" id="areaCharityChosen">
+                                <option value=""></option>
+                            </select>
                         </div>
                     </div>
                     <br>
-                    <!-- <hr><br> -->
 
                     <div class="form-group">
-                        <label for="description" class="col-md-3 control-label">Your reason for selecting this charity (500 words max)</label>
+                        <label for="description" class="col-md-3 control-label">Your reason for selecting this charity
+                            (500 words max)</label>
                         <div class="col-md-9">
-                            <textarea name="description" id="" cols="30" rows="10" style="width: 100%;" maxlength='350'></textarea>
+                            <textarea id="description" name="description" id="" cols="30" rows="10" style="width: 100%;"
+                                maxlength='500'></textarea>
                         </div>
                     </div>
                     <br>
-                    <!-- <hr><br>
-                    <div id="terms" class="areaChoice" style="display:flex; justify-content: space-between">
-                            <input type="checkbox" name="terms" id="" style="margin-right: 10px;">
-                            <p>I have read, understand and accept the term and conditions of the financial support I will be receiving from The Suburbs Directory.</p>
-                            <p>I have read, understand and accept the term and conditions below.</p>
-                        </div> 
-                        <br><hr>-->
-                    <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit" value="Submit">
-
+                    <div id="successEmail" class="alert alert-success col-md-9" role="alert" style="display:none;">
+                        Email succesfully Sent!!
+                    </div>
+                    <input id="sendMail" class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit"
+                        value="Submit">
+                    <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="reset" value="reset">
                 </form>
-                <br><br><br> 
+                <br><br><br>
             </div>
         </div>
-
-        <!-- <div>
-                <h1 class="text-center" style="align-self: auto; margin-top: 25px;">Terms and conditions </h1>
-              </div>
-              <div class="about-content">
-                <p>You will receive funds from us on the 5th of each month. 
-                        The amount received will vary depending on the amount of paying businesses listed with The Suburbs Directory in your specific area.
-                        We ask that you please support the initiative by heading over to Facebook and liking the following pages/group.</p>
-                        <p>
-                        <a href="https://www.facebook.com/suburbsdirectory/">The Suburbs Directory</a></p>
-                        <p>
-                        Please like the group that is applicable to you and please make sure you answer the three questions that are asked. It is also to your benefit to take a moment and invite as many friends and family to join this group. 
-                        The more exposure your group gets the more chance of businesses listing with The Suburbs Directory, which in turn means more money for your cause.</p>
-
-                        <p><a href="https://www.facebook.com/groups/813048685482246/">Southern Peninsula Sell & Swop</a></p> 
-                        <p><a href="https://www.facebook.com/groups/260600924619387/">Southern Suburbs Sell & Swop</a></p>
-                        <p><a href="https://www.facebook.com/groups/534697676941834/">Atlantic Seaboard Sell & Swop</a></p>
-                        <p><a href="https://www.facebook.com/groups/376560936422481/">City Bowl Sell & Swop</a></p>
-                        <p><a href="https://www.facebook.com/groups/591935064598339/">Northern Suburbs Sell & Swop</a></p> 
-                        <p><a href="https://www.facebook.com/groups/598963847212256/">Helderberg Sell & Swop</a></p>
-                        <p><a href="https://www.facebook.com/groups/2749972885228780/">West Coast Sell & Swop</a></p>
-                         
-                        <p>We ask that you please encourage all your social media followers to get involved with the initiative.
-                        The Suburbs Directory may only fund charities once every three years. 
-                        Your charity may be asked to write a blog or give feedback to The Suburbs Directory with regards to how our financial contribution has assisted your charity. This may be published to all our social media platforms and website. 
-                        Being one of our listed charities means that you give us permission for the following:
-                        To list your banking details or a link to donate on our website for people to contribute directly to your charity. 
-                        You allow us to do a write up on our website about your charity.</p> 
-                        <p>You allow us to tag your charity page on social media posts. 
-                        You allow us to share your social media content in order to create awareness about your charity.</p> 
-                        <p>We are aloud to request proof of where our financial contribution has been used within your charity. 
-                        If your charity closes down or becomes invalid we will assign a new charity in your place for the duration of our commitment with you. 
-                        If your charity is under investigation of misconduct, has been accused of fraud, negligence or anything that does not align with our values we reserve the rights to withdraw our financial contribution with immediate effect.</P> 
-                        <p>The Suburbs Directory will unfortunately only be able to support charities that are legally registered as an NPO and who are able to issue 18A certificates. For each financial contribution made we request that an 18A certificate be issued to The Suburbs Directory. 
-                        Final decision made by TSD.</p>
-                        
-                              
-              </div> -->
-            </div>
-          </div>
-        
     </div>
 </div>
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
 
 <% include ../partials/footer %>

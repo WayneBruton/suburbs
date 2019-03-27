@@ -12,8 +12,6 @@ $(function(){
           Cphone: $('#contactPhone').val(),
           Cmessage: $('#contactMessage').val()
         }
-    
-        console.log(subscribeInfo);
         let url = '/send-email';
         $.ajax({
           type: 'POST',
@@ -24,7 +22,6 @@ $(function(){
     
           dataType: 'json'
         }).done(function (response) {
-          console.log(response);
           $('#contactSuccess').css('display', 'block').fadeIn(750);
           $('#contactEmail').val('');
           $('#contactName').val('');
@@ -36,8 +33,6 @@ $(function(){
           }, 1500);
     
         }).fail(function (response) {
-          console.log(response);
-          // $('#mailingFailure').css('display', 'block').fadeIn(750);
           $('#contactFailure').css('display', 'block').fadeIn(750);
           $('#contactEmail').val('');
           $('#contactName').val('');

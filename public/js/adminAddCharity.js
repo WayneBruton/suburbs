@@ -1,9 +1,7 @@
 $(function () {
     let charityUploadedImage;
     $.get('/getareas').done((response) => {
-        console.log(response)
         $('#areaSelect').empty()
-        // $('#areaSelect').append('<option value="0">Choose an area</option>')
         response.forEach(element => {
             let option = `<option value="${element.id}">${element.area_description}</option>`
             $(option).appendTo('#areaSelect')
@@ -23,7 +21,6 @@ $(function () {
             cache: false,
             processData: false
         }).done(function (response) {
-            console.log('Image File::::', response)
             charityUploadedImage = response;
             $('#charityImage').prop('src', response).css('display', 'block')
         })
@@ -32,7 +29,6 @@ $(function () {
     $('#createCharityBtn').click((e) => {
         e.preventDefault()
         let url = `/createCharity`
-        // let charityImg = $('#charityImage').prop('src');
         let charityImg = charityUploadedImage
         let businessName = $('#businessName').val()
         let first_name = $('#first_name').val()
@@ -71,22 +67,17 @@ $(function () {
             branchCode: branchCode,
             isActive: isActive
         }
-        console.log(isActive)
-
-        console.log(data)
         $.ajax({
             url: url,
             type: 'POST',
             data: JSON.stringify(data),
             success: (data)=>{
-                console.log('success')
             },
             contentType: 'application/json',
             dataType:'json'
-            // cache: false,
-            // processData: false
+
         }).done(function (response) { 
-            console.log(response)   
+  
         })
     })
 

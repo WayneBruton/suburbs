@@ -1,7 +1,6 @@
 $(function(){
     let areaArray = []
     $.get('/getAreas').done((response)=>{
-        console.log(response)
         $('#areas').empty()
         response.forEach((el)=>{
             let checkboxes = `<div style="display: flex; flex-direction: column">
@@ -15,14 +14,11 @@ $(function(){
     })
     $('#createNoticeBtn').click((e)=>{
         e.preventDefault();
-        // console.log('Create Button Clicked')
         let url = '/createNotice'
         let heading = $('#heading').val()
-        // console.log(heading)
         addAreas()
         let areas = areaArray
         let notice_text = $('#noticeDescription').val()
-        // console.log(areas)
         let isActive;
         if ($('#isActive').prop('checked')) {
             isActive = true
@@ -41,17 +37,12 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             success: (data)=>{
-                console.log('success')
             },
             contentType: 'application/json',
             dataType:'json'
-            // cache: false,
-            // processData: false
-        }).done(function (response) { 
-            console.log(response)   
-        })
 
-        console.log(data)
+        }).done(function (response) { 
+        })
     })
 
 
@@ -81,7 +72,6 @@ $(function(){
         if ($('#8').prop('checked')) {
             areaArray.push(parseInt($('#8').prop('id')))
         }
-        // console.log(areaArray)
 
     }
 

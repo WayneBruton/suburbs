@@ -28,8 +28,6 @@ router.get('/atlanticseaboardCharity', (req, res) => {
     var viewColors = '#f5c23d'
     var borderColor = `border: 3px solid ${viewColors}`
     var areaCode = 1
-
-    // res.render('atlanticseaboard', {
     res.render('../views/charityViews/atlanticseaboardCharity', {
         title: title,
         color: color,
@@ -44,7 +42,6 @@ router.get('/atlanticseaboardCharity', (req, res) => {
 router.get('/capeflatsCharity', (req, res) => {
     var title = 'Cape Flats';
     var color = 'color: white;';
-    console.log('THIS IS THE USER SESSION::',req.session.userID)
     var navBarType = '';
     var backgroundColor = 'background-color: #afb1b4;"'
     var viewColors = '#afb1b4'
@@ -154,10 +151,8 @@ router.get('/westcoastCharity', (req, res) => {
 
 router.get('/getCharityProfile/:areaCode', function (req, res) {
     let areaCode = req.params.areaCode;
-
-
     var sql = `Select * from charities where isActive = true and areas = ${areaCode}`
-    console.log(sql)
+
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();

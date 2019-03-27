@@ -50,18 +50,6 @@
                         <div class="form-group">
                             <label for="website" class="col-md-3 control-label">Website</label>
                             <div class="col-md-9">
-                                <!-- <script>
-                                    function checkURL (abc) {
-                                    var string = abc.value;
-                                    if (!~string.indexOf("http")) {
-                                    string = "http://" + string;
-                                    }
-                                    abc.value = string;
-                                    return abc
-                                }
-
-                                onblur="checkURL(this)"
-                            </script> -->
                                 <input type="text" class="form-control" name="website" placeholder="Website">
                             </div>
                         </div>
@@ -221,6 +209,9 @@
                         </div>
                         <br>
                         <hr><br>
+                        <div id="succesfulRegistration" class="alert alert-success" role="alert" style="display:none">
+                            A simple success alert—check it out!
+                          </div>
                         <div>
                             <input id="createProfileBtn" class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit"
                                 value="Continue >>">
@@ -235,10 +226,3 @@
     </div>
 </div>
 <% include ../partials/footer %>
-
-<!-- <div class="alert alert-success" role="alert">
-    A simple success alert—check it out!
-  </div>
-  <div class="alert alert-danger" role="alert">
-    A simple danger alert—check it out!
-  </div> -->

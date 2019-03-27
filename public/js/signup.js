@@ -6,10 +6,9 @@ $(function () {
                      name="areaChosen[]" id="area${data[i].id}"><label for="area${data[i].id}">${data[i].area_description}</label></div>
          </div>`
             $(areaCheck).appendTo('#areaCheckBoxes');
-            // name="area${data[i].id}"
         });
     })
-
+ 
     $.get('/getCategories', function (data) {
         $.each(data, function (i, val) {
             let catCheck = `<div id="catCheck${data[i].id}" class="areaChoice" id="categoryChoice${data[i].id}">
@@ -17,7 +16,6 @@ $(function () {
                 name="catarea[]" id="catarea${data[i].id}"><label for="catarea${data[i].id}">${data[i].category_description}</label></div>
     </div>`
             $(catCheck).appendTo('#categoryCheckBoxes');
-            // name="catarea${data[i].id}"
         });
     })
 })

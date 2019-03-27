@@ -18,8 +18,6 @@ router.get('/addNotice', (req, res) => {
     })
 })
 router.post('/createNotice', (req, res) => {
-
-    console.log(req.body)
     let heading = req.body.heading
     let areas = req.body.areas
     let notice_text = req.body.notice_text
@@ -34,15 +32,12 @@ router.post('/createNotice', (req, res) => {
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
-            console.log(result)
             res.send(result);
         });
         connection.release();
     });
 });
 router.get('/getLatestNotices', (req, res) => {
-
-    console.log(req.body)
     
     let sql = `select id, heading, created_at from notices order by id desc`
 
@@ -53,7 +48,6 @@ router.get('/getLatestNotices', (req, res) => {
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
-            console.log(result)
             res.send(result);
         });
         connection.release();
@@ -77,7 +71,6 @@ router.get('/adminEditNotice/:id', (req, res) => {
 })
 
 router.get('/getNoticeToEdit/:id', (req, res) => {
-    // console.log(req.body)
     let id = req.params.id;
     let sql = `select * from notices where id = ${id}`
 
@@ -87,8 +80,9 @@ router.get('/getNoticeToEdit/:id', (req, res) => {
             resizeBy.send('Error with connection');
         }
         connection.query(sql, function (error, result) {
-            if (error) throw error;
-            console.log(result)
+            if (error) {
+                res.send('Error', error)
+            };
             res.send(result);
         });
         connection.release();
@@ -101,7 +95,6 @@ router.post('/updateNotice', (req, res) => {
     let areas = req.body.areas
     let notice_text = req.body.notice_text
     let isActive = req.body.isActive
-    console.log('These are the areas',areas)
     let sql = `update notices set heading = '${heading}', areas = '[${areas}]' , notice_text = '${notice_text}', isActive = ${isActive} where id = ${id}`
 
     pool.getConnection(function (err, connection) {
@@ -111,7 +104,6 @@ router.post('/updateNotice', (req, res) => {
         }
         connection.query(sql, function (error, result) {
             if (error) throw error;
-            console.log(result)
             res.send(result);
         });
         connection.release();

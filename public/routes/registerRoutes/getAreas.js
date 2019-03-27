@@ -4,10 +4,8 @@ var pool = require('../connection');
 
 router.get('/getAreas', function(req, res){
     let numberOfAreas = req.params.numberOfAreas;
-    // console.log(numberOfAreas)
     var sql = `select * from areas where isActive = true order by id`;
-    // var sql = `select * from areas order by id`;
-    // console.log(sql)
+
 
 
     pool.getConnection(function(err, connection){
@@ -17,7 +15,6 @@ router.get('/getAreas', function(req, res){
           }
           connection.query(sql, function(error, result) {
             if (error) throw error;
-            // console.log(result)
             res.send(result);
         });
         connection.release();

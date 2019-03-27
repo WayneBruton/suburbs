@@ -4,10 +4,8 @@ const router = express.Router();
 
 router.get('/', function (req, res) {
     var title = 'Suburbs Directory - Home'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
     res.render('../views/index', {
         title: title,
@@ -19,10 +17,8 @@ router.get('/', function (req, res) {
 
 router.get('/about', function (req, res) {
     var title = 'Suburbs Directory - About'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
     res.render('../views/menuViews/about', {
         title: title,
@@ -34,10 +30,8 @@ router.get('/about', function (req, res) {
 
 router.get('/register', (req, res) => {
     var title = 'Suburbs Directory - Register'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
     res.render('../views/menuViews/register', {
         title: title,
@@ -51,10 +45,8 @@ router.get('/register', (req, res) => {
 
 router.get('/charityApplication', (req, res) => {
     var title = 'Suburbs Directory - Charity'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
     res.render('../views/menuViews/charityApplication', {
         title: title,
@@ -68,10 +60,8 @@ router.get('/charityApplication', (req, res) => {
 
 router.get('/terms', (req, res) => {
     var title = 'Suburbs Directory - Terms & Conditions'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
     res.render('../views/menuViews/terms', {
         title: title, source: "",
@@ -84,10 +74,8 @@ router.get('/terms', (req, res) => {
 
 router.get('/packages', (req, res) => {
     var title = 'Suburbs Directory - Package Options'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var backgroundColor = 'background-color: #4267b4;"'
     res.render('../views/menuViews/packages', {
         title: title,
@@ -99,10 +87,8 @@ router.get('/packages', (req, res) => {
 
 router.get('/contact', (req, res) => {
     var title = 'Suburbs Directory - Contact Us'
-    // var color = 'color: white;';
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
-    // var navBarType = '';
     var message = '';
     var alertType = 'success'
     var display = 'none'
@@ -117,7 +103,5 @@ router.get('/contact', (req, res) => {
         alertType: alertType
     });
 })
-
-
 
 module.exports = router;

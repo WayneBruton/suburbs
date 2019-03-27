@@ -1,13 +1,31 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+const os = require('os').hostname();
 
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.json());
+const pool = require('../routes/connection');
 
-// if (port === 3000) {
-require('dotenv/config');
-//   }
+
+if (os == 'Waynes-MacBook-Air.local') {
+    require('dotenv/config');
+}
+
+router.get('/clientPackage/:option', (req, res) => {
+    let option = req.params.option
+    let sql = `select * from packages where id = ${option}`
+    pool.getConnection(function (err, connection) {
+        if (err) {
+            connection.release();
+            resizeBy.send('Error with connection');
+        }
+        connection.query(sql, function (error, result) {
+            if (error) throw error;
+            res.send(result);
+        });
+        connection.release();
+    });
+
+})
 
 
 router.post('/send-email', (req, res) => {
@@ -34,10 +52,10 @@ router.post('/send-email', (req, res) => {
 	<p>${message}</p>
     `;
 
-    console.log(output);
+
     let transporter = nodemailer.createTransport({
 
-        // host: "mail.eccentrictoad.com",
+
         host: process.env.MAILHOST,
         port: 465, //587
 
@@ -54,26 +72,19 @@ router.post('/send-email', (req, res) => {
     });
 
     let mailOptions = {
-        // from: 'Suburbs Directory Contact Form" <waynebruton@icloud.com>', 
+
         from: 'Suburbs Directory Contact Form <lisa@suburbsdirectory.co.za>',
         to: 'lisasallyberg@gmail.com, lisa@suburbsdirectory.co.za, waynebruton@icloud.com',
-        // subject: 'Suburbs Directory Contact Request',
-        // subject: `Suburbs Directory Contact Request - ${subject}`,
-        subject: `Suburbs Directory Contact Request - ${subject}`,
+        subject: `Suburbs Directory Welcome Email - ${subject}`,
         text: 'Hello world?',
         html: output
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log('This is the ERROR', error)
-            console.log('This is the Info', info)
-            // res.end(JSON.stringify(response.failure));
             var title = 'Suburbs Directory - Contact Us'
-            // var color = 'color: white;';
             var color = '';
             var navBarType = 'navbar-dark bg-dark';
-            // var navBarType = '';
             var message = response.failure;
             var alertType = 'danger'
             var display = 'block'
@@ -86,16 +97,12 @@ router.post('/send-email', (req, res) => {
                 message: message,
                 display: display,
                 alertType: alertType
-
-
             });
         }
-        console.log(info);
+
         var title = 'Suburbs Directory - Contact Us'
-        // var color = 'color: white;';
         var color = '';
         var navBarType = 'navbar-dark bg-dark';
-        // var navBarType = '';
         var message = response.success;
         var alertType = 'success'
         var display = 'block'
@@ -107,9 +114,223 @@ router.post('/send-email', (req, res) => {
             backgroundColor: backgroundColor,
             message: message,
             display: display,
-             alertType: alertType
+            alertType: alertType
         });
-        // res.end(JSON.stringify(response.success));
+    });
+});
+
+
+router.post('/sendClientEmail', (req, res) => {
+
+    let response = {
+        success: 'Your Email has been sent!',
+        failure: 'There was a problem, please try again later'
+    }
+    let name = req.body.first_name;
+    let email = req.body.email;
+    let subject = 'Welcome to Suburbs Directory'
+    let businessName = req.body.businessName;
+
+    let optionCostMthly = req.body.optionCostMthly
+    let optionCostAnnual = req.body.optionCostAnnual
+    let optionCostOnceOff = req.body.optionCostOnceOff
+    let categoryCostMnthly = req.body.categoryCostMnthly
+    let categoryCostAnnual = req.body.categoryCostAnnual
+    let categoryCostonceOff = req.body.categoryCostonceOff
+    let adminAssistMthly = req.body.adminAssistMthly
+    let adminAssistAnnual = req.body.adminAssistAnnual
+    let adminAssistOneOff = req.body.adminAssistOneOff
+    let totalMthly = optionCostMthly + categoryCostMnthly + adminAssistMthly
+    let totalAnnual = optionCostAnnual + categoryCostAnnual + adminAssistAnnual
+    let totalOnceOff = optionCostOnceOff + categoryCostonceOff + adminAssistOneOff
+    const output = `
+    
+	<p>Welcome to Suburbs Directory</p>
+	
+	<h3>Message</h3><br>
+	<p>Dear ${name}</p><br>
+	<p>Your profile for ${businessName} has been successful and approved!</p><br>
+    <p>Your options are the following:</p>
+    <table>
+    <tr>
+        <th style="border: 1px solid black; width: 100px; background-color: lime;">Option</th>
+        <th style="border: 1px solid black; width: 100px; background-color: lime;">Monthly</th>
+        <th style="border: 1px solid black; width: 100px; background-color: lime;">Annual</th>
+        <th style="border: 1px solid black; width: 100px; background-color: lime;">Once Off</th>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; width: 100px;">Suburbs</td>
+        <td style="border: 1px solid black; width: 100px;">R${optionCostMthly}</td>
+        <td style="border: 1px solid black; width: 100px;">R${optionCostAnnual}</td>
+        <td style="border: 1px solid black; width: 100px;">R${optionCostOnceOff}</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; width: 100px;">Category</td>
+        <td style="border: 1px solid black; width: 100px;">R${categoryCostMnthly}</td>
+        <td style="border: 1px solid black; width: 100px;">R${categoryCostAnnual}</td>
+        <td style="border: 1px solid black; width: 100px;">R${categoryCostonceOff}</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; width: 100px">Admin Assistance</td>
+        <td style="border: 1px solid black; width: 100px">R${adminAssistMthly}</td>
+        <td style="border: 1px solid black; width: 100px">R${adminAssistAnnual}</td>
+        <td style="border: 1px solid black; width: 100px">R${adminAssistOneOff}</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; width: 100px; font-weight: bold">Total</td>
+        <td style="border: 1px solid black; width: 100px; font-weight: bold">R${totalMthly}</td>
+        <td style="border: 1px solid black; width: 100px; font-weight: bold">R${totalAnnual}</td>
+        <td style="border: 1px solid black; width: 100px; font-weight: bold">R${totalOnceOff}</td>
+    </tr>
+    </table>
+
+    <p>If you are satisfied, please deposit the amount for your option chosen:</p>
+    <ul>
+        <li>Bank Name: Standard Bank</li>
+        <li>Branch: Constntia</li>
+        <li>Account Number: 123 4567 890</li>
+        <li>Branch Code: 123-456</li>
+        <li>Reference: ${businessName}</li>
+    </ul><br>
+    <p>or contact lisa at: lisa@suburbsdirectory.co.za</p>
+    `;
+
+    console.log(output);
+    let transporter = nodemailer.createTransport({
+ 
+        host: process.env.MAILHOST,
+        port: 465, //587
+
+        secure: true,
+        auth: {
+
+            user: process.env.MAILUSER,
+            pass: process.env.MAILPASSWORD
+
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    let mailOptions = {
+  
+        from: 'Suburbs Directory Contact Form <lisa@suburbsdirectory.co.za>',
+        to: `${email}`,
+        subject: `Suburbs Directory Contact Request - ${subject}`,
+        text: 'Hello world?',
+        html: output
+    };
+
+
+    try {
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                var title = 'Suburbs Directory - Contact Us'
+                var color = '';
+                var navBarType = 'navbar-dark bg-dark';
+                var message = response.failure;
+                var alertType = 'danger'
+                var display = 'block'
+                var backgroundColor = 'background-color: #4267b4;"'
+
+                res.end('There was an error')
+            }
+            var title = 'Suburbs Directory - Contact Us'
+            var color = '';
+            var navBarType = 'navbar-dark bg-dark';
+            var message = response.success;
+            var alertType = 'success'
+            var display = 'block'
+            var backgroundColor = 'background-color: #4267b4;"'
+            res.end('Email Sent')
+        });
+    } catch (e) {
+        res.send('Error', e)
+    }
+});
+
+router.post('/send-charity-email', (req, res) => {
+
+    let response = {
+        success: 'Your Email has been sent!',
+        failure: 'There was a problem, please try again later'
+    }
+
+    let description = req.body.description
+    let areaCharityChosen = req.body.areaCharityChosen
+    let facebook = req.body.facebook
+    let website = req.body.website
+    let email = req.body.email
+    let contact_number = req.body.contact_number
+    let contact_person = req.body.contact_person
+    let charity_name = req.body.charity_name
+
+    const output = `
+	<p>You have a new charity suggestion</p>
+    <h3>Contact Details</h3>
+    
+	<ul>
+		<li>Name: ${contact_person}</li><br>
+
+		<li>Email: ${email}</li><br>
+		<li>website: ${website}</li><br>
+		<li>charity_name: ${charity_name}</li><br>
+		<li>contact_number: ${contact_number}</li><br>
+		<li>facebook: ${facebook}</li><br>
+		<li>area: ${areaCharityChosen}</li><br>
+		
+
+	</ul><br>
+	<h3>Message</h3><br>
+	<p>${description}</p>
+    `;
+
+    let transporter = nodemailer.createTransport({
+
+        host: process.env.MAILHOST,
+        port: 465, //587
+
+        secure: true,
+        auth: {
+
+            user: process.env.MAILUSER,
+            pass: process.env.MAILPASSWORD
+
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    let mailOptions = {
+        from: 'Suburbs Directory Charity Form <lisa@suburbsdirectory.co.za>',
+        to: 'lisasallyberg@gmail.com, lisa@suburbsdirectory.co.za, waynebruton@icloud.com',
+        subject: `Suburbs Directory Charity Email`,
+        text: 'Hello world?',
+        html: output
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            var title = 'Suburbs Directory - Contact Us'
+            var color = '';
+            var navBarType = 'navbar-dark bg-dark';
+            var message = response.failure;
+            var alertType = 'danger'
+            var display = 'block'
+            var backgroundColor = 'background-color: #4267b4;"'
+            res.send('There was an error')
+        }
+
+        var title = 'Suburbs Directory - Contact Us'
+        var color = '';
+        var navBarType = 'navbar-dark bg-dark';
+        var message = response.success;
+        var alertType = 'success'
+        var display = 'block'
+        var backgroundColor = 'background-color: #4267b4;"'
+        res.send('Email sent successfully!')
     });
 });
 

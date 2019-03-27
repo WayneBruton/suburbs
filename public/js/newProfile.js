@@ -15,26 +15,17 @@ $(function () {
     function htmlEntities(str) {
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
-
-
-    // $('#saveChangesButton').attr('disabled', true)
-
-
     function getProfile(clientID) {
         $.get(url)
             .done((result) => {
                 let profileDescription = result[0].profile_description;
-                // profileDescription = htmlEntities(profileDescription)
                 profileDescription = $.br2nl(profileDescription)
-                // profileDescription = $.nl2br(profileDescription)
                 let profileImageWidth = '';
                 if (window.screen.width < 800) {
                     profileImageWidth = '100%'
                 } else {
                     profileImageWidth = '30%' 
                 }
-                console.log(result);
-                console.log(result[0].profile_image)
                 $('#businessName').val(result[0].businessName)
                 $('#profileDelails').text(`Profile Preview - ${result[0].businessName}`)
                 $('#profileImage').attr('src', result[0].profile_image).css('width', `${profileImageWidth}`)
@@ -48,10 +39,8 @@ $(function () {
                 $('#business_image1').attr('src', result[0].business_image1).css('width', `${profileImageWidth}`)
                 $('#business_image2').attr('src', result[0].business_image2).css('width', `${profileImageWidth}`)
                 $('#business_image3').attr('src', result[0].business_image3).css('width', `${profileImageWidth}`)
-                // let imagesURL = `/editprofileImages/${result[0].id}/${result[0].businessName}`
                 let imagesURL = `/editprofileImages`
                 $('#updateImages').attr('href', imagesURL)
-                console.log(imagesURL)
             })
     }
     let originalData; 
@@ -63,16 +52,13 @@ $(function () {
         if ($('#saveChangesButton').attr('disabled')) {
             e.preventDefault();
             originalData = $(this).val();
-            console.log(originalData);
         }
 
     });
     $(focusAreas).blur(function (e) {
         if ($('#saveChangesButton').attr('disabled')) {
             e.preventDefault();
-            updatedData = $(this).val();
-            console.log(updatedData);
-            // saveChangesButton    
+            updatedData = $(this).val();   
             if (originalData !== updatedData) {
                 $('#saveChangesButton').attr('disabled', false).css('background-color', 'red')
             }
@@ -101,9 +87,7 @@ $(function () {
             linkedin: linkedin,
             profile_description: profile_description
         }
-        // let data = {id: 'Wayne'}
         data = JSON.stringify(data)
-        // console.log(data)
         $.ajax({
                 url: `/updateProfile`,
                 type: 'post',
@@ -126,12 +110,4 @@ $(function () {
                 }, 1200)
             })
     })
-
-    // localStorage.setItem(key, value);
-    // localStorage.getItem(key);
-    // localStorage.removeItem("lastname");
-
-    // http://localhost:3000/previewProfile/212
-
-
 }); 

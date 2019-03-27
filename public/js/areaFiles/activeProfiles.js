@@ -1,8 +1,6 @@
 $(function () {
     let areaCode = $('#areaCode').val()
-    console.log(areaCode)
     let viewColor = $('#areaColor').val()
-    console.log(viewColor)
     let url = `/getActiveProfilesCategories/${areaCode}`
     $.get(url).done((response) => {
         $('#showCategories').empty()
@@ -26,10 +24,8 @@ $(function () {
                 $('#success').slideDown(600).css('display', 'none')
             }, 1750)
         } else {
-            // console.log($(this).prop('id'))
             let categoryId = $(this).prop('id')
             let url = `/getActiveProfiles/${areaCode}/${categoryId}`
-            console.log(url)
             $.get(url).done((response) => {
                 $('#showCategories').css('display', 'none')
                 $('#thisProfile').empty()
@@ -53,7 +49,6 @@ $(function () {
                     } else {
                         profileDescription = profileDescription + '...'
                     }
-                    console.log(profileDescription)
                     let profileToShow = `<div id="p_display"
                                         style="display: flex; flex-direction: column; width: ${profileWidth}; border: 3px solid ${viewColor}; border-radius: 7px; justify-content: space-evenly; margin: 10px 5px; padding: 10px 10px;">
                                         <div style="display: flex; justify-content: center; flex-wrap: wrap; width: 100%">
@@ -69,7 +64,6 @@ $(function () {
                 setTimeout(() => {
                     $('#showProfiles').css('display', 'flex')
                 })
-                console.log(response)
             })
         }
     })

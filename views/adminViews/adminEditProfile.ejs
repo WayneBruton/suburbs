@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<script src="../js/adminEditViewProfile.js"></script>
+<script src="../js/adminEditViewProfile.js"></script> 
 <script src="../moment.js"></script>
 <div class="container col-sm-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -16,6 +16,7 @@
                     <div class="media-body-info">
                         <label for="businessName" id="">Business Name:</label>
                         <input type="text" id="businessName" class="media-body-info-detail">
+                        <input type="text" id="first_name" class="media-body-info-detail" hidden>
                     </div>
                     <div class="media-body-info">
                         <label for=" mob_no" id="">Contact:</label>
@@ -66,7 +67,6 @@
               
             </div>
             <hr>
-            <!-- busy on right now -->
             <div id="adminAssist">
                 <h2>Financial</h2>
                 <div class="media-body-info" style="width: 100%">
@@ -91,7 +91,6 @@
                 </div>
             </div>
             <hr>
-            <!-- busy on right now -->
             <div id="approvedProfile">
                 <h2>Approved</h2>
                 <div class="media-body-info" style="width: 100%">
@@ -100,9 +99,6 @@
                 </div>
             </div>
             <hr>
-
-
-
             <br><br>
             <div id="failure" class="alert alert-danger col-md-9" role="alert" style="display:none;">
                 There was an error
@@ -110,15 +106,18 @@
             <div id="success" class="alert alert-success col-md-9" role="alert" style="display:none;">
                 Your profile has been updated
             </div>
+            <div id="successEmail" class="alert alert-success col-md-9" role="alert" style="display:none;">
+                Email succesfully Sent!!
+            </div> 
             <button class="btn btn-outline-success my-2 my-sm-0 contactBtn" id="saveChangesButton" disabled>Save
                 Changes</button>
             <button class="btn btn-outline-success my-2 my-sm-0 contactBtn" id="emailClient" >Email Client</button>
-            <!-- <button class="btn btn-outline-success my-2 my-sm-0 contactBtn" id="goBack" >Return</button> -->
-            <!-- <a class="btn btn-outline-success my-2 my-sm-0 contactBtn" id="updateImages" href="/editprofileImages/215">Change
-                Images</a> -->
              <input id="goBack"class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="button" value="Go back!" onclick="history.back()">
             <br><br><br><br><br>
+            
         </div>
     </div>
+
+    
 </div>
 <% include ../partials/footer %></br>

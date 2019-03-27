@@ -24,11 +24,9 @@ router.post('/upload', upload.fields([{
     maxCount: 1
 }]), (req, res) => {
     let data = req.files;
-    console.log('This is the data from the form', data);
     if (data['file-to-upload']) {
 
         source = 'uploads/' + data['file-to-upload'][0].filename;
-        console.log('The SOURCE IS NOW+++>>>>', source);
     } else {
         source = "";
     }
@@ -50,12 +48,10 @@ router.post('/uploadB', upload.fields([{
     maxCount: 1
 }]), (req, res) => {
     let data = req.files;
-    console.log(req.files)
-    console.log('This is the data FORM @2 from the form', data);
+
     if (data['b_file-to-upload']) {
 
         source3 = 'uploads/' + data['b_file-to-upload'][0].filename;
-        console.log('The BUSINESS IMAGE SOURCE IS SOURCE IS NOW+++>>>>', source);
     } else {
         source3 = "";
     }
@@ -77,11 +73,9 @@ router.post('/uploadC', upload.fields([{
     maxCount: 1
 }]), (req, res) => {
     let data = req.files;
-    console.log('This is the data FORM @2 from the form', data);
     if (data['c_file-to-upload']) {
 
         source5 = 'uploads/' + data['c_file-to-upload'][0].filename;
-        console.log('The BUSINESS IMAGE <<2>> SOURCE IS SOURCE IS NOW+++>>>>', source);
     } else {
         source5 = "";
     }
@@ -103,11 +97,10 @@ router.post('/uploadD', upload.fields([{
     maxCount: 1
 }]), (req, res) => {
     let data = req.files;
-    console.log('This is the data FORM @3 from the form', data);
+
     if (data['d_file-to-upload']) {
 
         source6 = 'uploads/' + data['d_file-to-upload'][0].filename;
-        console.log('The BUSINESS IMAGE <<2>> SOURCE IS SOURCE IS NOW+++>>>>', source6);
     } else {
         source6 = "";
     }
@@ -120,7 +113,5 @@ router.post('/uploadD', upload.fields([{
     var title = 'Suburbs Directory - Register';
     res.send(source6);
 });
-
-
 
 module.exports = router;

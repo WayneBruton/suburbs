@@ -28,8 +28,6 @@ router.get('/atlanticseaboardNotices', (req, res) => {
     var viewColors = '#f5c23d'
     var borderColor = `border: 3px solid ${viewColors}`
     var areaCode = 1
-
-    // res.render('atlanticseaboard', {
     res.render('../views/communityNoticesViews/atlanticseaboardNotices', {
         title: title,
         color: color,
@@ -44,7 +42,6 @@ router.get('/atlanticseaboardNotices', (req, res) => {
 router.get('/capeflatsNotices', (req, res) => {
     var title = 'Cape Flats';
     var color = 'color: white;';
-    console.log('THIS IS THE USER SESSION::',req.session.userID)
     var navBarType = '';
     var backgroundColor = 'background-color: #afb1b4;"'
     var viewColors = '#afb1b4'
@@ -159,8 +156,6 @@ router.get('/getNotices/:areaCode', function (req, res) {
     let sql = `select *
     from notices
     where JSON_CONTAINS(areas, '${areaCode}',"$") and isActive = true order by id desc`
-    // var sql = `Select * from charities where isActive = true and areas = ${areaCode}`
-    console.log(sql)
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();
@@ -181,8 +176,7 @@ router.get('/getNoticeArea/:areaCode', function (req, res) {
     let sql = `select *
     from areas
     where id = ${areaCode}`
-    // var sql = `Select * from charities where isActive = true and areas = ${areaCode}`
-    console.log(sql)
+
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();

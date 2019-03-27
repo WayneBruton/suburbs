@@ -11,29 +11,12 @@ $(function() {
     function htmlEntities(str) {
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
-
-        // var result = $.nl2br("this\nwill\nbe\nmultiline");
-
-        // var result2 = $.br2nl("this<br>will<br>be<br>multiline");
-
-
-
-        // console.log('First',result)
-        // console.log('Second',result2)
     let profileID = $('#profileID').val()
     let url = `/getProfileInfo/${profileID}` 
-    // console.log(url)
+  
     $.get(url).done((response)=>{
-        console.log(response)
         let profileDescription = response[0].profile_description;
-        // console.log(profileDescription)
-        
-        // profileDescription = htmlEntities(profileDescription)
-
         profileDescription = $.nl2br(profileDescription)
-        // profileDescription = $.br2nl(profileDescription)
-
-
         let prof_img = `<img id="profileImage" class="figure" src="${response[0].profile_image}" alt="Profile Image" style="width: 100%">`
         $(prof_img).prependTo('.media-object')
 
@@ -76,7 +59,6 @@ $(function() {
     <img id="business_image2" src="${response[0].business_image2}" alt="Business Image 2" class="figure-business" style="width: 100%">
     <img id="business_image3" src="${response[0].business_image3}" alt="Business Image 3" class="figure-business" style="width: 100%">`
     $(images).appendTo('.media-object-business')
-    // console.log(response[0].profile_description)
     })
     
 })

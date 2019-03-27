@@ -1,5 +1,4 @@
 $(function () {
-    // getProfile();
     let clientID = $('#profileID').val();
     let url = '/adminEditProfile/' + clientID;
     getProfile();
@@ -15,7 +14,6 @@ $(function () {
                 } else {
                     profileImageWidth = '30%'
                 }
-                console.log(result);
                 $('#businessName').val(result[0][0].businessName)
                 $('#profileDelails').text(`Profile Preview - ${result[0][0].businessName} - ${result[0][0].id}`)
                 $('#profileImage').attr('src', result[0][0].profile_image).css('width', `${profileImageWidth}`)
@@ -25,6 +23,7 @@ $(function () {
                 $('#facebook').val(result[0][0].facebook)
                 $('#instagram').val(result[0][0].instagram)
                 $('#linkedin').val(result[0][0].linkedin)
+                $('#first_name').val(result[0][0].first_name)
                 $('#profile_description').val(result[0][0].profile_description)
                 $('#business_image1').attr('src', result[0][0].business_image1).css('width', `${profileImageWidth}`)
                 $('#business_image2').attr('src', result[0][0].business_image2).css('width', `${profileImageWidth}`)
@@ -33,12 +32,6 @@ $(function () {
                 areas = result[1];
                 let sortAreas = result[0][0].areas
                 sortAreas = JSON.parse(sortAreas)
-                console.log(sortAreas)
-                // let areaStr = sortAreas.length;
-                // sortAreas = sortAreas.substring(1, areaStr - 1)
-                // // sortAreas = sortAreas.substring(1,areaStr-1)
-                // sortAreas = sortAreas.split(',')
-                // console.log(sortAreas)
 
                 function changeArea(value, checked) {
                     for (var i in areas) {
@@ -60,16 +53,11 @@ $(function () {
                     $(areaCheckboxes).appendTo('#chosenAreas');
                 }
                 categories = result[2]
-                // console.log(categories)
+
 
                 let sortCategories = result[0][0].catarea
                 sortCategories = JSON.parse(sortCategories)
-                // let str = sortCategories.length;
-                // sortCategories = sortCategories.substring(1,str-1)
-                // sortCategories = sortCategories.split(',')
-
-                console.log(sortCategories)
-
+  
 
                 function changeCat(value, checked) {
                     for (var i in categories) {
@@ -82,7 +70,7 @@ $(function () {
                 for (i = 0; i < sortCategories.length; i++) {
 
                     changeCat(sortCategories[i], "Checked")
-                    // console.log(sortCategories[i])
+
 
                 }
 
@@ -114,7 +102,7 @@ $(function () {
                 $('#selectedOption').val(result[0][0].selectedOption)
                 let imagesURL = `/editprofileImages`
                 $('#updateImages').attr('href', imagesURL)
-                // console.log(imagesURL)
+ 
             })
     }
     let originalData;
@@ -128,15 +116,14 @@ $(function () {
         if ($('#saveChangesButton').attr('disabled')) {
             e.preventDefault();
             originalData = $(this).val();
-            // console.log(originalData);
+
         }
     });
     $(focusAreas).blur(function (e) {
         if ($('#saveChangesButton').attr('disabled')) {
             e.preventDefault();
             updatedData = $(this).val();
-            // console.log(updatedData);
-            // saveChangesButton    
+       
             if (originalData !== updatedData) {
                 $('#saveChangesButton').attr('disabled', false).css('background-color', 'red')
             }
@@ -192,7 +179,6 @@ $(function () {
             b = parseInt(b.split('area')[1])
             areasArray.push(b)
         }
-        console.log(areasArray)
     }
 
     $('#chosenAreas').click((e) => {
@@ -321,7 +307,6 @@ $(function () {
             b = parseInt(b.split('area')[1])
             categoriesArray.push(b)
         }
-        console.log(categoriesArray)
     }
 
     $('#chosenCategories').click((e) => {
@@ -346,18 +331,13 @@ $(function () {
         calcCategories()
         let categoriesToPost = categoriesArray;
         calcAreas()
-        // console.log(categoriesToPost)
         let areasToPost = areasArray
-        console.log(areasToPost)
-        // console.log(areasArray)
-        // console.log(categoriesArray)
         let adminAssist;
         if ($('#adminAssistance').prop('checked')) {
             adminAssist = true
         } else {
             adminAssist = false
         }
-        console.log(adminAssist)
         let paid_to_date;
         if ($('#paidToDate').prop('checked')) {
             paid_to_date = true
@@ -365,8 +345,6 @@ $(function () {
             paid_to_date = false
         }
         let payment_expires = moment($('#paymentExpiry').val()).format("YYYY-MM-DD HH:mm:ss")
-        // payment_expires =  new Date(payment_expires)
-        console.log(payment_expires)
         let terms = $('#terms').val()
         let selectedOption = $('#selectedOption').val()
         let profile_approved;
@@ -375,7 +353,7 @@ $(function () {
         } else {
             profile_approved = false
         }
-        console.log(profile_approved)
+ 
 
         let data = {
             id: id,
@@ -396,11 +374,8 @@ $(function () {
             selectedOption: selectedOption,
             profile_approved: profile_approved
         }
-        // data = {id: [1,2,3,4,5]}
         data = JSON.stringify(data)
 
-
-        // console.log(data)
         $.ajax({
                 url: `/adminUpdateProfile`,
                 type: 'post',
@@ -424,11 +399,101 @@ $(function () {
             })
     })
 
-    // localStorage.setItem(key, value);
-    // localStorage.getItem(key);
-    // localStorage.removeItem("lastname");
+    $('#emailClient').click((e) => {
+        e.preventDefault()
+        calculateCosts()
+        setTimeout(() => {
+            let email = $('#email').val()
+            let first_name = $('#first_name').val()
+            let businessName = $('#businessName').val()
+            let categoryCostMnthly = 10 * categoriesCosting;
+            let categoryCostAnnual = 70 * categoriesCosting;
+            let categoryCostonceOff = 10 * categoriesCosting;
+            let adminAssistMthly = 0;
+            let adminAssistAnnual = 0;
+            let adminAssistOneOff = 0;
+            if (adminAssistChosen == true) {
+                adminAssistMthly = 80 * areasCosting
+                adminAssistAnnual = 960 * areasCosting
+                adminAssistOneOff = 80 * areasCosting
+            }
+            let data = {
+                email: email,
+                first_name: first_name,
+                businessName: businessName,
+                optionCostMthly: optionCostMthly,
+                optionCostAnnual: optionCostAnnual,
+                optionCostOnceOff: optionCostOnceOff,
+                categoryCostMnthly: categoryCostMnthly,
+                categoryCostAnnual: categoryCostAnnual,
+                categoryCostonceOff: categoryCostonceOff,
+                adminAssistMthly: adminAssistMthly,
+                adminAssistAnnual: adminAssistAnnual,
+                adminAssistOneOff: adminAssistOneOff
+            }
+            data = JSON.stringify(data)
 
-    // http://localhost:3000/previewProfile/212
+            $.ajax({
+                url: `/sendClientEmail`,
+                type: 'post',
+                data: data,
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                processData: true
+            }).done((response) => {
+                if (response = 'Email Sent') {
+                    $('#successEmail').css('display', 'block')
+                    setTimeout(() => {
+                        $('#successEmail').css('display', 'none')
+
+                    }, 1500)
+                }
+            })
+        }, 50)
 
 
+
+    })
+
+    // ========= calc costs for email to client ==============
+    let categoriesCosting = 0;
+    let areasCosting = 0;
+    let optionCostMthly = 0;
+    let optionCostAnnual = 0;
+    let optionCostOnceOff = 0;
+    let adminAssistChosen = false;
+
+    function calculateCosts() {
+        let chosenCategories = categories.filter((el) => {
+            if (el.checked == 'Checked') {
+                return el.id
+            }
+        })
+
+        if (chosenCategories.length > 1) {
+            categoriesCosting = chosenCategories.length - 1
+        }
+        let chosenAreas = areas.filter((el) => {
+            if (el.checked == 'Checked') {
+                return el.id
+            }
+        })
+
+        if (chosenAreas.length > 0) {
+            areasCosting = chosenAreas.length
+        }
+        if ($('#adminAssistance').prop('checked', ) == true) {
+            adminAssistChosen = true;
+        }
+
+        let optionChosen = $('#selectedOption').val()
+        let url = `/clientPackage/${optionChosen}`
+        $.get(url).done((response) => {
+
+            optionCostMthly = response[0].per_month
+            optionCostAnnual = response[0].per_year
+            optionCostOnceOff = response[0].once_off
+
+        })
+    }
 });

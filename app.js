@@ -8,14 +8,17 @@ const express = require("express"),
 
 const port = 3000 || process.env.PORT;
 
-const portExport = { //Not sure if I need this
-    port: 9999
-  }
-  module.exports = portExport;
+
 
 if (port === 3000) {
     const dotenv = require('dotenv').config();
 }
+
+const portExport = { //Not sure if I need this
+  port: port
+}
+module.exports = portExport;
+
 
 app.set("view engine", "ejs");
 
@@ -31,10 +34,6 @@ app.use(session({
     cookie: { maxAge: 3600000 } //1 hour
   }))
 
- 
-
-
-// const   screenRoutes  =  require('../suburbs/public/routes/screenRoutes'),
 const   screenRoutes  =  require('./public/routes/screenRoutes'),
         suburbsRoutes = require('./public/routes/individualSuburbRoutes/suburbsRoutes'),
         createProfileRoutes = require('./public/routes/registerRoutes/createProfile'),
@@ -78,5 +77,7 @@ app.use(addNoticeRoutes);
 app.listen(port, () => {
     console.log(`App is running on Port: ${port}`);
 })
+
+
 
 

@@ -4,9 +4,9 @@ var pool = require('../connection');
 
 router.get('/getPackages/:numberOfAreas', function(req, res){
     let numberOfAreas = req.params.numberOfAreas;
-    // console.log(numberOfAreas)
+
     var sql = `select * from packages where number_of_suburbs = ${numberOfAreas} order by id`;
-    // console.log(sql)
+ 
 
 
     pool.getConnection(function(err, connection){
@@ -16,16 +16,12 @@ router.get('/getPackages/:numberOfAreas', function(req, res){
           }
           connection.query(sql, function(error, result) {
             if (error) throw error;
-            console.log(result)
+
             res.send(result);
         });
         connection.release();
     });
 });
-
-
-
-
 
 
 module.exports = router;

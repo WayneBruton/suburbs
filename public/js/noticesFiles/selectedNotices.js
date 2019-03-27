@@ -14,17 +14,14 @@ $(function(){
 
     let areaCode = $('#areaCode').val()
     let areaDescription;
-    console.log(areaCode)
     let areaURL = `/getNoticeArea/${areaCode}`
     $.get(areaURL).done((response)=>{
-        console.log(response)
         areaDescription = response[0].area_description
         $('#pageHeader').text(`${areaDescription}`)
     })
     let url = `/getNotices/${areaCode}`
     setTimeout(()=>{
         $.get(url).done((response)=>{
-            console.log(response)
             if (!response.length) {
                 $('#noNotices').css('display', 'block')
                 $('#someNotices').css('display', 'none')
