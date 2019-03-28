@@ -23,7 +23,7 @@ router.get('/viewNewProfile/:clientID', function (req, res) {
 
     let clientID = req.params.clientID;
     var sql = `select * from  client_profiles  where id = ${clientID}`;
-    console.log(sql)
+
     
     pool.getConnection(function (err, connection) {
         if (err) {

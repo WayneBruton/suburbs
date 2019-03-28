@@ -61,7 +61,7 @@ router.get('/cropC/:image/:x/:y/:w/:h/:pw/:ph/:business2ImageName', (req, res) =
 
     var imageToCrop = 'public/uploads/' + req.params.image;
     let business2ImageName = req.params.business2ImageName;
-    console.log('Wayne::::::',imageToCrop);
+  
     let x = parseInt(req.params.x);
     let y = parseInt(req.params.y);
     let w = parseInt(req.params.w);
@@ -89,7 +89,7 @@ router.get('/cropD/:image/:x/:y/:w/:h/:pw/:ph/:business3ImageName', (req, res) =
 
     var imageToCrop = 'public/uploads/' + req.params.image;
     let business3ImageName = req.params.business3ImageName;
-    console.log('Wayne::::::',imageToCrop);
+
     let x = parseInt(req.params.x);
     let y = parseInt(req.params.y);
     let w = parseInt(req.params.w);
