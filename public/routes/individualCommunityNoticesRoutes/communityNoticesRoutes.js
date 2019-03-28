@@ -151,7 +151,7 @@ router.get('/westcoastNotices', (req, res) => {
 
 router.get('/getNotices/:areaCode', function (req, res) {
     let areaCode = req.params.areaCode;
-    console.log(areaCode)
+ 
 
     let sql = `select *
     from notices
@@ -171,7 +171,7 @@ router.get('/getNotices/:areaCode', function (req, res) {
 
 router.get('/getNoticeArea/:areaCode', function (req, res) {
     let areaCode = req.params.areaCode;
-    console.log(areaCode)
+
 
     let sql = `select *
     from areas
