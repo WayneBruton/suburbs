@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 var pool = require('../connection');
+var sanitizeHtml = require('sanitize-html');
 
 const fs = require('fs');
 const path = require('path');
@@ -44,7 +45,8 @@ router.post('/createProfile', (req, res) => {
         profile_heading = businessName;
     }
 
-    let description = req.body.description;
+    let description = sanitizeHtml(req.body.description);
+    // sanitizeHtml(dirty);
 
     let parseIntAreas = areas.map(function (area) {
         return parseInt(area);
