@@ -12,7 +12,7 @@ router.get('/getActiveProfilesCategories/:areaCode', function (req, res) {
     LEFT JOIN
     client_profiles p
       ON  JSON_CONTAINS(p.areas,      '${areaCode}',                    '$')
-      AND JSON_CONTAINS(p.catarea, CAST(c.id AS CHAR(32)), '$') and p.paid_to_date = true
+      AND JSON_CONTAINS(p.catarea, CAST(c.id AS CHAR(32)), '$') and p.paid_to_date = true 
     GROUP BY c.id`
     pool.getConnection(function (err, connection) {
         if (err) {

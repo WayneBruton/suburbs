@@ -15,6 +15,7 @@ $(function () {
     let areaCode = $('#areaCode').val();
     let url = `/getCharityProfile/${areaCode}`
     $.get(url).done((response) => {
+        console.log(response)
         if (response.length) {
             $('#profileDelails').text(response[0].businessName)
             $('#businessName').val(response[0].businessName)
@@ -26,6 +27,7 @@ $(function () {
             $('#website').attr('href', `${response[0].website}`)
             $('#facebook').attr('href', `mailTo:${response[0].facebook}`)
             $('#facebook').text(response[0].facebook)
+            $('#npo_number').val(response[0].npo_number)
             let profileDescription = response[0].profile_description;
             profileDescription = $.nl2br(profileDescription)
             $('.text-infoProfile').empty()
@@ -40,5 +42,5 @@ $(function () {
             $('#profileDelails').text('Charity Coming Soon!')
             $('#ifCharity').css('display', 'none')
         }
-    })
+    }) 
 })

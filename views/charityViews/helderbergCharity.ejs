@@ -1,8 +1,8 @@
 <% include ../partials/header %> 
 <script src="../js/charityFiles/selectedCharity.js"></script>
 
+  
  
-
 <div class="container col-sm-12" id="mainform"
     style="width: 100vw; display: flex; justify-content: center; margin-top: 55px;  min-height: 100vh">
 
@@ -16,13 +16,17 @@
                     </strong></h2> 
             </div>
             <br>
-            <div id="ifCharity">
+            <div id="ifCharity" style="display:none">
             <div class="media-object">
                 <img id="profileImage" class="figure" src="" alt="Profile Image">
                 <div class="media-body">
                     <div class="media-body-info">
                         <label for="businessName" id="">Business Name:</label>
                         <input type="text" id="businessName" class="media-body-info-detail" disabled>
+                    </div>
+                    <div class="media-body-info">
+                        <label for="npo_number" id="">NPO Number:</label>
+                        <input type="text" id="npo_number" class="media-body-info-detail" disabled>
                     </div>
                     <div class="media-body-info">
                         <label for=" mob_no" id="">Contact:</label>
@@ -46,7 +50,7 @@
             <br>
             <div class="text-infoProfile">
                 <label for="profile_description" id=""><strong>Profile Description:</strong></label>
-                <p name="" id="profile_description" cols="30" rows="35"></p>
+                <p name="" id="profile_description"></p>
             </div>
             <hr>
 

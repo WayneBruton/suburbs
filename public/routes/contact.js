@@ -74,7 +74,7 @@ router.post('/send-email', (req, res) => {
     let mailOptions = {
 
         from: 'Suburbs Directory Contact Form <lisa@suburbsdirectory.co.za>',
-        to: 'lisasallyberg@gmail.com, lisa@suburbsdirectory.co.za, waynebruton@icloud.com',
+        to: 'lisasallyberg@gmail.com,nicole@suburbsdirectory.com, lisa@suburbsdirectory.co.za, waynebruton@icloud.com',
         subject: `Suburbs Directory Welcome Email - ${subject}`,
         text: 'Hello world?',
         html: output
@@ -149,7 +149,7 @@ router.post('/sendClientEmail', (req, res) => {
 	
 	<h3>Message</h3><br>
 	<p>Dear ${name}</p><br>
-	<p>Your profile for ${businessName} has been successful and approved!</p><br>
+	<p>Your profile for ${businessName} has been successfully approved!</p><br>
     <p>Your options are the following:</p>
     <table>
     <tr>
@@ -184,15 +184,18 @@ router.post('/sendClientEmail', (req, res) => {
     </tr>
     </table>
 
-    <p>If you are satisfied, please deposit the amount for your option chosen:</p>
+    <p>If you are satisfied, please deposit the amount for your option chosen and send proof of payment to Lisa or Nicole as below:</p>
     <ul>
-        <li>Bank Name: Standard Bank</li>
-        <li>Branch: Constntia</li>
-        <li>Account Number: 123 4567 890</li>
-        <li>Branch Code: 123-456</li>
+        <li>Bank Name: FNB</li>
+        <li>Branch: Blue Route</li>
+        <li>Account Number: 628 0624 8854</li>
+        <li>Branch Code: 250-655</li>
         <li>Reference: ${businessName}</li>
     </ul><br>
     <p>or contact lisa at: lisa@suburbsdirectory.co.za</p>
+    <p>or Nicole at: nicole@suburbsdirectory.co.za</p>
+
+    Should need to change / add areas or categories, please contact Lisa or Nicole as above.
     `;
 
     console.log(output);
@@ -305,7 +308,7 @@ router.post('/send-charity-email', (req, res) => {
 
     let mailOptions = {
         from: 'Suburbs Directory Charity Form <lisa@suburbsdirectory.co.za>',
-        to: 'lisasallyberg@gmail.com, lisa@suburbsdirectory.co.za, waynebruton@icloud.com',
+        to: 'lisasallyberg@gmail.com,nicole@suburbsdirectory.co.za, lisa@suburbsdirectory.co.za, waynebruton@icloud.com',
         subject: `Suburbs Directory Charity Email`,
         text: 'Hello world?',
         html: output

@@ -608,6 +608,10 @@ Tooltips */
         flex-wrap: nowrap;
     }
 
+    #someNotices h2 {
+        font-size: 100%;
+    }
+
   }
 
   

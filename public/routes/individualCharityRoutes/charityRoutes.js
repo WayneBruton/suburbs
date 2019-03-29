@@ -165,5 +165,5 @@ router.get('/getCharityProfile/:areaCode', function (req, res) {
         connection.release();
     });
 });
-
+ 
 module.exports = router

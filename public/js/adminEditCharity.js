@@ -15,6 +15,7 @@ $(function () {
         charityImage = `${response[0].charity_image}`
         $('#charityImage').prop('src', charityImage)
         $('#businessName').val(response[0].businessName)
+        $('#npo_number').val(response[0].npo_number)
         $('#first_name').val(response[0].first_name)
         $('#last_name').val(response[0].last_name)
         $('#mob_no').val(response[0].mob_no)
@@ -67,6 +68,7 @@ $(function () {
         // let charityImg = $('#charityImage').prop('src');
         let newCharityImg = charityUploadedImage
         let businessName = $('#businessName').val()
+        let npo_number = $('#npo_number').val()
         let first_name = $('#first_name').val()
         let last_name = $('#last_name').val()
         let mob_no = $('#mob_no').val()
@@ -91,6 +93,7 @@ $(function () {
             originalCharityImage: charityImage,
             newCharityImg: newCharityImg,
             businessName: businessName,
+            npo_number: npo_number,
             first_name: first_name,
             last_name: last_name,
             mob_no: mob_no,

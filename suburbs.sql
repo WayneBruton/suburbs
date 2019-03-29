@@ -113,7 +113,6 @@ select * from categories;
 
 create table users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    -- username VARCHAR(15) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     Upassword VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT NOW(),
@@ -126,6 +125,7 @@ insert into users (email, Upassword) values ('waynebruton@icloud.com', 'password
 CREATE TABLE charities (
     id INT AUTO_INCREMENT PRIMARY KEY,
     businessName VARCHAR(60) NOT NULL UNIQUE,
+    npo_number VARCHAR(30),
     first_name VARCHAR(60) NOT NULL,
     last_name VARCHAR(60) NOT NULL,
     mob_no VARCHAR(13) NOT NULL,
@@ -157,4 +157,4 @@ CREATE TABLE notices (
 
 
 
-
+ 

@@ -79,6 +79,7 @@ router.post('/createCharity', (req, res) => {
     let businessName = req.body.businessName
     let first_name = req.body.first_name
     let last_name = req.body.last_name
+    let npo_number = req.body.npo_number
     let mob_no = req.body.mob_no
     let email = req.body.email
     let website = req.body.website
@@ -156,6 +157,7 @@ router.post('/editCharity', (req, res) => {
     let originalImage = req.body.originalCharityImage
     let image = req.body.newCharityImg;
     let businessName = req.body.businessName
+    let npo_number = req.body.npo_number
     let first_name = req.body.first_name
     let last_name = req.body.last_name
     let mob_no = req.body.mob_no
@@ -169,6 +171,8 @@ router.post('/editCharity', (req, res) => {
     let accountNumber = req.body.accountNumber
     let branchCode = req.body.branchCode
     let isActive = req.body.isActive
+
+    console.log(npo_number)
 
 
     if (image !== undefined) {
@@ -185,7 +189,7 @@ router.post('/editCharity', (req, res) => {
     let charity_image = `/images/charities/${businessName}.jpg`
 
 
-    var sql = `Update charities set businessName = '${businessName}',first_name = '${first_name}',last_name = '${last_name}',
+    var sql = `Update charities set businessName = '${businessName}', npo_number = '${npo_number}', first_name = '${first_name}',last_name = '${last_name}',
             mob_no = '${mob_no}' ,email = '${email}' ,website = '${website}',facebook = '${facebook}' ,areas = ${areas},
             profile_description = '${profile_description}',bankName = '${bankName}' ,branchName = '${branchName}',
             accountNumber = '${accountNumber}',branchCode = '${branchCode}',isActive = ${isActive}, charity_image = '${charity_image}'

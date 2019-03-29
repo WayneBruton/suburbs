@@ -6,12 +6,12 @@ const mysql = require('mysql');
 
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    database: 'suburbs',
-    password: '12071994W!',
+    host: process.env.DBHOST,
+    user: process.env.DBUSER,
+    database: process.env.DATABASE,
+    password: process.env.DBPASSWORD,
     multipleStatements: true, //for more than one query in a get route
     debug: false
 });
 
-module.exports = pool;
+module.exports = pool; 

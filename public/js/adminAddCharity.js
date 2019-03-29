@@ -33,6 +33,7 @@ $(function () {
         let businessName = $('#businessName').val()
         let first_name = $('#first_name').val()
         let last_name = $('#last_name').val()
+        let npo_number = $('#npo_number').val()
         let mob_no = $('#mob_no').val()
         let email = $('#email').val()
         let website = $('#website').val()
@@ -53,6 +54,7 @@ $(function () {
         let data = {
             charityImg: charityImg,
             businessName: businessName,
+            npo_number: npo_number,
             first_name: first_name,
             last_name: last_name,
             mob_no: mob_no,
@@ -149,4 +151,4 @@ $(function () {
             }, 2000)
         }
     })
-})
+}) 
