@@ -24,7 +24,7 @@ router.get('/viewNewProfile/:clientID', function (req, res) {
     let clientID = req.params.clientID;
     var sql = `select * from  client_profiles  where id = ${clientID}`;
 
-    
+
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();
@@ -35,7 +35,7 @@ router.get('/viewNewProfile/:clientID', function (req, res) {
                 res.send('error', error)
             }
             req.session.clientID = result[0].id;
-            req.session.businessName = result[0].businessName;     
+            req.session.businessName = result[0].businessName;
             res.send(result);
         });
         connection.release();
@@ -44,7 +44,7 @@ router.get('/viewNewProfile/:clientID', function (req, res) {
 
 router.post('/updateProfile', (req, res) => {
     let data = req.body;
-    let id = req.body.id; 
+    let id = req.body.id;
 
     let sql = `update client_profiles set ? where id = ${req.body.id}`
     pool.getConnection(function (err, connection) {
@@ -67,33 +67,37 @@ router.post('/updateProfile', (req, res) => {
                     navBarType: navBarType,
                     backgroundColor: backgroundColor,
                     clientID: id
-                });              
+                });
             }
         });
         connection.release();
     });
-}); 
+});
 
 
-router.get('/editprofileImages', (req, res)=>{
+router.get('/editprofileImages', (req, res) => {
     var title = 'Suburbs Directory - Load Profile'
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
     var backgroundColor = 'background-color: #4267b4;"'
     let profileId = req.session.clientID;
     let businessName = req.session.businessName;
-
-    res.render('profileImages', {
-        title: title,
-        source: "",
-        color: color,
-        navBarType: navBarType,
-        backgroundColor: backgroundColor,
-        businessName: businessName,
-        profileId: profileId
-    })
+    console.log('The Profile ID is', profileId)
+    if (profileId == undefined) {
+        res.redirect('back')
+    } else {
+        res.render('profileImages', {
+            title: title,
+            source: "",
+            color: color,
+            navBarType: navBarType,
+            backgroundColor: backgroundColor,
+            businessName: businessName,
+            profileId: profileId
+        })
+    }
 })
-
+  
 
 
 module.exports = router;

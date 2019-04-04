@@ -12,6 +12,26 @@ $(function(){
             $(checkboxes).appendTo('#areas')
         })
     })
+
+    $('#loadNoticeImage').submit(function (e) {
+        e.preventDefault();
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false
+        }).done(function (response) {
+            charityUploadedImage = response;
+            $('#noticeImage').prop('src', response).css('display', 'block')
+        })
+    });
+
+
     $('#createNoticeBtn').click((e)=>{
         e.preventDefault();
         let url = '/createNotice'
@@ -25,12 +45,16 @@ $(function(){
         } else {
             isActive = false
         }
+        let notice_image = $('#noticeImage').attr('src')
+        // console.log(noticeImage)
         let data = {
             heading,
             areas,
             notice_text,
-            isActive
+            isActive,
+            notice_image
         }
+
 
         $.ajax({
             url: url,

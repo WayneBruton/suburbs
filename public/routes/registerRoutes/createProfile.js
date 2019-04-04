@@ -104,14 +104,132 @@ router.get('/checkProfileNames/:businessName', function (req, res) {
         }
         connection.query(sql, function (error, result) {
             if (error) {
-                res.send('Error:',error )
-            } 
+                res.send('Error:', error)
+            }
             res.send(result);
         });
         connection.release();
     });
 });
+// =========================
+
+// Select Images
+
+router.get('/getProfileImages/:clientID', function (req, res) {
+    let clientID = req.params.clientID;
+    var sql = `select profile_image, business_image1, business_image2, business_image3 from client_profiles where id = ${clientID}`;
+    pool.getConnection(function (err, connection) {
+        if (err) {
+            connection.release();
+            resizeBy.send('Error with connection');
+        }
+        connection.query(sql, function (error, result) {
+            if (error) {
+                res.send('The Error is', error)
+            } else {
+                res.send(result);
+            }
+        });
+        connection.release();
+    });
+});
+
+// Save Images
+
+router.post('/editProfileImages', function (req, res) {
+    // let clientID = req.body.id;
+    console.log(req.body)
+    let id = req.body.id
+    let profile_image = req.body.profile_image
+    let business_image1 = req.body.business_image1
+    let business_image2 = req.body.business_image2
+    let business_image3 = req.body.business_image3
+
+
+    if (profile_image.substring(0, 8) == 'uploads/') {
+        fs.copyFile(`public/${profile_image}`, `public/images/profiles/${id}ProfilePic.jpg`, (err) => {
+            if (err) {
+                console.log(err)
+            };
+        })
+        setTimeout(() => {
+            fs.unlink(`public/${business_image1}`, (err) => {
+                if (err) {
+                    console.log(err)
+                };
+            })
+        }, 200)
+    }
+    if (business_image1.substring(0, 8) == 'uploads/') {
+        fs.copyFile(`public/${business_image1}`, `public/images/profiles/${id}Business1Pic.jpg`, (err) => {
+            if (err) {
+                console.log(err)
+            };
+        })
+        setTimeout(() => {
+            fs.unlink(`public/${business_image1}`, (err) => {
+                if (err) {
+                    console.log(err)
+                };
+            })
+        }, 250)
+    }
+    if (business_image2.substring(0, 8) == 'uploads/') {
+        fs.copyFile(`public/${business_image2}`, `public/images/profiles/${id}Business2Pic.jpg`, (err) => {
+            if (err) {
+                console.log(err)
+            };
+        })
+        setTimeout(() => {
+            fs.unlink(`public/${business_image2}`, (err) => {
+                if (err) {
+                    console.log(err)
+                };
+            })
+        }, 300)
+    }
+    if (business_image3.substring(0, 8) == 'uploads/') {
+        fs.copyFile(`public/${business_image3}`, `public/images/profiles/${id}Business3Pic.jpg`, (err) => {
+            if (err) {
+                console.log(err)
+            };
+        })
+        setTimeout(() => {
+            fs.unlink(`public/${business_image3}`, (err) => {
+                if (err) {
+                    console.log(err)
+                };
+            })
+        }, 350)
+    }
+    setTimeout(() => {
+        let newProfileImage = `/images/profiles/${id}ProfilePic.jpg`
+        let newBusinessImage1 = `/images/profiles/${id}Business1Pic.jpg`
+        let newBusinessImage2 = `/images/profiles/${id}Business2Pic.jpg`
+        let newBusinessImage3 = `/images/profiles/${id}Business3Pic.jpg`
+        var sql = `update client_profiles set  profile_image = '${newProfileImage}', business_image1 = '${newBusinessImage1}', business_image2 = '${newBusinessImage2}', business_image3 = '${newBusinessImage3}' where id = ${id}`;
+        pool.getConnection(function (err, connection) {
+            if (err) {
+                connection.release();
+                resizeBy.send('Error with connection');
+            }
+            connection.query(sql, function (error, result) {
+                if (error) {
+                    res.send('The Error is', error)
+                } else {
+                    console.log('The result is:', result)
+                    res.send(result);
+
+                }
+            });
+            connection.release();
+        });
+    }, 500)
+});
+
 // ===============
+
+
 router.get('/saveProfileImg/:clientID', function (req, res) {
     let clientID = req.params.clientID;
     let image = `/images/profiles/${clientID}ProfilePic.jpg`

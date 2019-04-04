@@ -1,4 +1,4 @@
-$(function () { 
+$(function () {
 
 
     //   search profiles by name===================================
@@ -14,7 +14,7 @@ $(function () {
     $('#businessName').keyup(function (e) {
         e.preventDefault();
         if ($(this).val().trim() != '') {
-      
+
             let option = $(this).val().trim()
 
             let url = `/getprofilesByName/${option}`
@@ -233,71 +233,71 @@ $(function () {
         $("#editCharityContainer").css("background-color", "lightgrey");
         $("#newCharityContainer").css("background-color", "");
 
- 
-            $("#editCharity").prop("checked", true);
-            $("#newCharity").prop("checked", false);
-            $('#retrievedCharityProfiles').empty()
-            $('#retrievedCharityHeading').text('Edit a charity')
-            let url = 'getLatestCharities'
-            $.get(url)
-            .done((answer)=>{
+
+        $("#editCharity").prop("checked", true);
+        $("#newCharity").prop("checked", false);
+        $('#retrievedCharityProfiles').empty()
+        $('#retrievedCharityHeading').text('Edit a charity')
+        let url = 'getLatestCharities'
+        $.get(url)
+            .done((answer) => {
 
 
-                    for (i = 0; i < answer.length; i++) {
-                        let l_item = `<li id="${
+                for (i = 0; i < answer.length; i++) {
+                    let l_item = `<li id="${
                             answer[i].id
                           }" style="width: 100%; margin: 10px; border: 1px solid lightgrey; padding:5px;"><a href="/adminEditCharity/${answer[i].id}">${
                             answer[i].businessName
                           } - ${answer[i].email}<a></li>`;
-                        $(l_item).appendTo("#retrievedCharityProfiles");
-                 }
+                    $(l_item).appendTo("#retrievedCharityProfiles");
+                }
             })
     });
 
 
 
-  // =============Show Notices Form ======================
+    // =============Show Notices Form ======================
 
 
-  $('#findNoticesButton').click((e) => {
-    $("#dashboardButtons").css("display", "none");
-    $("#newNotice").prop("checked", false);
-    $("#editNotice").prop("checked", false);
-    $("#newNoticeContainer").css("background-color", "");
-    $("#editNoticeContainer").css("background-color", "");
-    $('#noticeDetails').css('display', 'block')
-
-})
-
-$("#closeNoticeDetails").click(e => {
-    e.preventDefault();
-    $("#retrievedNoticeProfiles").empty();
-
-    $("#newNotice").prop("checked", false);
-    $("#editNotice").prop("checked", false);
-    $("#approved").prop("checked", false);
-
-    $("#newNoticeContainer").css("background-color", "");
-    $("#editNoticeContainer").css("background-color", "");
-
-    $("#dashboardButtons").css("display", "flex");
-    $("#noticeDetails").css("display", "none");
-
-});
-
-$("#newNoticeContainer, #newNotice").click(() => {
-    $("#newNoticeContainer").css("background-color", "lightgrey");
-    $("#editNoticeContainer").css("background-color", "");
-    // $("#approvedContainer").css("background-color", "");
-
-
-    setTimeout(() => {
-        $("#newNotice").prop("checked", true);
+    $('#findNoticesButton').click((e) => {
+        $("#dashboardButtons").css("display", "none");
+        $("#newNotice").prop("checked", false);
         $("#editNotice").prop("checked", false);
-        // $("#approved").prop("checked", false);
-        // getProfiles();
-    }, 20);
-});
+        $("#newNoticeContainer").css("background-color", "");
+        $("#editNoticeContainer").css("background-color", "");
+        $('#noticeDetails').css('display', 'block')
+
+    })
+
+    $("#closeNoticeDetails").click(e => {
+        e.preventDefault();
+        $("#retrievedNoticeProfiles").empty();
+
+        $("#newNotice").prop("checked", false);
+        $("#editNotice").prop("checked", false);
+        $("#approved").prop("checked", false);
+
+        $("#newNoticeContainer").css("background-color", "");
+        $("#editNoticeContainer").css("background-color", "");
+
+        $("#dashboardButtons").css("display", "flex");
+        $("#noticeDetails").css("display", "none");
+
+    });
+
+    $("#newNoticeContainer, #newNotice").click(() => {
+        $("#newNoticeContainer").css("background-color", "lightgrey");
+        $("#editNoticeContainer").css("background-color", "");
+        // $("#approvedContainer").css("background-color", "");
+
+
+        setTimeout(() => {
+            $("#newNotice").prop("checked", true);
+            $("#editNotice").prop("checked", false);
+            // $("#approved").prop("checked", false);
+            // getProfiles();
+        }, 20);
+    });
 
 
 
@@ -323,28 +323,47 @@ $("#newNoticeContainer, #newNotice").click(() => {
         e.preventDefault()
         $("#editNoticeContainer").css("background-color", "lightgrey");
         $("#newNoticeContainer").css("background-color", "");
+        $("#editNotice").prop("checked", true);
+        $("#newNotice").prop("checked", false);
+        $('#retrievedNoticeProfiles').empty()
+        $('#retrievedNoticeHeading').text('Edit a Notice')
+        let url = 'getLatestNotices'
+        $.get(url)
+            .done((answer) => {
 
- 
-            $("#editNotice").prop("checked", true);
-            $("#newNotice").prop("checked", false);
-            $('#retrievedNoticeProfiles').empty()
-            $('#retrievedNoticeHeading').text('Edit a Notice')
-            let url = 'getLatestNotices'
-            $.get(url)
-            .done((answer)=>{
-  
                 if (answer.length) {
                     for (i = 0; i < answer.length; i++) {
                         let createdAt = new Date(answer[i].created_at)
-                        let l_item = `<li id="${answer[i].id}" style="width: 100%; margin: 10px; border: 1px solid lightgrey; padding:5px;"><a href="/adminEditNotice/${answer[i].id}">
-                        ${answer[i].heading} - ${createdAt}<a></li>`;
+                        let l_item = `<li id="${answer[i].id}" style="width: 100%; margin: 10px; border: 1px solid lightgrey; padding:5px; display: flex"><a href="/adminEditNotice/${answer[i].id}">
+                        ${answer[i].heading} - ${createdAt}<a><button class="deleteNotice" id="${answer[i].id}">X</button></li>`;
                         $(l_item).appendTo("#retrievedNoticeProfiles");
-                 }
+                    }
                 }
             })
     });
 
-
-
-
+    $('#retrievedNoticeProfiles').on('click', '.deleteNotice', function () {
+        if (confirm('Are you sure? \n This cannot be undone')) {
+            // console.log($(this).attr('id'))
+            let id = $(this).attr('id')
+            let imageToDelete = $('#noticeImage').attr('src')
+            let url = `/deleteNotice/${id}`
+            $.get(url).done((response) => {
+                // console.log(response)
+                $('#retrievedNoticeProfiles').empty()
+                let url = 'getLatestNotices'
+                $.get(url)
+                    .done((answer) => {
+                        if (answer.length) {
+                            for (i = 0; i < answer.length; i++) {
+                                let createdAt = new Date(answer[i].created_at)
+                                let l_item = `<li id="${answer[i].id}" style="width: 100%; margin: 10px; border: 1px solid lightgrey; padding:5px; display: flex"><a href="/adminEditNotice/${answer[i].id}">
+                        ${answer[i].heading} - ${createdAt}<a><button class="deleteNotice" id="${answer[i].id}">X</button></li>`;
+                                $(l_item).appendTo("#retrievedNoticeProfiles");
+                            }
+                        }
+                    })
+            })
+        }
+    });
 });

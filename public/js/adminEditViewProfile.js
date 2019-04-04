@@ -5,6 +5,8 @@ $(function () {
     let areas;
     let categories;
 
+    $('#editProfileImages').attr('href', `/previewProfile/${clientID}`)
+
     function getProfile(clientID) {
         $.get(url)
             .done((result) => {
@@ -399,6 +401,10 @@ $(function () {
             })
     })
 
+    $('#approvedProfile').change((e)=>{
+        calculateCosts()
+    })
+
     $('#emailClient').click((e) => {
         e.preventDefault()
         calculateCosts()
@@ -464,6 +470,8 @@ $(function () {
     let adminAssistChosen = false;
 
     function calculateCosts() {
+        calcAreas()
+        calcCategories()
         let chosenCategories = categories.filter((el) => {
             if (el.checked == 'Checked') {
                 return el.id

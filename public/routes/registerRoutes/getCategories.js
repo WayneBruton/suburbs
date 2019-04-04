@@ -5,7 +5,7 @@ var pool = require('../connection');
 router.get('/getCategories', function(req, res){
     let numberOfAreas = req.params.numberOfAreas;
 
-    var sql = `select * from categories where isActive = true order by id`;
+    var sql = `select * from categories where isActive = true order by category_description`;
 
     pool.getConnection(function(err, connection){
         if (err) {

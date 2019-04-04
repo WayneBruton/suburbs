@@ -2,6 +2,10 @@ $(function () {
     let clientID = $('#profileID').val();
     let url = '/viewNewProfile/' + clientID;
     getProfile();
+    // let imagesURL = `/editprofileImages/${clientID}`
+
+    // $('#updateImages').attr('href', imagesURL)
+
 
 
     jQuery.nl2br = function(varTest){
@@ -18,6 +22,7 @@ $(function () {
     function getProfile(clientID) {
         $.get(url)
             .done((result) => {
+                console.log(result)
                 let profileDescription = result[0].profile_description;
                 profileDescription = $.br2nl(profileDescription)
                 let profileImageWidth = '';
@@ -36,6 +41,7 @@ $(function () {
                 $('#instagram').val(result[0].instagram)
                 $('#linkedin').val(result[0].linkedin)
                 $('#profile_description').val(profileDescription)
+                // $('#business_image1').attr('src', result[0].business_image1).css('width', `${profileImageWidth}`)
                 $('#business_image1').attr('src', result[0].business_image1).css('width', `${profileImageWidth}`)
                 $('#business_image2').attr('src', result[0].business_image2).css('width', `${profileImageWidth}`)
                 $('#business_image3').attr('src', result[0].business_image3).css('width', `${profileImageWidth}`)
@@ -49,20 +55,20 @@ $(function () {
     let focusAreas = '#businessName, #mob_no, #email, #website, #facebook, #instagram, #linkedin, #profile_description';
 
     $(focusAreas).focus(function (e) {
-        if ($('#saveChangesButton').attr('disabled')) {
+        // if ($('#saveChangesButton').attr('disabled')) {
             e.preventDefault();
             originalData = $(this).val();
-        }
+        // }
 
     });
     $(focusAreas).blur(function (e) {
-        if ($('#saveChangesButton').attr('disabled')) {
+        // if ($('#saveChangesButton').attr('disabled')) {
             e.preventDefault();
             updatedData = $(this).val();   
             if (originalData !== updatedData) {
                 $('#saveChangesButton').attr('disabled', false).css('background-color', 'red')
             }
-        }
+        // }
     });
 
     $('#saveChangesButton').click((e) => {
@@ -90,7 +96,7 @@ $(function () {
         data = JSON.stringify(data)
         $.ajax({
                 url: `/updateProfile`,
-                type: 'post',
+                type: 'post', 
                 data: data,
                 contentType: 'application/json; charset=utf-8',
                 cache: false,

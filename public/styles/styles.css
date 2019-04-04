@@ -34,6 +34,8 @@ image crop section */
 
 .ImageDetails {
     align-items: center;
+    /* height: 150vh; */
+
 }
 
 #a_mainImageArea {
@@ -273,6 +275,8 @@ media screen sizes */
     #a_mainImageArea, #b_mainImageArea, #c_mainImageArea, #d_mainImageArea {
         width: 95%;
         margin-right: 5px;
+        display: flex;
+        flex-direction: column;
     }
 
     #a_uploadProfileImagesBtns, #b_uploadProfileImagesBtns, #c_uploadProfileImagesBtns, #d_uploadProfileImagesBtns {
@@ -441,6 +445,12 @@ media screen sizes */
         -webkit-box-pack: justify;
             -ms-flex-pack: justify;
                 justify-content: space-between;
+    }
+    .ImageDetails {
+        flex-direction: column;
+        align-content: space-between;
+        justify-content: space-between;
+
     }
     
 }

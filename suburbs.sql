@@ -144,6 +144,11 @@ CREATE TABLE charities (
     FOREIGN KEY (areas) REFERENCES areas(id)
 );
 
+-- to load asap
+alter table charities add column charity_image1 varchar(60);
+alter table charities add column charity_image2 varchar(60);
+alter table charities add column charity_image3 varchar(60);
+
 
 CREATE TABLE notices (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -154,6 +159,7 @@ CREATE TABLE notices (
     created_at timestamp default now(),
     isActive boolean not null default false
 );
+
 
 
 

@@ -10,6 +10,20 @@
                 <div id="panel">
                         <input id="noticeID" type="text" value="<%= id %>" hidden>
                     <h1 style="text-align: center">Edit Notice</h1>
+                    <form id="loadNoticeImage" action="/upload" method="POST">
+                        <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                            <input id="loadNoticeImageA" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                type="file" name="file-to-upload" id="" accept="image/*">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                id="chooseImage" style="width: 25%">Use</button>
+                        </div>
+                        <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                            <img id="noticeImage" src="" alt="Notice Image" srcset=""
+                                style="width: 40%; height: 40%; display: block; margin: 10px">
+                        </div>
+                        <button>Delete</button>
+                    </form>
+                    <br><hr><br>
                     <form class="form-horizontal" role="form" method="" action="">
                         <div class="form-group">
 

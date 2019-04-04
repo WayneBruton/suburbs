@@ -151,7 +151,7 @@ router.get('/westcoastCharity', (req, res) => {
 
 router.get('/getCharityProfile/:areaCode', function (req, res) {
     let areaCode = req.params.areaCode;
-    var sql = `Select * from charities where isActive = true and areas = ${areaCode}`
+    var sql = `Select * from charities where isActive = true and areas = ${areaCode} order by id desc limit 1`
 
     pool.getConnection(function (err, connection) {
         if (err) {

@@ -490,6 +490,22 @@ $(function () {
         }, 100);
     });
 
+    $('.urlInput').focus(
+        function() {
+            if ($(this).val() == '') {
+                $(this).val('http://www.')
+            }
+        }
+    )
+
+    $('.urlInput').blur(
+        function() {
+            if ($(this).val() == 'http://www.') {
+                $(this).val('')
+            }
+        }
+    )
+
 
 
 });

@@ -1,5 +1,8 @@
 $(function () {
     let charityUploadedImage;
+    let charityUploadedImage1;
+    let charityUploadedImage2;
+    let charityUploadedImage3;
     $.get('/getareas').done((response) => {
         $('#areaSelect').empty()
         response.forEach(element => {
@@ -26,10 +29,72 @@ $(function () {
         })
     });
 
+
+    $('#loadCharityImg1').submit(function (e) {
+        e.preventDefault();
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false
+        }).done(function (response) {
+            charityUploadedImage1 = response;
+            $('#charityImage1').prop('src', response).css('display', 'block')
+        })
+    });
+
+
+    $('#loadCharityImg2').submit(function (e) {
+        e.preventDefault();
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false
+        }).done(function (response) {
+            charityUploadedImage2 = response;
+            $('#charityImage2').prop('src', response).css('display', 'block')
+        })
+    });
+
+
+    $('#loadCharityImg3').submit(function (e) {
+        e.preventDefault();
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false
+        }).done(function (response) {
+            charityUploadedImage3 = response;
+            $('#charityImage3').prop('src', response).css('display', 'block')
+        })
+    });
+
+
+
     $('#createCharityBtn').click((e) => {
         e.preventDefault()
         let url = `/createCharity`
         let charityImg = charityUploadedImage
+        let charityImg1 = charityUploadedImage1
+        let charityImg2 = charityUploadedImage2
+        let charityImg3 = charityUploadedImage3
         let businessName = $('#businessName').val()
         let first_name = $('#first_name').val()
         let last_name = $('#last_name').val()
@@ -53,6 +118,9 @@ $(function () {
 
         let data = {
             charityImg: charityImg,
+            charityImg1: charityImg1,
+            charityImg2: charityImg2,
+            charityImg3: charityImg3,
             businessName: businessName,
             npo_number: npo_number,
             first_name: first_name,
@@ -129,26 +197,26 @@ $(function () {
         }
     })
 
-    $('#businessDescription').keyup(function (e) {
-        let textLength = $('#businessDescription').val().length;
-        if (textLength < 160) {
-            let newTextLength = 160 - textLength;
-            let newText = `${newTextLength} remaining for minimum requirement`
-            $('#lettercount').text(newText)
-        } else {
-            $('#lettercount').text('')
+    // $('#businessDescription').keyup(function (e) {
+    //     let textLength = $('#businessDescription').val().length;
+    //     if (textLength < 160) {
+    //         let newTextLength = 160 - textLength;
+    //         let newText = `${newTextLength} remaining for minimum requirement`
+    //         $('#lettercount').text(newText)
+    //     } else {
+    //         $('#lettercount').text('')
 
-        }
-    });
-    $('#businessDescription').blur((e) => {
-        e.preventDefault()
-        let textLength = $('#businessDescription').val().length;
-        if ($(textLength < 160) || $(textLength > 3000)) {
-            $('#businessDescription').focus()
-            $('#lettercountWarning').text('Incorrect Number of characters').css('color', 'red')
-            setTimeout(() => {
-                $('#lettercountWarning').text('')
-            }, 2000)
-        }
-    })
+    //     }
+    // });
+    // $('#businessDescription').blur((e) => {
+    //     e.preventDefault()
+    //     let textLength = $('#businessDescription').val().length;
+    //     if ($(textLength > 3000)) {
+    //         $('#businessDescription').focus()
+    //         $('#lettercountWarning').text('Incorrect Number of characters').css('color', 'red')
+    //         setTimeout(() => {
+    //             $('#lettercountWarning').text('')
+    //         }, 2000)
+    //     }
+    // })
 }) 

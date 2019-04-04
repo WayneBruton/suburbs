@@ -1,81 +1,138 @@
 <% include ../partials/header %>
 <script src="../js/adminAddCharity.js"></script>
 
-<div class="container col-lg-12" id="mainform" style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
+<div class="container col-lg-12" id="mainform"
+    style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
 
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
             <div class="panel-body">
                 <div id="panel">
-                        <h1 style="text-align: center">Add A Charity</h1>
-                        <div class="form-group" name="areacheckboxes">
-                                <label for="area" class="col-md-3 control-label">profile Image</label>
-                                <form id="loadCharityImg"action="/upload" method="POST">
-                                <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
-                                    <input id="loadCharityImage" class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="file" name="file-to-upload" id="" accept="image/*">
-                                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn" id="chooseImage" style="width: 25%">Use</button>
-                                </div>
-                                <div class="col-md-9" id="" style="display: flex; justify-content: center">
-                                    <img id="charityImage" src="" alt="Charity Image" srcset="" style="width: 40%; height: 40%; display: none; margin: 10px">
-                                </div>
-                            </form>
+                    <h1 style="text-align: center">Add A Charity</h1>
+                    <div class="form-group" name="areacheckboxes">
+                        <label for="area" class="col-md-3 control-label">Charity Image</label>
+                        <form id="loadCharityImg" action="/upload" method="POST">
+                            <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                                <input id="loadCharityImage" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    type="file" name="file-to-upload" id="" accept="image/*">
+                                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    id="chooseImage" style="width: 25%">Use</button>
                             </div>
+                            <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                                <img id="charityImage" src="" alt="Charity Image" srcset=""
+                                    style="width: 40%; height: 40%; display: none; margin: 10px">
+                            </div>
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="form-group" name="areacheckboxes">
+                        <label for="area" class="col-md-3 control-label">Charity Image1</label>
+                        <form id="loadCharityImg1" action="/upload" method="POST">
+                            <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                                <input id="loadCharityImage1A" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    type="file" name="file-to-upload" id="" accept="image/*">
+                                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    id="chooseImage1" style="width: 25%">Use</button>
+                            </div>
+                            <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                                <img id="charityImage1" src="" alt="Charity Image" srcset=""
+                                    style="width: 40%; height: 40%; display: none; margin: 10px">
+                            </div>
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="form-group" name="areacheckboxes">
+                        <label for="area" class="col-md-3 control-label">Charity Image2</label>
+                        <form id="loadCharityImg2" action="/upload" method="POST">
+                            <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                                <input id="loadCharityImage2A" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    type="file" name="file-to-upload" id="" accept="image/*">
+                                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    id="chooseImage2" style="width: 25%">Use</button>
+                            </div>
+                            <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                                <img id="charityImage2" src="" alt="Charity Image" srcset=""
+                                    style="width: 40%; height: 40%; display: none; margin: 10px">
+                            </div>
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="form-group" name="areacheckboxes">
+                        <label for="area" class="col-md-3 control-label">Charity Image3</label>
+                        <form id="loadCharityImg3" action="/upload" method="POST">
+                            <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                                <input id="loadCharityImage3A" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    type="file" name="file-to-upload" id="" accept="image/*">
+                                <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                    id="chooseImage3" style="width: 25%">Use</button>
+                            </div>
+                            <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                                <img id="charityImage3" src="" alt="Charity Image" srcset=""
+                                    style="width: 40%; height: 40%; display: none; margin: 10px">
+                            </div>
+                        </form>
+                    </div>
+                    <hr>
                     <form class="form-horizontal" role="form" method="" action="">
                         <div class="form-group">
-                            <div id="busineNameExists" class="alert alert-danger col-md-9" role="alert" style="display:none;">
+                            <div id="busineNameExists" class="alert alert-danger col-md-9" role="alert"
+                                style="display:none;">
                                 That name already exists
                             </div>
                             <label for="Business_name" class="col-md-3 control-label">Charity Name</label>
                             <div class="col-md-9">
                                 <input type="text" id="businessName" class="form-control" name="Business_name"
-                                    placeholder="Name of Charity" required> 
+                                    placeholder="Name of Charity" required>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="first_name" class="col-md-3 control-label">First Name</label>
                             <div class="col-md-9">
-                                <input id="first_name" type="text" class="form-control" name="first_name" placeholder="Contact First Name"
-                                    >
+                                <input id="first_name" type="text" class="form-control" name="first_name"
+                                    placeholder="Contact First Name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="npo_number" class="col-md-3 control-label">NPO Number</label>
                             <div class="col-md-9">
-                                <input id="npo_number" type="text" class="form-control" name="npo_number" placeholder="NPO Number"
-                                    >
+                                <input id="npo_number" type="text" class="form-control" name="npo_number"
+                                    placeholder="NPO Number">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="last_name" class="col-md-3 control-label">Last Name</label>
                             <div class="col-md-9">
-                                <input id="last_name" type="text" class="form-control" name="last_name" placeholder="Contact Last Name"
-                                    >
+                                <input id="last_name" type="text" class="form-control" name="last_name"
+                                    placeholder="Contact Last Name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="mob_no" class="col-md-3 control-label">Contact Number</label>
                             <div class="col-md-9">
-                                <input id="mob_no" type="number" class="form-control" name="mob_no" placeholder="Contact Number"
-                                    >
+                                <input id="mob_no" type="number" class="form-control" name="mob_no"
+                                    placeholder="Contact Number">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-md-3 control-label">Email Address</label>
                             <div class="col-md-9">
-                                <input id="email" type="email" class="form-control" name="email" placeholder="email address"
-                                    >
+                                <input id="email" type="email" class="form-control" name="email"
+                                    placeholder="email address">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="website" class="col-md-3 control-label">Website</label>
                             <div class="col-md-9">
-                                <input id="website" type="text" class="form-control" name="website" placeholder="Website">
+                                <input id="website" type="text" class="form-control" name="website"
+                                    placeholder="Website">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="facebook" class="col-md-3 control-label">Facebook Page</label>
                             <div class="col-md-9">
-                                <input id="facebook" type="text" class="form-control" name="facebook" placeholder="Facebook Link">
+                                <input id="facebook" type="text" class="form-control" name="facebook"
+                                    placeholder="Facebook Link">
                             </div>
                         </div>
                         <hr>
@@ -93,62 +150,70 @@
                                 characters
                                 max)</label>
                             <div class="col-md-9">
-                                <textarea id="businessDescription" name="description" cols="30" rows="10" style="width: 100%;"
-                                    minlength="160" maxlength='3000' placeholder="min 160 characters"></textarea>
+                                <textarea id="businessDescription" name="description" cols="30" rows="10"
+                                    style="width: 100%;" maxlength='3000' placeholder="min 160 characters"></textarea>
                                 <p id="wordcount">3000 characters remaining.</p>
                                 <p id="lettercount">160 characters minimum.</p>
                                 <p id="lettercountWarning"></p>
                             </div>
                         </div>
                         <hr>
-                        
+
                         <label for="">Banking Details:</label>
                         <div class="form-group">
-                                
-                                <label for="bankName" class="col-md-3 control-label">Bank Name</label>
-                                <div class="col-md-9">
-                                    <input id="bankName" type="text" class="form-control" name="bankName" placeholder="Bank Name">
-                                </div>
+
+                            <label for="bankName" class="col-md-3 control-label">Bank Name</label>
+                            <div class="col-md-9">
+                                <input id="bankName" type="text" class="form-control" name="bankName"
+                                    placeholder="Bank Name">
                             </div>
-                            <div class="form-group">
-                                <label for="branchName" class="col-md-3 control-label">Branch Name</label>
-                                <div class="col-md-9">
-                                    <input id="branchName" type="text" class="form-control" name="branchName" placeholder="Branch Name">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="branchName" class="col-md-3 control-label">Account Name</label>
+                            <div class="col-md-9">
+                                <input id="branchName" type="text" class="form-control" name="branchName"
+                                    placeholder="Account Name">
                             </div>
-                                <label for="accountNumber" class="col-md-3 control-label">Account Number</label>
-                                <div class="col-md-9">
-                                    <input id="accountNumber" type="text" class="form-control" name="accountNumber" placeholder="Account Number">
-                                </div>
+                        </div>
+                        <label for="accountNumber" class="col-md-3 control-label">Account Number</label>
+                        <div class="col-md-9">
+                            <input id="accountNumber" type="text" class="form-control" name="accountNumber"
+                                placeholder="Account Number">
+                        </div>
+                        <!-- </div> -->
+                        <div class="form-group">
+                            <label for="branchCode" class="col-md-3 control-label">Branch Code:</label>
+                            <div class="col-md-9">
+                                <input id="branchCode" type="text" class="form-control" name="branchCode"
+                                    placeholder="Branch Code">
                             </div>
-                            <div class="form-group">
-                                <label for="branchCode" class="col-md-3 control-label">branch Code</label>
-                                <div class="col-md-9">
-                                    <input id="branchCode"type="text" class="form-control" name="branchCode" placeholder="Branch Code"
-                                        >
-                                </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="isActive" class="col-md-3 control-label">Activate</label>
+                            <div class="col-md-9">
+                                <input id="isActive" type="checkbox" class="form-control" name="isActive">
                             </div>
-                            <hr>
-                            <div class="form-group">
-                                <label for="isActive" class="col-md-3 control-label">Activate</label>
-                                <div class="col-md-9">
-                                    <input id="isActive" type="checkbox" class="form-control" name="isActive"
-                                        >
-                                </div>
-                            </div>
-                            <hr>
+                        </div>
+                        <hr>
                         
+
                         <div>
-                            <input id="createCharityBtn" class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="submit"
-                                value="Save">
+                            <input id="createCharityBtn" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                type="submit" value="Save">
                             <input class="btn btn-outline-success my-2 my-sm-0 contactBtn" type="reset" value="Reset"
                                 id="resetBtn">
                         </div>
+
                     </form>
                     <br><br><br>
+
+
                 </div>
+
             </div>
         </div>
     </div>
-</div> 
+</div>
+
 <% include ../partials/footer %>

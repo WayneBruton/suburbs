@@ -15,10 +15,63 @@ $(function() {
     let url = `/getProfileInfo/${profileID}` 
   
     $.get(url).done((response)=>{
+        console.log(response)
         let profileDescription = response[0].profile_description;
         profileDescription = $.nl2br(profileDescription)
         let prof_img = `<img id="profileImage" class="figure" src="${response[0].profile_image}" alt="Profile Image" style="width: 100%">`
         $(prof_img).prependTo('.media-object')
+        let facebookLink;
+        let facebookDesc;
+        let targetLink;
+        if (response[0].facebook == '') {
+            console.log('No facebook link provided')
+            facebookLink = '#'
+            facebookDesc = ''
+            targetLink = '';
+        } else {
+            facebookLink = response[0].facebook
+            facebookDesc = 'View their Facebook Page'
+            targetLink = 'target="_blank"'
+        }
+        let websiteLink;
+        let websiteDesc;
+        // let targetLink;
+        if (response[0].website == '') {
+            console.log('No facebook link provided')
+            websiteLink = '#'
+            websiteDesc = ''
+            targetLink = '';
+        } else {
+            websiteLink = response[0].website
+            websiteDesc = 'View their Website'
+            targetLink = 'target="_blank"'
+        }
+        let instagramLink;
+        let instagramDesc;
+        // let targetLink;
+        if (response[0].instagram == '') {
+            console.log('No facebook link provided')
+            instagramLink = '#'
+            instagramDesc = ''
+            targetLink = '';
+        } else {
+            instagramLink = response[0].instagram
+            instagramDesc = 'View their Instagram Profile'
+            targetLink = 'target="_blank"'
+        }
+        let linkedinLink;
+        let linkedinDesc;
+        // let targetLink;
+        if (response[0].linkedin == '') {
+            console.log('No facebook link provided')
+            linkedinLink = '#'
+            linkedinDesc = ''
+            targetLink = '';
+        } else {
+            linkedinLink = response[0].instagram
+            linkedinDesc = 'View their linkedin Profile'
+            targetLink = 'target="_blank"'
+        }
 
         $('.media-body').empty()
         let media_body = `<div class="media-body-info">
@@ -31,23 +84,23 @@ $(function() {
     </div>
     <div class="media-body-info">
         <label for=" email" id="">Email:</label>
-        <a href="mailTo:${response[0].email}" id="email" class="media-body-info-detail">${response[0].email}</a>
+        <a href="mailTo:${response[0].email}" id="email" class="media-body-info-detail">Email them</a>
     </div>
     <div class="media-body-info">
         <label for=" website" id="">website:</label>
-        <a href="${response[0].website}" type="text" id="website" class="media-body-info-detail" target="_blank">${response[0].website}</a>
+        <a href="${websiteLink}" type="text" id="website" class="media-body-info-detail" ${targetLink}>${websiteDesc}</a>
     </div>
     <div class="media-body-info">
         <label for=" facebook" id="">facebook:</label>
-        <a href="${response[0].facebook}" id="facebook" class="media-body-info-detail" target="_blank">${response[0].facebook}</a>
+        <a href="${facebookLink}" id="facebook" class="media-body-info-detail" ${targetLink}>${facebookDesc}</a>
     </div>
     <div class="media-body-info">
         <label for=" instagram" id="">instagram:</label>
-        <a href="${response[0].instagram}" id="instagram" class="media-body-info-detail" target="_blank">${response[0].instagram}</a>
+        <a href="${instagramLink}" id="instagram" class="media-body-info-detail" ${targetLink}>${instagramDesc}</a>
     </div>
     <div class="media-body-info">
         <label for=" linkedin" id="">linkedin:</label>
-        <a href="${response[0].linkedin}" id="linkedin" class="media-body-info-detail" target="_blank">${response[0].linkedin}</a>
+        <a href="${linkedinLink}" id="linkedin" class="media-body-info-detail" ${targetLink}>${linkedinDesc}</a>
     </div>`
     $(media_body).appendTo('.media-body')
     $('.text-infoProfile').empty()

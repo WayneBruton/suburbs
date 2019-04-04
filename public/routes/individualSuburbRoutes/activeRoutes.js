@@ -13,19 +13,26 @@ router.get('/getActiveProfilesCategories/:areaCode', function (req, res) {
     client_profiles p
       ON  JSON_CONTAINS(p.areas,      '${areaCode}',                    '$')
       AND JSON_CONTAINS(p.catarea, CAST(c.id AS CHAR(32)), '$') and p.paid_to_date = true 
-    GROUP BY c.id`
+    GROUP BY c.id
+    ORDER BY c.category_description`
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();
             resizeBy.send('Error with connection');
         }
-        connection.query(sql, function (error, result) {
-            if (error) {
-                res.send('The Error is', error)
-            } else {
-                res.send(result);
-            }
-        });
+        try {
+            connection.query(sql, function (error, result) {
+                if (error) {
+                    // res.send('The Error is', error)
+                    console.log(error)
+                } else {
+                    res.send(result);
+                }
+            });
+        } catch (e) {
+            console.log(e)
+        }
+  
         connection.release();
     });
 });
@@ -78,6 +85,7 @@ router.get('/getProfileInfo/:profileID', function (req, res) {
     let sql = `select id, businessName, profile_description, profile_image, mob_no, email, 
                 website, facebook, instagram, linkedin, business_image1, business_image2, business_image3
                 from client_profiles where id = ${profileID}`
+                console.log(sql)
     pool.getConnection(function (err, connection) {
         if (err) {
             connection.release();
@@ -85,7 +93,8 @@ router.get('/getProfileInfo/:profileID', function (req, res) {
         }
         connection.query(sql, function (error, result) {
             if (error) {
-                res.send('The Error is', error)
+                // res.end('The Error is', error)
+                console.log(error)
             } else {
                 res.send(result);
             }

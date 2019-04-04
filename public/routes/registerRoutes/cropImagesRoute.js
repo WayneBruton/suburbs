@@ -14,13 +14,20 @@ router.get('/crop/:image/:x/:y/:w/:h/:pw/:ph/:profileImageName', (req, res) => {
     let h = parseInt(req.params.h);
     let pw = parseInt(req.params.pw);
     let ph = parseInt(req.params.ph);
+    let newSize; 
+    if (pw > ph) {
+        newSize = pw;
+    } else {
+        newSize = ph;
+    }
 
     Jimp.read(imageToCrop)
         .then(lenna => {
             return lenna
+                // .resize(pw, ph) // resize
                 .resize(pw, ph) // resize
                 .crop(x,y,w,h)
-                .resize(200, 200) // resize
+                .resize(newSize, newSize) // resize
                 .quality(100) // set JPEG quality
                 // .greyscale() // set greyscale
                 .write(`public/images/profiles/${profileImageName}.jpg`); // save

@@ -1,10 +1,121 @@
 <% include partials/header %>
 <!-- <script src="../profileImages.js"></script> -->
 <script src="../js/profileImages.js"></script>
+<h2 id="clientID" hidden>
+   <%= profileId %>
+</h2 >
 
-<div class="container col-lg-12" id="a_profileImageform">
 
-    <!-- PROFILE IMAGE -->
+<div id="signupbox" style=" margin-top:50px" class="mainbox col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div id="panel">
+                <h1 style="text-align: center">Add Profile Images</h1>
+                <div class="form-group" name="areacheckboxes">
+                    <label for="area" class="col-md-3 control-label">Profile Image</label>
+                    <form id="loadProfileImg" action="/upload" method="POST">
+                        <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                            <input id="loadProfileImageA" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                type="file" name="file-to-upload" id="" accept="image/*">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                id="chooseImage" style="width: 25%">Use</button>
+                        </div>
+                        <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                            <img id="profileImage" src="" alt="Upload Profile" srcset=""
+                                style="width: 65%; height: 65%; display: none; margin: 10px; border: 2px solid grey; padding: 2px 2px; border-radius: 7px;">
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="form-group" name="areacheckboxes">
+                    <label for="area" class="col-md-3 control-label">Business Image1</label>
+                    <form id="loadBusinessImg1" action="/upload" method="POST">
+                        <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                            <input id="loadBusinessImage1A" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                type="file" name="file-to-upload" id="" accept="image/*">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                id="chooseImage1" style="width: 25%">Use</button>
+                        </div>
+                        <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                            <img id="businessImage1" src="" alt="Upload Business image 1" srcset=""
+                                style="width: 65%; height: 65%; display: none; margin: 10px; border: 2px solid grey; padding: 2px 2px; border-radius: 7px;">
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="form-group" name="areacheckboxes">
+                    <label for="area" class="col-md-3 control-label">Business Image2</label>
+                    <form id="loadBusinessImg2" action="/upload" method="POST">
+                        <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                            <input id="loadBusinessImage2A" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                type="file" name="file-to-upload" id="" accept="image/*">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                id="chooseImage2" style="width: 25%">Use</button>
+                        </div>
+                        <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                            <img id="businessImage2" src="" alt="Upload Business image 2" srcset=""
+                                style="width: 65%; height: 65%; display: none; margin: 10px; border: 2px solid grey; padding: 2px 2px; border-radius: 7px;">
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="form-group" name="areacheckboxes">
+                    <label for="area" class="col-md-3 control-label">Business Image3</label>
+                    <form id="loadBusinessImg3" action="/upload" method="POST">
+                        <div class="col-md-9" id="" style="display: flex; justify-content: space-around">
+                            <input id="loadBusinessImage3A" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                type="file" name="file-to-upload" id="" accept="image/*">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                                id="chooseImage3" style="width: 25%">Use</button>
+                        </div>
+                        <div class="col-md-9" id="" style="display: flex; justify-content: center">
+                            <img id="businessImage3" src="" alt="Upload Business image 3" srcset=""
+                                style="width: 65%; height: 65%; display: none; margin: 10px; border: 2px solid grey; padding: 2px 2px; border-radius: 7px;">
+                        </div>
+                    </form>
+
+                </div>
+
+                <hr>
+                <div id="successSave" class="alert alert-success col-md-9" role="alert" style="display:none;">
+                    Images Saved
+                </div>
+
+                <button id="saveImages" class="btn btn-outline-success my-2 my-sm-0 contactBtn" >Save</button>
+                <!-- <div id="ifUser"> -->
+                    <a id="checkOutProfile" href="/previewProfile" class="lertAnchor col-md-9 btn btn-outline-success my-2 my-sm-0 contactBtn" style="display: none; ">
+                        <div class="lert" class="alert alert-dark " role="alert">
+                            <strong>Check out your profile</strong>
+                        </div></a>
+                <!-- </div> -->
+                <br><br><br>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="container col-lg-12" id="a_profileImageform">
+ 
     <br><br>
     <div class="ImageDetails">
         <p>You must upload a profile image and three other images</p>
@@ -12,9 +123,7 @@
             <div class="form-group">
                 <h1>Profile Image </h1>
                 <input id="clientID" type="text" value="<%= profileId %>" hidden>
-                <h2 id="a_busName">
-                    <%= businessName %>
-                </h2>
+                
                 <h5>expand and move the inner square to suit you</h5>
 
                 <div id="a_uploadProfileImagesBtns" class="col-md-9" style="display: flex;">
@@ -43,13 +152,10 @@
     </div>
 
 </div>
-<div>
-    
-</div>
+
 
 <div class="container col-lg-12" id="b_profileImageform">
 
-    <!-- BUSINNESS 1 IMAGE -->
     <br><br>
     <div class="ImageDetails">
         <form class="form-horizontal" action="/uploadB" method="post" id="b_my_form">
@@ -88,7 +194,6 @@
 
 <div class="container col-lg-12" id="c_profileImageform">
 
-    <!-- BUSINNESS 2 IMAGE -->
     <br><br>
     <div class="ImageDetails">
         <form class="form-horizontal" action="/uploadC" method="post" id="c_my_form">
@@ -127,7 +232,6 @@
 
 <div class="container col-lg-12" id="d_profileImageform">
 
-    <!-- BUSINNESS 2 IMAGE -->
     <br><br>
     <div class="ImageDetails">
         <form class="form-horizontal" action="/uploadD" method="post" id="d_my_form">
@@ -167,7 +271,6 @@
 </div>
 <div class="container col-lg-12" id="e_profileImageform">
 
-    <!-- BUSINNESS 2 IMAGE -->
     <br><br>
     <div class="ImageDetails">
 
@@ -192,6 +295,6 @@
     </div>
 
 
-</div>
+</div> -->
 
-<% include partials/footer %>
+    <% include partials/footer %>
