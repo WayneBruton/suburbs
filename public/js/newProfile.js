@@ -41,7 +41,6 @@ $(function () {
                 $('#instagram').val(result[0].instagram)
                 $('#linkedin').val(result[0].linkedin)
                 $('#profile_description').val(profileDescription)
-                // $('#business_image1').attr('src', result[0].business_image1).css('width', `${profileImageWidth}`)
                 $('#business_image1').attr('src', result[0].business_image1).css('width', `${profileImageWidth}`)
                 $('#business_image2').attr('src', result[0].business_image2).css('width', `${profileImageWidth}`)
                 $('#business_image3').attr('src', result[0].business_image3).css('width', `${profileImageWidth}`)

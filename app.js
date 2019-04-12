@@ -51,7 +51,8 @@ const   screenRoutes  =  require('./public/routes/screenRoutes'),
         activeCharityRoute = require('./public/routes/adminRoutes/adminAddCharity'),
         charityRoutes = require('./public/routes/individualCharityRoutes/charityRoutes'),
         noticeRoutes = require('./public/routes/individualCommunityNoticesRoutes/communityNoticesRoutes'),
-        addNoticeRoutes = require('./public/routes/adminRoutes/adminAddNotices')
+        addNoticeRoutes = require('./public/routes/adminRoutes/adminAddNotices'),
+        startPaymentRoutes = require('./public/routes/paymentRoutes/startPayment')
 
 
 
@@ -73,6 +74,7 @@ app.use(activeCharityRoute);
 app.use(charityRoutes);
 app.use(noticeRoutes);
 app.use(addNoticeRoutes);
+app.use(startPaymentRoutes);
 
 app.listen(port, () => {
     console.log(`App is running on Port: ${port}`);

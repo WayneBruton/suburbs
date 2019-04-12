@@ -106,6 +106,8 @@ select * from categories;
     payment_expires timestamp default now()
     );
 
+-- alter table client_profiles modify column payment_expires timestamp default '2000-01-01'
+
 
 
     desc client_profiles;

@@ -1,0 +1,117 @@
+<% include ../partials/header %>
+<script src="../../js/paymentFiles/startPayment.js"></script>
+<br><br><br><br>
+
+<div class="container col-sm-12" id="mainform"
+    style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
+
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <h1>Make Payment</h1><br>
+        <div class="panel panel-info" style="">
+            <div class="panel-body">
+                <div style="min-height: 90vh">
+
+                    <input id="id" type="text" value="<%= id %>" hidden>
+                    <div style="display: flex; justify-content: space-between">
+                        <label for="" style="font-weight: bold">Business Name: </label>
+                        <p id="businessName"> <%= businessName %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">First Name: </label>
+                        <p id="first_name"><%= first_name %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">Last Name: </label>
+                        <p id="last_name"><%= last_name %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">Selected Option: </label>
+                        <p id="selectedOption"><%= selectedOption %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">Categories Chosen: </label>
+                        <p id="myCategories"><%= myCategories %></p>
+                        <p id="urlDetail" hidden><%= details %></p>
+                        <p id="catarea" hidden><%= catarea %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">Admin Assistance Chosen: </label>
+                        <!-- <p id="adminAssist"><%= adminAssist %></p> -->
+                        <% if (adminAssist == 1) { %>
+                        <p id="adminAssist">Yes</p>
+                        <% } else { %>
+                        <p id="adminAssist">No</p>
+
+                        <% } %>
+                    </div>
+                    <table id="table">
+                        <tr>
+                            <th>Option</th>
+                            <th>Monthly</th>
+                            <th>Annual</th>
+                            <th>Once Off</th>
+                        </tr>
+                        <tr>
+                            <td>Option <%= selectedOption %></td>
+                            <td class="addPayDetail" id="Omth">R <%= per_month %></td>
+                            <td class="addPayDetail" id="OYr">R <%= per_year %></td>
+                            <td class="addPayDetail" id="OOnce">R <%= once_off %></td>
+                        </tr>
+                        <tr>
+                            <td>Categories</td>
+                            <td class="addPayDetail" id="Cmth">R <%= (catareaLength - 1) * 10%></td>
+                            <td class="addPayDetail" id="CYr">R <%= (catareaLength - 1) * 70%></td>
+                            <td class="addPayDetail" id="COnce">R <%= (catareaLength - 1) * 10%></td>
+                        </tr>
+                        <tr>
+                            <td>Admin Assistance</td>
+                            <% if (adminAssist == 1) { %>
+                            <td class="addPayDetail" id="AMth">R 80</td>
+                            <td class="addPayDetail" id="AYr">R 960</td>
+                            <td class="addPayDetail" id="AOnce">R 80</td>
+                            <% } else { %>
+                            <td class="addPayDetail" id="AMth">R 0</td>
+                            <td class="addPayDetail" id="AYr">R 0</td>
+                            <td class="addPayDetail" id="AOnce">R 0</td>
+                            <% } %>
+                        </tr>
+                    </table>
+                    <p>Make your choice:</p>
+                    <div id="paymentRadioGroup" style="display:flex; justify-content: space-evenly">
+                        <div id="MonthlyPmtDiv"
+                            style="display: flex; justify-content: space-between; margin: 0px 5px; border: 1px solid grey; border-radius: 7px; padding: 5px 5px;">
+                            <input type="radio" name="chosen" id="MonthlyPmt" checked style="margin-top: 5px;"><label
+                                for="MonthlyPmt">Monthly</label></div>
+                        <div id="AnnualPaymentDiv"
+                            style="display: flex; justify-content: space-between; margin: 0px 5px; border: 1px solid grey; border-radius: 7px; padding: 5px 5px;">
+                            <input type="radio" name="chosen" id="AnnualPayment" style="margin-top: 5px;"><label
+                                for="AnnualPayment">Annual</label></div>
+                        <div id="OnceOffPaymentDiv"
+                            style="display: flex; justify-content: space-between; margin: 0px 5px; border: 1px solid grey; border-radius: 7px; padding: 5px 5px;">
+                            <input type="radio" name="chosen" id="OnceOffPayment" style="margin-top: 5px;"><label for="OnceOffPayment">Once
+                                Off</label></div>
+                    </div>
+                    <br>
+                    <div id="choice" style="display: flex; justify-content: center ">
+                        <label for=""></label>
+                    </div>
+                    <div id="payNow" style="display: flex; justify-content: center; margin-top: 10px; ">
+                        <!-- <a class="btn btn-outline-success my-2 my-sm-0 contactBtn"
+                            href="https://www.payfast.co.za/eng/process?cmd=_paynow&amp;receiver=10469596&amp;item_name=RecipeTest110119&amp;amount=182.00&amp;return_url=http%3A%2F%2Fwww.suburbsdirectory.co.za&amp;cancel_url=https%3A%2F%2Fsuburbsdirectory.co.za/startPaymentProcess/vutfoz236adbw4" width="165" height="36" alt="Pay" title="Pay Now with PayFast">Pay Now</a> -->
+                        <!-- <a
+                            href="https://www.payfast.co.za/eng/process?cmd=_paynow&amp;receiver=10469596&amp;item_name=RecipeTest110119&amp;amount=182.00&amp;return_url=http%3A%2F%2Fwww.suburbsdirectory.co.za/successfulPayment/1234567890&amp;cancel_url=https%3A%2F%2Fwww.suburbsdirectory.co.za/startPaymentProcess/vutfoz236adbw4"><img
+                                src="https://www.payfast.co.za/images/buttons/light-small-paynow.png" width="165"
+                                height="36" alt="Pay" title="Pay Now with PayFast" /></a> -->
+                                
+                    </div>
+                    <div style="display: flex; justify-content: center; margin-top: 10px; ">
+                        <p>Payment is done through Payfast, a secure payment portal, at no time does Suburbs Directory have access to your card number or your banking details. For more information please see <a href="www.payfast.co.za">www.payfast.co.za</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

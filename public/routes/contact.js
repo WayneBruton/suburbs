@@ -5,6 +5,8 @@ const os = require('os').hostname();
 
 const pool = require('../routes/connection');
 
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr(process.env.ENCRYPTION_SECRET);
 
 if (os == 'Waynes-MacBook-Air.local') {
     require('dotenv/config');
@@ -121,7 +123,15 @@ router.post('/send-email', (req, res) => {
 
 
 router.post('/sendClientEmail', (req, res) => {
-
+    let id = req.body.id
+    // console.log(code)
+    console.log(id)
+    const encryptedString = cryptr.encrypt(`${id}`);
+    // const decryptedString = cryptr.decrypt(encryptedString);
+    console.log('Encrypted String',encryptedString); // 5590fd6409be2494de0226f5d7
+    let urlParam = encryptedString;
+    console.log(urlParam)
+    urlParam = `https://www.suburbsdirectory.co.za/startPaymentProcess/${urlParam}`
     let response = {
         success: 'Your Email has been sent!',
         failure: 'There was a problem, please try again later'
@@ -149,7 +159,8 @@ router.post('/sendClientEmail', (req, res) => {
 	
 	<h3>Message</h3><br>
 	<p>Dear ${name}</p><br>
-	<p>Your profile for ${businessName} has been successfully approved!</p><br>
+    <p>Your profile for ${businessName} has been successfully approved!</p><br>
+    
     <p>Your options are the following:</p>
     <table>
     <tr>
@@ -184,7 +195,7 @@ router.post('/sendClientEmail', (req, res) => {
     </tr>
     </table>
 
-    <p>If you are satisfied, please deposit the amount for your option chosen and send proof of payment to Lisa or Nicole as below:</p>
+    <p>If you are satisfied, please deposit the amount for your option chosen into the following account:</p>
     <ul>
         <li>Bank Name: FNB</li>
         <li>Branch: Blue Route</li>
@@ -192,10 +203,13 @@ router.post('/sendClientEmail', (req, res) => {
         <li>Branch Code: 250-655</li>
         <li>Reference: ${businessName}</li>
     </ul><br>
-    <p>or contact lisa at: lisa@suburbsdirectory.co.za</p>
-    <p>or Nicole at: nicole@suburbsdirectory.co.za</p>
+    <p>Please send POP to lisa@suburbsdirectory.co.za </p>
 
-    Should need to change / add areas or categories, please contact Lisa or Nicole as above.
+    <p><strong>Alternatively</strong> to pay by card and be <strong>visible within minutes</strong> click the following link <a href="${urlParam}" style="width: 75px; height: 25px; background-color: green; border: 1px solid green; border-radius: 7px; color: white; font-weight: bold;">Pay Now</a></p>
+
+    <p>or copy and past the following link into your browser <a href="${urlParam}">${urlParam}</a>.</p>  
+
+    <p>We thank you for your support and look forward to having you on board!.</p>
     `;
 
     console.log(output);
@@ -236,17 +250,22 @@ router.post('/sendClientEmail', (req, res) => {
                 var alertType = 'danger'
                 var display = 'block'
                 var backgroundColor = 'background-color: #4267b4;"'
-
+                console.log('there was an error')
                 res.end('There was an error')
-            }
-            var title = 'Suburbs Directory - Contact Us'
-            var color = '';
-            var navBarType = 'navbar-dark bg-dark';
-            var message = response.success;
-            var alertType = 'success'
-            var display = 'block'
-            var backgroundColor = 'background-color: #4267b4;"'
+            } else {
+                console.log('Email Sent')
+
             res.end('Email Sent')
+
+            }
+            // var title = 'Suburbs Directory - Contact Us'
+            // var color = '';
+            // var navBarType = 'navbar-dark bg-dark';
+            // var message = response.success;
+            // var alertType = 'success'
+            // var display = 'block'
+            // var backgroundColor = 'background-color: #4267b4;"'
+            
         });
     } catch (e) {
         res.send('Error', e)

@@ -424,6 +424,7 @@ $(function () {
                 adminAssistOneOff = 80 * areasCosting
             }
             let data = {
+                id: clientID,
                 email: email,
                 first_name: first_name,
                 businessName: businessName,
@@ -447,12 +448,21 @@ $(function () {
                 cache: false,
                 processData: true
             }).done((response) => {
-                if (response = 'Email Sent') {
+                console.log(response)
+                if (response == 'Email Sent') {
                     $('#successEmail').css('display', 'block')
                     setTimeout(() => {
                         $('#successEmail').css('display', 'none')
 
                     }, 1500)
+                } else if (response == 'There was an error'){
+                    console.log(response)
+                    $('#failure').css('display', 'block')
+                    setTimeout(() => {
+                        $('#failure').css('display', 'none')
+
+                    }, 1500)
+                
                 }
             })
         }, 50)

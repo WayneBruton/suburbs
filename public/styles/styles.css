@@ -1,3 +1,33 @@
+
+
+h1, h2 {
+    /* text-transform: lowercase; */
+font-family: 'Syncopate', sans-serif;
+text-shadow: 4px 4px 4px #aaa;
+}
+
+/* .navbar-brand {
+font-family: 'Syncopate', sans-serif;
+
+    font-size: 20px;
+} */
+
+/* input,p, textarea, a, label, button, td { */
+input,p, textarea, label, a, button, td {
+font-family: 'Quicksand', sans-serif;
+    /* text-transform: uppercase; */
+
+
+}
+
+html {
+font-family: 'Quicksand', sans-serif;
+
+}
+
+
+
+
 body {
     background-color: whitesmoke;
 }
@@ -434,6 +464,20 @@ media screen sizes */
         content: "Once Off";
     }
 
+
+    .addPayDetail:nth-of-type(1):before {
+        content: "Option";
+    }
+    .addPayDetail:nth-of-type(2):before {
+        content: "Monthly";
+    }
+    .addPayDetail:nth-of-type(3):before {
+        content: "Annual";
+    }
+    .addPayDetail:nth-of-type(4):before {
+        content: "Once Off";
+    }
+
     .areaChoice {
         padding: 5px 5px; 
         margin: 0 10px;
@@ -572,6 +616,11 @@ Tooltips */
   .resetPass {
       display: none;
   }
+
+  #MonthlyPmtDiv, #AnnualPaymentDiv, #OnceOffPaymentDiv {
+    width: 30%;
+    margin-top: 100px;
+}
  
 
   @media screen and (max-width: 768px) {
@@ -621,6 +670,17 @@ Tooltips */
     #someNotices h2 {
         font-size: 100%;
     }
+    
+    #paymentRadioGroup {
+        flex-direction: column;
+        width: 100vw;
+    }
+    #MonthlyPmtDiv, #AnnualPaymentDiv, #OnceOffPaymentDiv {
+        width: 40%;
+        margin-top: 100px;
+    }
+   
+   
 
   }
 

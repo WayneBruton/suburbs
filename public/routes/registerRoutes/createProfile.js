@@ -37,8 +37,11 @@ router.post('/createProfile', (req, res) => {
     let catarea = req.body.catarea;
     var product_service = req.body.psb;
     var adminAssist = req.body.adminAssist;
+    console.log(adminAssist)
     if (adminAssist == undefined) {
         adminAssist = 0;
+    } else {
+        adminAssist = 1
     }
     let profile_heading = req.body.profile_heading;
     if (profile_heading == '') {
@@ -47,6 +50,7 @@ router.post('/createProfile', (req, res) => {
 
     let description = sanitizeHtml(req.body.description);
     // sanitizeHtml(dirty);
+    description = description.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
 
     let parseIntAreas = areas.map(function (area) {
         return parseInt(area);
@@ -62,7 +66,7 @@ router.post('/createProfile', (req, res) => {
         '${businessName}','${first_name}','${last_name}','${mob_no}','${email}','${website}','${facebook}','${instagram}',
         '${linkedin}','${feedback}',"[${parseIntAreas}]",${selectedOption},"[${parseIntCategories}]",'${product_service}','${adminAssist}','${profile_heading}','${description}'
     );`
-
+        console.log(sql)
     var title = 'Suburbs Directory - Load Profile'
     var color = '';
     var navBarType = 'navbar-dark bg-dark';
@@ -75,7 +79,9 @@ router.post('/createProfile', (req, res) => {
         connection.query(sql, (err, result) => {
             if (err) {
                 connection.release()
+                // throw err
             };
+            console.log('This is the result',result)
             let profileId = '';
             if (result != undefined) {
                 profileId = result.insertId;

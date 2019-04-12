@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+<script src="../../js/paymentFiles/finalisePayment.js"></script>
+<br><br><br><br>
+
+<div class="container col-sm-12" id="mainform"
+    style="width: 100vw; display: flex; justify-content: center; margin-top: 55px">
+
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <h2 style="color: green">Payment Successful</h2><br>
+        <div class="panel panel-info" style="">
+            <div class="panel-body">
+                <div style="min-height: 90vh">
+                    <input id="id" type="text" value="<%= id %>" hidden>
+                    <h3><%= businessName %></h3>
+                    <div style="display: flex; justify-content: space-between">
+                        <label for="" style="font-weight: bold">Amount Paid: </label>
+                        <p id="amountPaid">R <%= amountPaid %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">Type of Account: </label>
+                        <p id="typeAccount"><%= typeAccount %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">Paid on: </label>
+                        <p id="typeAccount"><%= paidOn %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <label for="" style="font-weight: bold">Paid until: </label>
+                        <p id="typeAccount"><%= expiry %></p>
+                    </div>
+                    <div style="display: flex;justify-content: space-between">
+                        <p style="background-color: yellowgreen; border: 1px solid yellowgreen; border-radius: 7px; padding: 5px 5px;">Your payment was successful, Welcome to the Suburbs Directory. If you are not redirected automatically, please press <a id="home" href="/">Home</a> </p>
+                    </div>
+                   
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -133,7 +133,7 @@ $(function () {
 
         let profile_image = profileUploadedImage
         let business_image1 = business1UploadedImage
-        console.log(business_image1)
+        // console.log(business_image1)
         let business_image2 = business2UploadedImage
         let business_image3 = business3UploadedImage
         if (profile_image == undefined) {
@@ -168,9 +168,6 @@ $(function () {
                 dataType: 'json'
 
             }).done(function (response) {
-                // console.log(response)
-                // console.log(response[0])
-                // console.log(response.affectedRows)
                 if (response.affectedRows == 1) {
                     $('#successSave').text('Images Saved').css('display', 'block')
                     $('#checkOutProfile').css('display', 'block')
@@ -184,9 +181,6 @@ $(function () {
 
             }, 2000)
         }
-
-
-
     });
 });
 
